@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --files server/src/app.ts",
-    "start": "node server/dist/app.js"
+    "start": "node server/dist/app.js",
+    "build": "tsc -p server"
   },
   "repository": {
     "type": "git",
