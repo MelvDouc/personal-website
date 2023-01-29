@@ -1,7 +1,7 @@
 import express from "express";
 import router from "./routes/router.js";
 
-const port = process.env.PORT ?? 10_002;
+const port = process.env.PORT ?? process.env.port ?? process.env.Port ?? 10_002;
 
 const app = express();
 
