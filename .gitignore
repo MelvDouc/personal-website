@@ -1,4 +1,9 @@
+# Wild cards
 **/node_modules
+**/.vscode
+server/**/*.db.json
 *.local
+*.local.json
+
 server/dist
 .env
