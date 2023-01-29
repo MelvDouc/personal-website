@@ -1,5 +1,5 @@
 import { Request as Req, Response as Res } from "express";
-import type { Document, ObjectId } from "mongodb";
+import type { Document } from "mongodb";
 
 declare global {
   namespace NodeJS {
@@ -26,12 +26,12 @@ interface Word extends Document {
 
 export {
   Collection,
-  Document,
   Filter,
   ObjectId,
   WithId
 } from "mongodb";
 export {
+  Document,
   Req,
   Res,
   CrudOperations,
