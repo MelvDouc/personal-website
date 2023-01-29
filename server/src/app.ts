@@ -1,10 +1,14 @@
+import cors from "cors";
 import express from "express";
 import router from "./routes/router.js";
+import "./database/db.js";
 
 const port = process.env.PORT ?? process.env.port ?? process.env.Port ?? 10_002;
-
 const app = express();
 
+app.use(cors({
+  origin: process.env.CLIENT_ORIGIN
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
