@@ -1,6 +1,6 @@
 import { Router } from "express";
 import vocController from "../controllers/voc.controller.js";
-import entityId from "../middleware/entity-id.js";
+import entityId from "../middleware/entity-id.middleware.js";
 
 const router = Router();
 
