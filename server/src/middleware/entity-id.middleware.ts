@@ -6,7 +6,7 @@ export default function entityId(req: Req, res: Res, next: NextFn) {
 
   if (typeof id !== "string")
     return res.json({
-      error: new InvalidQueryParamsError("id", id).toString()
+      error: new InvalidQueryParamsError("id", id).message
     });
 
   res.locals.md__entityId = id;
