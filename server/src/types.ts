@@ -1,4 +1,4 @@
-import { Request as Req, Response as Res } from "express";
+import { NextFunction as NextFn, Request as Req, RequestHandler, Response as Res } from "express";
 import type { Document } from "mongodb";
 
 declare global {
@@ -12,11 +12,11 @@ declare global {
 }
 
 interface CrudOperations {
-  getOne: (req: Req, res: Res) => Promise<any>;
-  getAll: (req: Req, res: Res) => Promise<any>;
-  create: (req: Req, res: Res) => Promise<any>;
-  update: (req: Req, res: Res) => Promise<any>;
-  delete: (req: Req, res: Res) => Promise<any>;
+  getOne: RequestHandler;
+  getAll: RequestHandler;
+  create: RequestHandler;
+  update: RequestHandler;
+  delete: RequestHandler;
 }
 
 interface Word extends Document {
@@ -32,8 +32,10 @@ export {
 } from "mongodb";
 export {
   Document,
+  CrudOperations,
+  NextFn,
   Req,
   Res,
-  CrudOperations,
   Word
 };
+

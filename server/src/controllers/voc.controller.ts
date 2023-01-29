@@ -1,20 +1,17 @@
-import { ObjectId } from "mongodb";
-import { collections } from "../database/db.js";
-import type { Collection, Document, CrudOperations, Filter } from "../types.js";
+import {
+  collections
+} from "../database/db.js";
+import InvalidQueryParamsError from "../errors/InvalidQueryParamsError.js";
+import type {
+  Collection,
+  CrudOperations,
+  Document
+} from "../types.js";
 
 function getCrudOperations<T extends Document>(collection: Collection<T>) {
   return {
     getOne: async (req, res) => {
-      const filter = ["entry"].reduce((acc, key) => {
-        if (typeof req.query[key] === "string")
-          acc[key] = req.query[key];
-        return acc;
-      }, {} as Record<string, any>);
-      if ("id" in req.query) {
-        filter["_id"] = new ObjectId(req.query.id as string);
-      }
-      console.log(filter);
-      const word = await collection.findOne(filter);
+      const word = await collection.findOne({ _id: res.locals.md__entityId });
       res.json(word);
     },
     getAll: async (req, res) => {
@@ -26,16 +23,13 @@ function getCrudOperations<T extends Document>(collection: Collection<T>) {
       res.json(insertResult);
     },
     update: async (req, res) => {
-      const { id, ...updates } = req.body;
-      const updateResult = await collection.updateOne(
-        { _id: new ObjectId(id) } as unknown as Filter<T>,
-        { $set: updates }
-      );
+      const updateResult = await collection.replaceOne({ _id: res.locals.md__entityId } as any, req.body);
       res.json(updateResult);
     },
     delete: async (req, res) => {
-      const { id } = req.query;
-      const deleteResult = await collection.deleteOne({ _id: new ObjectId(id as string) } as unknown as Filter<T>);
+      const deleteResult = await collection.deleteOne({
+        _id: req.query.id as any
+      });
       res.json(deleteResult);
     }
   } as CrudOperations;
