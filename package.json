@@ -1,0 +1,25 @@
+{
+  "name": "melvin-doucet.com",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "server/dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MelvDouc/melvin-doucet-com.git"
+  },
+  "keywords": [
+    "melvin",
+    "doucet",
+    "web",
+    "development"
+  ],
+  "author": "Melvin Doucet <melv.douc@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MelvDouc/melvin-doucet-com/issues"
+  },
+  "homepage": "https://github.com/MelvDouc/melvin-doucet-com#readme"
+}
