@@ -5,13 +5,14 @@
   "main": "server/dist/app.js",
   "type": "module",
   "engines": {
-    "node": "^18.x",
-    "npm": "^8.x"
+    "node": "^19.5.0",
+    "npm": "^9.4.0"
   },
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
-    "deploy": "git add -A && git commit -m Heroku && git push && git push heroku main"
+    "push": "git add -A && git commit -m msg && git push",
+    "deploy": " && git push heroku main"
   },
   "repository": {
     "type": "git",
