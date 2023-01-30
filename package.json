@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
-    "postinstall": "node_modules/typescript/bin/tsc -p server"
+    "postinstall": "npm ci && tsc -p server"
   },
   "repository": {
     "type": "git",
