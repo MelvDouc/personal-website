@@ -8,7 +8,6 @@ const app = express();
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN
 }));
-// app.use(express.static("client/dist"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
