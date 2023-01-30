@@ -1,12 +1,7 @@
+import { Collection } from "mongodb";
 import {
   collections
 } from "../database/db.js";
-import InvalidQueryParamsError from "../errors/InvalidQueryParamsError.js";
-import type {
-  Collection,
-  CrudOperations,
-  Document
-} from "../types.js";
 
 function getCrudOperations<T extends Document>(collection: Collection<T>) {
   return {

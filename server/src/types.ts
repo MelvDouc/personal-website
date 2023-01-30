@@ -8,35 +8,15 @@ declare global {
   }
 }
 
-type Req = import("express").Request;
-type Res = import("express").Response;
-type RequestHandler = import("express").RequestHandler;
-type Document = import("mongodb").Document;
-
-interface CrudOperations {
-  getOne: RequestHandler;
-  getAll: RequestHandler;
-  create: RequestHandler;
-  update: RequestHandler;
-  delete: RequestHandler;
+export interface CrudOperations {
+  getOne: any;
+  getAll: any;
+  create: any;
+  update: any;
+  delete: any;
 }
 
-interface Word extends Document {
+export interface Word extends Document {
   entry: string;
   class: "n" | "v" | "adj" | "adv" | "prep" | "conj" | "idiom";
 }
-
-export {
-  Collection,
-  Filter,
-  ObjectId,
-  WithId
-} from "mongodb";
-export {
-  Document,
-  CrudOperations,
-  Req,
-  Res,
-  Word
-};
-

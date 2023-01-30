@@ -1,7 +1,7 @@
+import e from "express";
 import InvalidQueryParamsError from "../errors/InvalidQueryParamsError.js";
-import { Req, Res } from "../types.js";
 
-export default function entityId(req: Req, res: Res, next: () => any) {
+export default function entityId(req: e.Request, res: e.Response, next: () => any) {
   const { id } = req.query;
 
   if (typeof id !== "string")
