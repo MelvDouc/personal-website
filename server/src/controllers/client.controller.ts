@@ -15,7 +15,10 @@ async function home(req: Req, res: Res) {
     res.end(data);
   } catch (error) {
     console.log(error);
-    res.end((<Error>error).message);
+    res.contentType("html").end(`
+      <h1>Something went wrong...<h1>
+      <p style="color: navyblue">${(<Error>error).message}</p>
+    `);
   }
 }
 
