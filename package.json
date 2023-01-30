@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
-    "push": "git add -A && git commit -m msg && git push",
+    "push": "git add -A && git commit -m process.env.msg && git push",
     "deploy": " && git push heroku main"
   },
   "repository": {
