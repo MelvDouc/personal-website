@@ -3,12 +3,15 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { Req, Res } from "../types.js";
 
-const clientDir_prod = join(process.cwd(), "client", "dist");
+const clientDir = join(process.cwd(), "client");
 
 async function home(req: Req, res: Res) {
   try {
-    req.app.use(expressStatic(clientDir_prod));
-    const data = await readFile(join(clientDir_prod, "index.html"));
+    const clientDirProd = (process.env.NODE_ENV === "production")
+      ? join(clientDir, "dist")
+      : clientDir;
+    req.app.use(expressStatic(clientDirProd));
+    const data = await readFile(join(clientDirProd, "index.html"));
     res.end(data);
   } catch (error) {
     console.log(error);

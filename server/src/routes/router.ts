@@ -11,7 +11,6 @@ router.post("/voc/english/words/create", vocController.englishWordsCrud.create);
 router.put("/voc/english/words/update", entityId, vocController.englishWordsCrud.update);
 router.delete("/voc/english/words/delete", entityId, vocController.englishWordsCrud.delete);
 
-if (process.env.NODE_ENV === "production")
-  router.get("/*", clientController.home);
+router.get("/*", clientController.home);
 
 export default router;
