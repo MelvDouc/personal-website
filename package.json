@@ -5,12 +5,12 @@
   "main": "server/dist/app.js",
   "type": "module",
   "engines": {
-    "node": "^18.x"
+    "node": "^18.x",
+    "npm": "^8.x"
   },
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
-    "postinstall": "npx --package=typescript -- tsc -p server",
     "deploy": "git add -A && git commit -m Heroku && git push && git push heroku main"
   },
   "repository": {
