@@ -5,8 +5,7 @@
   "main": "server/dist/app.js",
   "type": "module",
   "engines": {
-    "node": "^18.9.0",
-    "vscode": "^1.74.3"
+    "node": "^18.x"
   },
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
