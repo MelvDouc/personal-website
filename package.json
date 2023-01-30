@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
-    "heroku-postbuild": "npm ci && tsc -p server && cd client && npm ci && npm run build"
+    "tsc": "tsc -p",
+    "heroku-postbuild": "npm ci && tsc && cd client && npm ci && npm run build"
   },
   "repository": {
     "type": "git",
