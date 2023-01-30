@@ -1,10 +1,3 @@
-import type {
-  NextFunction as NextFn,
-  Request as Req,
-  RequestHandler, Response as Res
-} from "express";
-import type { Document } from "mongodb";
-
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -14,6 +7,11 @@ declare global {
     }
   }
 }
+
+type Req = import("express").Request;
+type Res = import("express").Response;
+type RequestHandler = import("express").RequestHandler;
+type Document = import("mongodb").Document;
 
 interface CrudOperations {
   getOne: RequestHandler;
@@ -37,7 +35,6 @@ export {
 export {
   Document,
   CrudOperations,
-  NextFn,
   Req,
   Res,
   Word
