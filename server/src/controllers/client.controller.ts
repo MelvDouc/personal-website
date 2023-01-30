@@ -1,15 +1,13 @@
-import { static as expressStatic } from "express";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { Req, Res } from "../types.js";
 
-const clientDir = join(process.cwd(), "client", "dist");
+const clientDir = join(process.cwd(), "client");
 
 async function home(req: Req, res: Res) {
   try {
-    const htmlPath = join(clientDir, "index.html");
-    const data = await readFile(htmlPath);
-    req.app.use(expressStatic(clientDir));
+    console.log("here");
+    const data = await readFile(join(clientDir, "dist", "index.html"));
     res.end(data);
   } catch (error) {
     res.end((<Error>error).message);
