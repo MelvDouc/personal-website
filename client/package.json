@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "heroku:build": "node heroku-build.js",
     "preview": "vite preview"
   },
   "engines": {
