@@ -1,10 +1,10 @@
-import e, { static as expressStatic } from "express";
+import { Request, Response, static as expressStatic } from "express";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
 const clientDir = join(process.cwd(), "client");
 
-async function home(req: e.Request, res: e.Response) {
+async function home(req: Request, res: Response) {
   try {
     const clientDirProd = (process.env.NODE_ENV === "production")
       ? join(clientDir, "dist")

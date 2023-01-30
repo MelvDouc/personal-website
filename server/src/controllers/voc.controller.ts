@@ -1,7 +1,5 @@
 import { Collection } from "mongodb";
-import {
-  collections
-} from "../database/db.js";
+import { collections } from "../database/db.js";
 
 function getCrudOperations<T extends Document>(collection: Collection<T>) {
   return {
