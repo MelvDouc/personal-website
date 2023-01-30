@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
-    "build": "tsc -p server && npm --prefix client run heroku:build"
+    "build": "tsc -p server && npm --prefix client run build"
   },
   "repository": {
     "type": "git",

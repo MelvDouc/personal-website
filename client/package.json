@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && npx vite build",
+    "build": "tsc && vite build",
     "heroku:build": "node heroku-build.js",
     "preview": "vite preview"
   },
