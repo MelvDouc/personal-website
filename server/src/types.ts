@@ -1,4 +1,8 @@
-import { NextFunction as NextFn, Request as Req, RequestHandler, Response as Res } from "express";
+import type {
+  NextFunction as NextFn,
+  Request as Req,
+  RequestHandler, Response as Res
+} from "express";
 import type { Document } from "mongodb";
 
 declare global {
