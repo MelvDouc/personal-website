@@ -4,11 +4,15 @@
   "description": "My personal website.",
   "main": "server/dist/app.js",
   "type": "module",
+  "engines": {
+    "node": "^18.9.0",
+    "vscode": "^1.74.3"
+  },
   "scripts": {
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
     "build": "tsc -p server",
-    "heroku-postbuild": "cd client && npm ci && npm run build"
+    "heroku-postbuild": "npm run build && cd client && npm ci && npm run build"
   },
   "repository": {
     "type": "git",
