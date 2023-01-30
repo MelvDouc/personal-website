@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development nodemon --files server/src/app.ts",
     "start": "node server/dist/app.js",
     "build": "tsc -p server",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && tsc && vite build"
   },
   "repository": {
     "type": "git",
