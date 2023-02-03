@@ -1,4 +1,5 @@
 import HomePage from "../pages/HomePage.jsx";
+import NotFoundPage from "../pages/NotFoundPage.jsx";
 import TestPage from "../pages/TestPage.jsx";
 
 export class Router {
@@ -9,8 +10,12 @@ export class Router {
   constructor() {
     this.routes.set("404", {
       title: "Page Not Found",
-      component: () => "Page Not Found"
+      component: NotFoundPage
     });
+  }
+
+  public getPage(url: string | RegExp) {
+    return this.routes.get(url);
   }
 
   public addPage(url: string | RegExp, page: Page): this {
@@ -41,12 +46,14 @@ export class Router {
 }
 
 const router = new Router();
+const home = {
+  title: "Home",
+  component: HomePage
+};
 
 router
-  .addPage("/", {
-    title: "Home",
-    component: HomePage
-  })
+  .addPage("/", home)
+  .addPage("/home", home)
   .addPage("/test", {
     title: "Test",
     component: TestPage
