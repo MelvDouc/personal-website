@@ -1,5 +1,5 @@
 @import "node_modules/bootstrap/scss/bootstrap.scss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   --clr-green-dark1: #094345;
@@ -12,7 +12,7 @@ body {
 }
 
 body {
-  font-family: Montserrat, Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Montserrat, Lato, 'Noto Sans', Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-flow: column nowrap;
 }
