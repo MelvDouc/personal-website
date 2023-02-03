@@ -1,7 +1,18 @@
-import "./test.scss";
+import "./App.scss";
+import Header from "./components/Header.jsx";
+import Main from "./components/Main.jsx";
+import router from "./routing/router.js";
 
 export default function App() {
-  return (
-    <div id="App">Work in progress...</div>
+  window.addEventListener("popstate", () => router.setUrl(location.pathname + location.search));
+  router.onUrlChange(({ title }) => document.title = title);
+
+  const app = document.createDocumentFragment();
+  app.append(
+    <Header />,
+    <Main router={router} />
   );
+
+  router.setUrl(location.pathname + location.search);
+  return app;
 }
