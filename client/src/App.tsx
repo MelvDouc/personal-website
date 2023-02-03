@@ -5,7 +5,7 @@ import router from "./routing/router.js";
 
 export default function App() {
   window.addEventListener("popstate", () => router.setUrl(location.pathname + location.search));
-  router.onUrlChange(({ title }) => document.title = title);
+  router.onUrlChange(({ title }) => document.title = `Site de Melvin Doucet | ${title}`);
 
   const app = document.createDocumentFragment();
   app.append(
