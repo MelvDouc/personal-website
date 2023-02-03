@@ -1,4 +1,5 @@
 import HomePage from "../pages/HomePage.jsx";
+import TestPage from "../pages/TestPage.jsx";
 
 export class Router {
   private url!: string;
@@ -41,9 +42,14 @@ export class Router {
 
 const router = new Router();
 
-router.addPage("/", {
-  title: "Home",
-  component: HomePage
-});
+router
+  .addPage("/", {
+    title: "Home",
+    component: HomePage
+  })
+  .addPage("/test", {
+    title: "Test",
+    component: TestPage
+  });
 
 export default router;

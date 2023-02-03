@@ -1,3 +1,5 @@
+import router from "../routing/router.js";
+
 export default function Link({ href, children }: {
   href: string;
   children?: any;
@@ -6,8 +8,7 @@ export default function Link({ href, children }: {
     <a href={href} onclick={(e) => {
       e.preventDefault();
       history.pushState({}, "", href);
-      history.back();
-      history.forward();
+      router.setUrl(href);
     }}>{children}</a>
   );
 }
