@@ -1,6 +1,7 @@
 import HomePage from "../pages/HomePage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
-import TestPage from "../pages/TestPage.jsx";
+import ProjectPage from "../pages/ProjectPage.jsx";
+import ProjectsPage from "../pages/ProjectsPage.jsx";
 
 export class Router {
   private url!: string;
@@ -54,9 +55,13 @@ const home = {
 router
   .addPage("/", home)
   .addPage("/home", home)
-  .addPage("/test", {
+  .addPage("/projects", {
     title: "Test",
-    component: TestPage
+    component: ProjectsPage
+  })
+  .addPage(/^\/projects\/.+/, {
+    title: "Projects",
+    component: () => ProjectPage({ path: location.pathname.split("/").at(-1)! })
   });
 
 export default router;
