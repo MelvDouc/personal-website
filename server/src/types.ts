@@ -1,3 +1,5 @@
+import { Document } from "mongodb";
+
 declare global {
   namespace NodeJS {
     interface ProcessEnv {

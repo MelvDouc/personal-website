@@ -1,5 +1,6 @@
 import { Collection } from "mongodb";
-import { collections } from "../database/db.js";
+import { collections } from "../core/db.js";
+import { CrudOperations, Word } from "../types.js";
 
 function getCrudOperations<T extends Document>(collection: Collection<T>) {
   return {
@@ -28,7 +29,7 @@ function getCrudOperations<T extends Document>(collection: Collection<T>) {
   } as CrudOperations;
 }
 
-const englishWordsCrud = getCrudOperations(collections.ENGLISH_VOC.WORDS);
+const englishWordsCrud = getCrudOperations(collections.VOC.ENGLISH as any);
 
 export default {
   englishWordsCrud
