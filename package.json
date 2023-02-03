@@ -11,8 +11,7 @@
   "scripts": {
     "dev": "nodemon server/src/app.ts",
     "start": "node server/dist/app.js",
-    "build": "tsc -p server",
-    "push": "git add -A && git commit -m process.env.msg && git push"
+    "build": "tsc -p server && npm --prefix client run build"
   },
   "repository": {
     "type": "git",
