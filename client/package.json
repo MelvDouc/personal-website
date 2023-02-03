@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "engines": {
-    "node": "^18.9.0",
+    "node": "^19.5.0",
+    "npm": "^9.4.0",
     "vscode": "^1.74.3"
   },
   "dependencies": {
