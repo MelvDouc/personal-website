@@ -1,1 +1,30 @@
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --clr-green-dark1: #094345;
+  --clr-yellow1: gold;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  font-family: Montserrat, Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+main {
+  overflow-y: auto;
+}
+
+.list-style-none {
+  list-style: none;
+}
+
+.bg-green1 {
+  background-color: var(--clr-green-dark1);
+}
