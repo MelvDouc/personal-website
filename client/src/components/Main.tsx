@@ -5,7 +5,7 @@ export default function Main({ router }: {
 }) {
   return (
     <main>
-      <div className="container pt-3" $init={(element) => {
+      <div className="container pt-3 h-100" $init={(element) => {
         router.onUrlChange(async ({ component }) => {
           element.replaceChildren(await component());
         });

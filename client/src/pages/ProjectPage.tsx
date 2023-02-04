@@ -1,4 +1,4 @@
-import PasswordGenerator from "./projects/PasswordGenerator.jsx";
+import PasswordGenerator from "../components/password-generator/PasswordGenerator.jsx";
 
 const projects = {
   "password-generator": PasswordGenerator

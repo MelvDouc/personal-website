@@ -1,8 +1,4 @@
-const charCodes = {
-  LOWERCASE: [97, 122],
-  UPPERCASE: [65, 90],
-} as const;
-
+const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 97));
 const specialChars = "~#-|_@$£%*.?!";
 
 export function randomInt(min: number, max: number) {
@@ -10,11 +6,11 @@ export function randomInt(min: number, max: number) {
 }
 
 export function randomLowercase(): string {
-  return String.fromCharCode(randomInt(...charCodes.LOWERCASE));
+  return alphabet[randomInt(0, 26 - 1)];
 }
 
 export function randomUppercase(): string {
-  return String.fromCharCode(randomInt(...charCodes.UPPERCASE));
+  return randomLowercase().toUpperCase();
 }
 
 export function randomDigit(): string {

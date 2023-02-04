@@ -3,7 +3,7 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header className="container-xxl py-1 text-light bg-green1">
+    <header className="py-1 text-light bg-green1">
       <div className="container">
         <div className="row">
           <article className="col">

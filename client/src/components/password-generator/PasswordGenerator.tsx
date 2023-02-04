@@ -5,19 +5,18 @@ import {
   randomUppercase,
   randomSpecialChar
 } from "../../utils/random.js";
+import Checkbox from "./Checkbox.jsx";
+import "./PasswordGenerator.scss";
 
 // TODO: copy password
 export default function PasswordGenerator(): HTMLElement {
   const lengthObs = new Observable<number>(15);
   const passwordObs = new Observable<string>();
-  const charsTypesObs = new Observable({
-    lowercase: true,
-    uppercase: true,
-    digits: true,
-    specialChars: false
-  });
+  const charsTypesObs = new Observable(
+    new Set<keyof typeof randomCharFns>(["lowercase", "uppercase", "digits"])
+  );
   const setPassword = () => {
-    const options = optionKeys.filter((key) => charsTypesObs.getValue()[key]);
+    const options = [...charsTypesObs.getValue()];
     const length = lengthObs.getValue();
 
     if (length >= MIN_LENGTH && length <= MAX_LENGTH && options.length > 0)
@@ -36,16 +35,14 @@ export default function PasswordGenerator(): HTMLElement {
       </section>
       <section className="password-generator__bottom">
         <div className="password-generator-form">
-          <article>
-            <input type="number" $init={(e) => initLengthInput(e, lengthObs)} />
-            <input type="range" $init={(e) => initLengthInput(e, lengthObs)} />
+          <article className="password-generator-length-inputs">
+            <div><input type="number" $init={(e) => initLengthInput(e, lengthObs)} /></div>
+            <div><input type="range" $init={(e) => initLengthInput(e, lengthObs)} /></div>
           </article>
           <article>
-            <div className="password-generator-form-checkboxes">
-              {optionKeys.map((key) => (
-                <Checkbox key={key as keyof typeof randomCharFns} charsTypesObs={charsTypesObs} />
-              ))}
-            </div>
+            {Object.keys(randomCharFns).map((key) => (
+              <Checkbox key={key} charsTypesObs={charsTypesObs} />
+            ))}
           </article>
           <article>
             <button onclick={() => lengthObs.notify()}>New Password</button>
@@ -59,13 +56,6 @@ export default function PasswordGenerator(): HTMLElement {
   lengthObs.notify();
   return passwordGenerator;
 }
-
-const optionKeys = [
-  "lowercase",
-  "uppercase",
-  "digits",
-  "specialChars"
-];
 
 const randomCharFns = {
   lowercase: randomLowercase,
@@ -92,36 +82,15 @@ function initLengthInput(input: HTMLInputElement, lengthObs: Observable<number>)
 }
 
 function createPassword(length: number, options: string[]) {
-  let password = "";
+  const password: string[] = [];
 
   while (password.length < length) {
     for (const option of options)
-      password += randomCharFns[option as keyof typeof randomCharFns]();
+      password.push(randomCharFns[option]());
   }
 
   return password
-    .slice(0, length)
-    .split("")
     .sort(() => Math.random() - .5)
+    .slice(0, length)
     .join("");
-}
-
-function Checkbox({ key, charsTypesObs }: {
-  key: keyof typeof randomCharFns;
-  charsTypesObs: Observable<{ [x: string]: boolean; }>;
-}) {
-  <div className="password-generator-checkbox">
-    <label id={`checkbox-${key}`}>{key}</label>
-    <input
-      type="checkbox"
-      id={`checkbox-${key}`}
-      checked={charsTypesObs.getValue()[key]}
-      oninput={(e) => {
-        charsTypesObs.updateValue((options) => {
-          options[key] = (e.target as HTMLInputElement).checked;
-          return options;
-        });
-      }}
-    />
-  </div>;
 }
