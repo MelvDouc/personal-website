@@ -3,7 +3,7 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header className="py-1 text-light bg-green1">
+    <header className="py-1 text-light bg-primary">
       <div className="container">
         <div className="row">
           <article className="col">
@@ -14,6 +14,7 @@ export default function Header() {
               <ul className="list-style-none d-flex align-items-center gap-3 h-100 p-0 m-0">
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/projects">Projects</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
               </ul>
             </nav>
           </article>

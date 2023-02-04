@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --clr-green-dark1: #094345;
+  --bs-primary-rgb: 9, 67, 69;
+  --clr-green-dark1: rgb(16, 51, 16);
   --clr-yellow1: gold;
+  --bg-clr-green1: linear-gradient(to right, green, #0b5917);
 }
 
 html,
@@ -22,6 +24,10 @@ main {
   overflow-y: auto;
 }
 
+h2 {
+  margin-bottom: 1em;
+}
+
 .grid-center {
   display: grid;
   place-items: center;
@@ -32,5 +38,9 @@ main {
 }
 
 .bg-green1 {
-  background-color: var(--clr-green-dark1);
+  background: var(--clr-green-dark1);
+}
+
+.bg-green1-gradient {
+  background: var(--bg-clr-green1);
 }

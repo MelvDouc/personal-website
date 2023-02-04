@@ -1,3 +1,4 @@
+import ContactPage from "../pages/ContactPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import ProjectPage from "../pages/ProjectPage.jsx";
@@ -35,14 +36,17 @@ export class Router {
 
   public notify(): void {
     for (const [url, page] of this.routes) {
-      if (typeof url === "string" && this.url === url || url instanceof RegExp && url.test(this.url)) {
-        this.urlChangeSubscriptions.forEach((subscription) => subscription(page));
+      if (
+        (typeof url === "string" && this.url === url) ||
+        (url instanceof RegExp && url.test(this.url))
+      ) {
+        this.urlChangeSubscriptions.forEach(subscription => subscription(page));
         return;
       }
     }
 
     const page = this.routes.get("404")!;
-    this.urlChangeSubscriptions.forEach((subscription) => subscription(page));
+    this.urlChangeSubscriptions.forEach(subscription => subscription(page));
   }
 }
 
@@ -61,7 +65,12 @@ router
   })
   .addPage(/^\/projects\/.+/, {
     title: "Projects",
-    component: () => ProjectPage({ path: location.pathname.split("/").at(-1)! })()
+    component: () =>
+      ProjectPage({ path: location.pathname.split("/").at(-1)! })()
+  })
+  .addPage("/contact", {
+    title: "Contact",
+    component: ContactPage
   });
 
 export default router;
