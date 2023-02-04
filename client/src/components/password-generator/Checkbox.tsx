@@ -10,6 +10,7 @@ export default function Checkbox({ key, charsTypesObs }: {
       <input
         type="checkbox"
         id={id}
+        className="form-check-input"
         checked={charsTypesObs.getValue().has(key)}
         oninput={() => {
           charsTypesObs.updateValue((options) => {

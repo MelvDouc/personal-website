@@ -27,29 +27,34 @@ export default function PasswordGenerator(): HTMLElement {
   lengthObs.subscribe(setPassword);
 
   const passwordGenerator = (
-    <div className="password-generator">
-      <section className="password-generator__top">
-        <output $init={(element) => {
-          passwordObs.subscribe((password) => element.innerText = password);
-        }}></output>
-      </section>
-      <section className="password-generator__bottom">
-        <div className="password-generator-form">
-          <article className="password-generator-length-inputs">
-            <div><input type="number" $init={(e) => initLengthInput(e, lengthObs)} /></div>
-            <div><input type="range" $init={(e) => initLengthInput(e, lengthObs)} /></div>
-          </article>
-          <article>
-            {Object.keys(randomCharFns).map((key) => (
-              <Checkbox key={key} charsTypesObs={charsTypesObs} />
-            ))}
-          </article>
-          <article>
-            <button onclick={() => lengthObs.notify()}>New Password</button>
-            <button>Copy Password</button>
-          </article>
-        </div>
-      </section>
+    <div className="container h-100 d-flex align-items-center justify-content-center">
+      <div className="password-generator">
+        <section className="password-generator__top">
+          <output $init={(element) => {
+            passwordObs.subscribe((password) => element.innerText = password);
+          }}></output>
+        </section>
+        <section className="password-generator__bottom">
+          <div className="password-generator-form form-check form-switch">
+            <article className="password-generator-length-inputs">
+              <div><input type="number" $init={(e) => initLengthInput(e, lengthObs)} /></div>
+              <div><input type="range" $init={(e) => initLengthInput(e, lengthObs)} /></div>
+            </article>
+            <article className="d-flex flex-column gap-3">
+              {Object.keys(randomCharFns).map((key) => (
+                <Checkbox key={key} charsTypesObs={charsTypesObs} />
+              ))}
+            </article>
+            <article className="d-flex justify-content-center align-items-center gap-2">
+              <button className="btn btn-primary" onclick={() => lengthObs.notify()}>New Password</button>
+              <button className="btn btn-primary" onclick={async () => {
+                await navigator.clipboard.writeText(passwordObs.getValue());
+                alert("Copied!");
+              }}>Copy Password</button>
+            </article>
+          </div>
+        </section>
+      </div>
     </div>
   );
 
