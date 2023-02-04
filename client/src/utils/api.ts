@@ -1,4 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ?? location.origin + "/api/v1";
 
 async function fetchApi<T>(path: `/${string}`, init?: RequestInit) {
   try {
