@@ -33,7 +33,7 @@ export default function PasswordGenerator(): HTMLElement {
         <output $init={(element) => {
           passwordObs.subscribe((password) => element.innerText = password);
         }}></output>
-      </section>,
+      </section>
       <section className="password-generator__bottom">
         <div className="password-generator-form">
           <article>
@@ -42,7 +42,7 @@ export default function PasswordGenerator(): HTMLElement {
           </article>
           <article>
             <div className="password-generator-form-checkboxes">
-              {Object.keys(charsTypesObs.getValue()).map((key) => (
+              {optionKeys.map((key) => (
                 <Checkbox key={key as keyof typeof randomCharFns} charsTypesObs={charsTypesObs} />
               ))}
             </div>
