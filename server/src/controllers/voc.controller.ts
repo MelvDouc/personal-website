@@ -1,36 +1,43 @@
-import { Collection } from "mongodb";
-import { collections } from "../core/db.js";
-import { CrudOperations, Word } from "../types.js";
+import VocModel from "../models/voc.model.js";
+import { Request as Req, Response as Res } from "express";
+import { EntityChanges } from "../types.js";
 
-function getCrudOperations<T extends Document>(collection: Collection<T>) {
-  return {
-    getOne: async (req, res) => {
-      const word = await collection.findOne({ _id: res.locals.md__entityId });
-      res.json(word);
-    },
-    getAll: async (req, res) => {
-      const words = await collection.find().sort({ entry: 1 }).toArray();
-      res.json(words);
-    },
-    create: async (req, res) => {
-      const insertResult = await collection.insertOne(req.body);
-      res.json(insertResult);
-    },
-    update: async (req, res) => {
-      const updateResult = await collection.replaceOne({ _id: res.locals.md__entityId } as any, req.body);
-      res.json(updateResult);
-    },
-    delete: async (req, res) => {
-      const deleteResult = await collection.deleteOne({
-        _id: req.query.id as any
-      });
-      res.json(deleteResult);
-    }
-  } as CrudOperations;
+class VocController<T> {
+  readonly model: VocModel;
+
+  constructor(model: VocModel) {
+    this.model = model;
+  }
+
+  async getOne(req: Req, res: Res) {
+    const entity = await this.model.findOneById(req.params.id);
+    return res.json(entity);
+  }
+
+  async getAll(req: Req, res: Res) {
+    const entities = await this.model.findAll();
+    return res.json(entities);
+  }
+
+  async create(req: Req, res: Res) {
+    const entity = req.body;
+    const insertResult = await this.model.save(entity);
+    return res.json(
+      await this.model.findOneById(insertResult.insertedId)
+    );
+  }
+
+  async update(req: Req, res: Res) {
+    const entityChanges = req.body as EntityChanges<T>;
+    const entity = this.model.update(req.params.id, entityChanges);
+    return res.json(entity);
+  }
+
+  async delete(req: Req, res: Res) {
+    const { deletedCount } = await this.model.delete(req.params.id);
+    return res.json({ deletedCount });
+  }
 }
 
-const englishWordsCrud = getCrudOperations(collections.VOC.ENGLISH as any);
-
-export default {
-  englishWordsCrud
-};
+export const englishVocController = new VocController(new VocModel(VocModel.collections.ENGLISH));
+export const germanVocController = new VocController(new VocModel(VocModel.collections.GERMAN));

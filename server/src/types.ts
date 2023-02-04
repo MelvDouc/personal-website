@@ -1,4 +1,20 @@
-import { Document } from "mongodb";
+import {
+  Collection,
+  DeleteResult,
+  Document,
+  Filter,
+  InsertOneModel,
+  OptionalUnlessRequiredId
+} from "mongodb";
+
+export type {
+  Collection,
+  DeleteResult,
+  Document,
+  Filter,
+  InsertOneModel,
+  OptionalUnlessRequiredId
+};
 
 declare global {
   namespace NodeJS {
@@ -22,3 +38,8 @@ export interface Word extends Document {
   entry: string;
   class: "n" | "v" | "adj" | "adv" | "prep" | "conj" | "idiom";
 }
+
+export type EntityChanges<T> = {
+  updates: Partial<T>;
+  removedProperties: string[];
+};
