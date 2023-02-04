@@ -1,27 +1,27 @@
 import { Router } from "express";
 import { englishVocController } from "../controllers/voc.controller.js";
 
-const router = Router();
+const vocRouter = Router();
 
-router.get(
-  "/english/one/:id",
+vocRouter.get(
+  "/one/:id",
   async (req, res) => await englishVocController.getOne(req, res)
 );
-router.get(
-  "/english/all",
+vocRouter.get(
+  "/all",
   async (req, res) => await englishVocController.getAll(req, res)
 );
-router.post(
-  "/english/create",
+vocRouter.post(
+  "/create",
   async (req, res) => await englishVocController.create(req, res)
 );
-router.patch(
-  "/english/update/:id",
+vocRouter.patch(
+  "/update/:id",
   async (req, res) => await englishVocController.update(req, res)
 );
-router.delete(
-  "/english/delete/:id",
+vocRouter.delete(
+  "/delete/:id",
   async (req, res) => await englishVocController.delete(req, res)
 );
 
-export default router;
+export default vocRouter;
