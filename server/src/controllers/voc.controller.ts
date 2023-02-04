@@ -22,14 +22,12 @@ class VocController<T> {
   async create(req: Req, res: Res) {
     const entity = req.body;
     const insertResult = await this.model.save(entity);
-    return res.json(
-      await this.model.findOneById(insertResult.insertedId)
-    );
+    return res.json(await this.model.findOneById(insertResult.insertedId));
   }
 
   async update(req: Req, res: Res) {
     const entityChanges = req.body as EntityChanges<T>;
-    const entity = this.model.update(req.params.id, entityChanges);
+    const entity = await this.model.update(req.params.id, entityChanges);
     return res.json(entity);
   }
 
@@ -39,5 +37,9 @@ class VocController<T> {
   }
 }
 
-export const englishVocController = new VocController(new VocModel(VocModel.collections.ENGLISH));
-export const germanVocController = new VocController(new VocModel(VocModel.collections.GERMAN));
+export const englishVocController = new VocController(
+  new VocModel(VocModel.collections.ENGLISH)
+);
+export const germanVocController = new VocController(
+  new VocModel(VocModel.collections.GERMAN)
+);

@@ -1,6 +1,9 @@
 import { createTransport } from "nodemailer";
 
-if (process.env.NODE_ENV !== "production" && process.env.NODEMAILER_USER === undefined) {
+if (
+  process.env.NODE_ENV !== "production" &&
+  process.env.NODEMAILER_USER === undefined
+) {
   const { config } = await import("dotenv");
   config({ path: ".env.local" });
 }
@@ -10,8 +13,8 @@ const transport = createTransport({
   port: 587,
   auth: {
     user: process.env.NODEMAILER_USER,
-    pass: process.env.NODEMAILER_PASSWORD
-  }
+    pass: process.env.NODEMAILER_PASSWORD,
+  },
 });
 
 export async function sendEmail(mailSettings: {

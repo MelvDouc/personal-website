@@ -8,12 +8,11 @@ const port = process.env.PORT ?? process.env.port ?? process.env.Port ?? 10_002;
 const app = express();
 
 app.use(express.static(join("client", "dist")));
-app.use(cors({
-  origin: [
-    process.env.CLIENT_DEV_ORIGIN,
-    process.env.CLIENT_ORIGIN
-  ]
-}));
+app.use(
+  cors({
+    origin: [process.env.CLIENT_DEV_ORIGIN, process.env.CLIENT_ORIGIN]
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/voc", vocRouter);

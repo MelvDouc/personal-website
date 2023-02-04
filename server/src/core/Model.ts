@@ -1,4 +1,9 @@
-import { Collection, EntityChanges, Filter, OptionalUnlessRequiredId } from "../types.js";
+import {
+  Collection,
+  EntityChanges,
+  Filter,
+  OptionalUnlessRequiredId
+} from "../types.js";
 
 export default abstract class Model<T> {
   readonly collection: Collection<T>;
@@ -15,7 +20,7 @@ export default abstract class Model<T> {
     return this.collection.findOne(this.getIdFilter(id));
   }
 
-  async findAll(filter: Filter<T> = {}) {
+  findAll(filter: Filter<T> = {}) {
     return this.collection.find(filter).toArray();
   }
 
@@ -27,7 +32,10 @@ export default abstract class Model<T> {
     const filter = this.getIdFilter(id);
     await this.collection.updateOne(filter, {
       $set: updates,
-      $unset: removedProperties.reduce<Record<string, "">>((acc, prop) => (acc[prop] = "", acc), {})
+      $unset: removedProperties.reduce<Record<string, "">>(
+        (acc, prop) => ((acc[prop] = ""), acc),
+        {}
+      )
     });
     return this.collection.findOne(filter);
   }
