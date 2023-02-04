@@ -9,7 +9,10 @@ const app = express();
 
 app.use(express.static(join("client", "dist")));
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN
+  origin: [
+    process.env.CLIENT_DEV_ORIGIN,
+    process.env.CLIENT_ORIGIN
+  ]
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
