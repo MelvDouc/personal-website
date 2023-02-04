@@ -1,5 +1,5 @@
 import App from "./App.jsx";
 
-document.body.append(
-  App()
-);
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.append(App());
+});
