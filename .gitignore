@@ -6,6 +6,7 @@
 
 # Root
 .env
+.env.production
 
 # Server
 server/**/*.db.json
