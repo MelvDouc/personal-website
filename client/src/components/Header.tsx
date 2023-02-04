@@ -13,7 +13,7 @@ export default function Header() {
             <nav className="h-100">
               <ul className="list-style-none d-flex align-items-center gap-3 h-100 p-0 m-0">
                 <li><Link href="/">Home</Link></li>
-                <li><Link href="/test">Test</Link></li>
+                <li><Link href="/projects">Projects</Link></li>
               </ul>
             </nav>
           </article>

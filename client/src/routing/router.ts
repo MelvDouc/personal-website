@@ -61,7 +61,7 @@ router
   })
   .addPage(/^\/projects\/.+/, {
     title: "Projects",
-    component: () => ProjectPage({ path: location.pathname.split("/").at(-1)! })
+    component: () => ProjectPage({ path: location.pathname.split("/").at(-1)! })()
   });
 
 export default router;
