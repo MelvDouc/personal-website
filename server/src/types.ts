@@ -21,6 +21,9 @@ declare global {
     interface ProcessEnv {
       readonly NODE_ENV: "development" | "production";
       readonly MONGODB_URI: string;
+      readonly NODEMAILER_USER: string;
+      readonly NODEMAILER_PASSWORD: string;
+      readonly CLIENT_DEV_ORIGIN: string;
       readonly CLIENT_ORIGIN: string;
     }
   }

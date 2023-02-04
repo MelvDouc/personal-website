@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 import { Word } from "../types.js";
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production" && process.env.MONGODB_URI === undefined) {
   const { config } = await import("dotenv");
   config({ path: ".env.local" });
 }
