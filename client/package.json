@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "heroku:build": "npm i && tsc && npx vite build",
     "preview": "vite preview"
   },
   "engines": {
@@ -14,7 +13,7 @@
     "npm": "^9.4.0",
     "vscode": "^1.74.3"
   },
-  "dependencies": {
+  "devDependencies": {
     "bootstrap": "^5.2.3",
     "sass": "^1.57.1",
     "reactfree-jsx": "^1.2.2",
