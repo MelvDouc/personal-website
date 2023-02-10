@@ -20,7 +20,7 @@ const transport = createTransport({
   }
 });
 
-export async function sendEmail(mailSettings: {
+async function sendEmail(mailSettings: {
   to?: string | string[];
   subject: string;
   plainText: string;
@@ -46,6 +46,11 @@ export async function sendEmail(mailSettings: {
 /**
  * @param template Just the base name without the ".html" extension.
  */
-export function getTemplate(template: string) {
+function getTemplate(template: string) {
   return readFile(join(templatesDir, `${template}.html`), "utf-8");
 }
+
+export default {
+  getTemplate,
+  sendEmail
+};

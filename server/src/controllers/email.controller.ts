@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getTemplate, sendEmail as send } from "../services/email.service.js";
+import emailService from "../services/email.service.js";
 
 export default async function sendEmail(req: Request, res: Response) {
   const emailData = req.body as {
@@ -11,11 +11,11 @@ export default async function sendEmail(req: Request, res: Response) {
     .split(/\n+/)
     .map(x => `<p>${x}</p>`)
     .join("");
-  const htmlText = (await getTemplate("contact"))
+  const htmlText = (await emailService.getTemplate("contact"))
     .replace("{{sender}}", emailData.email)
     .replace("{{message}}", message);
 
-  const sendResult = await send({
+  const sendResult = await emailService.sendEmail({
     subject: emailData.subject,
     plainText: htmlText,
     htmlText: htmlText
