@@ -17,7 +17,7 @@ export default async function sendEmail(req: Request, res: Response) {
 
   const sendResult = await emailService.sendEmail({
     subject: emailData.subject,
-    plainText: htmlText,
+    plainText: emailData.message,
     htmlText: htmlText
   });
   res.json({
