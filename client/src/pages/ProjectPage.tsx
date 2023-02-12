@@ -1,17 +1,15 @@
 import Calculator from "../components/Calculator/Calculator.jsx";
-import PasswordGenerator from "../components/password-generator/PasswordGenerator.jsx";
+import PasswordGenerator from "../components/PasswordGenerator/PasswordGenerator.jsx";
 
 const projects = {
   "password-generator": PasswordGenerator,
-  calculator: () => (
-    <div className="w-100 h-100 grid-center">
-      <Calculator />
-    </div>
-  )
+  calculator: Calculator
 } as const;
 
 export default function ProjectPage({ path }: { path: string }) {
-  const project = projects[path] ?? (() => <div></div>);
+  return projects[path] ?? <EmptyElement />;
+}
 
-  return project;
+function EmptyElement() {
+  return <div></div>;
 }

@@ -48,6 +48,14 @@ export default function Header() {
                       Calculator
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/projects/password-generator"
+                      className="dropdown-item"
+                    >
+                      Password Generator
+                    </Link>
+                  </li>
                 </ul>
               </li>
               <li className="nav-item">
