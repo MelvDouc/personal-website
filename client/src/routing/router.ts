@@ -36,10 +36,7 @@ export class Router {
 
   public notify(): void {
     for (const [url, page] of this.routes) {
-      if (
-        (typeof url === "string" && this.url === url) ||
-        (url instanceof RegExp && url.test(this.url))
-      ) {
+      if ((typeof url === "string" && this.url === url) || (url instanceof RegExp && url.test(this.url))) {
         this.urlChangeSubscriptions.forEach(subscription => subscription(page));
         return;
       }
@@ -63,10 +60,12 @@ router
     title: "Test",
     component: ProjectsPage
   })
-  .addPage(/^\/projects\/.+/, {
+  .addPage(/^\/projects\/[^/]+$/, {
     title: "Projects",
-    component: () =>
-      ProjectPage({ path: location.pathname.split("/").at(-1)! })()
+    component: () => {
+      const { pathname } = location;
+      return ProjectPage({ path: pathname.slice(pathname.lastIndexOf("/")) })();
+    }
   })
   .addPage("/contact", {
     title: "Contact",
