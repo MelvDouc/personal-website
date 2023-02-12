@@ -1,17 +1,20 @@
 {
   "name": "melvin-doucet.com",
   "version": "1.0.0",
+  "private": true,
   "description": "My personal website.",
   "main": "server/dist/app.js",
   "type": "module",
   "engines": {
-    "node": "^19.5.0",
-    "npm": "^9.4.0"
+    "node": "^18.14.0",
+    "npm": "^9.3.1"
   },
   "scripts": {
-    "dev": "nodemon server/src/app.ts",
-    "start": "node server/dist/app.js",
-    "build": "tsc -p server && node client/heroku-build.js"
+    "build": "tsc -p server && node client/heroku-build.js",
+    "client:dev": "npm --prefix client run dev",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "nodemon server/src/app.ts",
+    "start": "node server/dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +44,7 @@
     "@types/express": "^4.17.16",
     "@types/node": "^18.11.18",
     "@types/nodemailer": "^6.4.7",
+    "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
