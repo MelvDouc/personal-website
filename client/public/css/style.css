@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+  --bs-primary-rgb: 9, 67, 69;
+  --clr-green-dark1: rgb(16, 51, 16);
+  --clr-yellow1: gold;
+  --bg-clr-green1: linear-gradient(to right, green, #0b5917);
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  font-family: Montserrat, Lato, 'Noto Sans', Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+h2 {
+  margin-bottom: 1em;
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.list-style-none {
+  list-style: none;
+}
+
+.bg-green1 {
+  background: var(--clr-green-dark1);
+}
+
+.bg-green1-gradient {
+  background: var(--bg-clr-green1);
+}
