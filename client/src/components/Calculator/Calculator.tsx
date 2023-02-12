@@ -18,14 +18,14 @@ export default function Calculator() {
 
   return (
     <div className="calculator">
-      <article className="calculator__top">
+      <section className="calculator__top">
         <output
           $init={element => {
             resultObs.subscribe(value => (element.innerText = value));
           }}
         ></output>
-      </article>
-      <article className="calculator__bottom">
+      </section>
+      <section className="calculator__bottom">
         <div className="calculator-row">
           <CalcButton handleClick={clear}>C</CalcButton>
           <CalcButton handleClick={() => append("%")}>%</CalcButton>
@@ -57,7 +57,7 @@ export default function Calculator() {
             =
           </CalcButton>
         </div>
-      </article>
+      </section>
     </div>
   );
 }

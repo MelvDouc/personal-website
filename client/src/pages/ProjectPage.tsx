@@ -3,7 +3,11 @@ import PasswordGenerator from "../components/password-generator/PasswordGenerato
 
 const projects = {
   "password-generator": PasswordGenerator,
-  calculator: Calculator
+  calculator: () => (
+    <div className="w-100 h-100 grid-center">
+      <Calculator />
+    </div>
+  )
 } as const;
 
 export default function ProjectPage({ path }: { path: string }) {
