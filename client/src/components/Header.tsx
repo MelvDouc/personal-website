@@ -49,11 +49,13 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/projects/password-generator"
-                      className="dropdown-item"
-                    >
+                    <Link href="/projects/password-generator" className="dropdown-item">
                       Password Generator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/projects/minesweeper" className="dropdown-item">
+                      Minesweeper
                     </Link>
                   </li>
                 </ul>

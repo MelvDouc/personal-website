@@ -6,10 +6,13 @@ export default function ProjectsPage() {
       <h2>Projects</h2>
       <ul>
         <li>
+          <Link href="/projects/calculator">Calculator</Link>
+        </li>
+        <li>
           <Link href="/projects/password-generator">Password Generator</Link>
         </li>
         <li>
-          <Link href="/projects/calculator">Calculator</Link>
+          <Link href="/projects/minesweeper">Minesweeper</Link>
         </li>
       </ul>
     </div>
