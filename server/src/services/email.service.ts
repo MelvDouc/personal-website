@@ -45,12 +45,14 @@ async function sendEmail(mailSettings: {
 
 /**
  * @param template Just the base name without the ".html" extension.
+ * @param params \{key: "value"} --> "\<div>{{ key }}\</div>"
  */
-function getTemplate(template: string) {
-  return readFile(join(templatesDir, `${template}.html`), "utf-8");
+async function getEmailText(template: string, params: Record<string, string>) {
+  const html = await readFile(join(templatesDir, `${template}.html`), "utf-8");
+  return html.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, key) => params[key]);
 }
 
 export default {
-  getTemplate,
+  getEmailText,
   sendEmail
 };
