@@ -1,6 +1,6 @@
 export default function HomePage() {
   return (
-    <div>
+    <>
       <section>
         <h2>Introduction</h2>
         <p>My name is Melvin Doucet, {getAge()}, and I'm full-stack web developer. I live in Thionville, Northeastern France, and work in Luxembourg City.</p>
@@ -11,7 +11,7 @@ export default function HomePage() {
           I followed an intensive web development training program with <a href="https://www.wf3.fr/">WebForce3 Strasbourg</a> from October 2020 to October 2021 which I graduated from.
         </p>
       </section>
-    </div>
+    </>
   );
 }
 
