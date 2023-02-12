@@ -1,6 +1,8 @@
 header {
+  color: white;
+
   a {
-    color: inherit;
+    color: inherit !important;
     text-decoration: none;
 
     &:hover {
