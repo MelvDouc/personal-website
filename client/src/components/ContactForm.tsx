@@ -1,5 +1,7 @@
 import { Observable } from "reactfree-jsx";
+import router from "../routing/router.js";
 import { sendEmail } from "../utils/api.js";
+import displayAlterBox from "./AlertBox/AlertBox.jsx";
 
 export default function ContactForm() {
   const formDataObs = new Observable<EmailData>({
@@ -17,7 +19,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="d-flex flex-column flex-nowrap gap-3 p-3 rounded bg-green1-gradient text-light"
+      className="d-flex flex-column flex-nowrap gap-3 p-3 rounded bg-primary bg-gradient text-light"
       onsubmit={async e => {
         e.preventDefault();
         const response = await sendEmail(formDataObs.getValue());
@@ -25,8 +27,11 @@ export default function ContactForm() {
           alert("Something went wrong. Please try again.");
           return;
         }
-        confirm("Your message was sent.");
-        (e.target as HTMLFormElement).reset();
+        displayAlterBox({
+          message:
+            "Your message was sent. An admin will try and get back to you soon.",
+          handleClose: () => router.setUrl("/")
+        });
       }}
     >
       <div className="form-group">

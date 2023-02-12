@@ -1,4 +1,5 @@
 import { Observable } from "reactfree-jsx";
+import displayAlterBox from "../AlertBox/AlertBox.jsx";
 import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
 import Checkbox from "./Checkbox.jsx";
 import {
@@ -62,7 +63,7 @@ export default function PasswordGenerator(): HTMLElement {
               onclick={async () => {
                 if (!navigator.clipboard) return;
                 await navigator.clipboard.writeText(passwordObs.getValue());
-                alert("Copied!");
+                displayAlterBox({ message: "Password was copied!" });
               }}
             >
               Copy Password
