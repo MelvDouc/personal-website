@@ -1,26 +1,57 @@
-export default function Cell({ state: cellState }: { state: Obs<MinesweeperCellState> }) {
-  return (
-    <div
-      className="minesweeper-cell"
-      $init={element => {
-        element.dataset.covered = "1";
-        cellState.subscribe(({ covered, flagged }) => {
-          if (!covered) element.dataset.covered = "0";
-          element.dataset.flagged = String(Number(flagged));
-        });
-      }}
-      onclick={() => {
-        cellState.updateValue(prev => ((prev.covered = false), prev));
-      }}
-      oncontextmenu={e => {
-        e.preventDefault();
-        cellState.updateValue(prev => {
-          if (prev.covered && (prev.canFlag() || prev.flagged)) {
-            prev.flagged = !prev.flagged;
-          }
-          return prev;
-        });
-      }}
-    ></div>
-  );
+export default class MinesweeperCell extends HTMLElement {
+  readonly #x: number;
+  readonly #y: number;
+  #mined = false;
+
+  constructor({ x, y, placeMinesFn, uncoverFn }: {
+    x: number;
+    y: number;
+    placeMinesFn(this: MinesweeperCell): void;
+    uncoverFn(this: MinesweeperCell): void;
+  }) {
+    super();
+    this.#x = x;
+    this.#y = y;
+    this.covered = true;
+
+    this.addEventListener("click", placeMinesFn);
+    this.addEventListener("click", uncoverFn);
+    this.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+    });
+  }
+
+  get x(): number {
+    return this.#x;
+  }
+
+  get y(): number {
+    return this.#y;
+  }
+
+  get covered(): boolean {
+    return this.dataset.covered === "1";
+  }
+
+  set covered(covered: boolean) {
+    this.dataset.covered = covered ? "1" : "0";
+  }
+
+  get flagged(): boolean {
+    return this.dataset.flagged === "1";
+  }
+
+  set flagged(flagged: boolean) {
+    this.dataset.flagged = flagged ? "1" : "0";
+  }
+
+  get mined(): boolean {
+    return this.#mined;
+  }
+
+  set mined(mined: boolean) {
+    this.#mined = mined;
+  }
 }
+
+customElements.define("minesweeper-cell", MinesweeperCell);

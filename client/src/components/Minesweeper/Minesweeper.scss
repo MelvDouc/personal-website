@@ -1,27 +1,31 @@
 .minesweeper {
-  $cellSize: 40px;
-  width: fit-content;
+  width: clamp(240px, 50vmin, 60vh);
+  aspect-ratio: 1;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
+}
 
-  &-cell {
-    --bg-orientation: 45deg;
-    width: $cellSize;
-    height: $cellSize;
-    line-height: $cellSize;
-    text-align: center;
-    background-image: radial-gradient(white, rgb(235, 235, 245));
+minesweeper-cell {
+  --bg-orientation: 45deg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(white, rgb(235, 235, 245));
 
-    &[data-covered="1"] {
-      background-image: linear-gradient(var(--bg-orientation), hsl(200, 80%, 20%), rgb(245, 245, 245));
+  &[data-covered="1"] {
+    background-image: linear-gradient(var(--bg-orientation), hsl(200, 80%, 20%), rgb(245, 245, 245));
 
-      &:hover {
-        --bg-orientation: 225deg;
-      }
+    &:hover {
+      --bg-orientation: 225deg;
     }
+  }
 
-    &[data-flagged="1"] {
-      background: green;
-    }
+  &[data-flagged="1"] {
+    background: green;
+  }
+
+  &[data-mined="1"] {
+    background: red;
   }
 }

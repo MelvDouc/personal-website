@@ -21,14 +21,3 @@ interface EmailData {
   subject: string;
   message: string;
 }
-
-interface MinesweeperCellState {
-  index: number;
-  covered: boolean;
-  flagged: boolean;
-  /**
-   * @returns Whether there are enough flags left to put down a new flag.
-   */
-  canFlag: () => boolean;
-  mined: boolean;
-}
