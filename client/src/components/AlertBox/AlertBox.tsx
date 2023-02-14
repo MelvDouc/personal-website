@@ -25,9 +25,7 @@ function AlertBox({
   return (
     <div
       className="alert-box"
-      $init={element => {
-        remove = () => element.remove();
-      }}
+      $init={element => remove = () => element.remove()}
     >
       <form>
         <p>{message}</p>
