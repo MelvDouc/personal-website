@@ -23,6 +23,10 @@ h2 {
   margin-bottom: 1em;
 }
 
+.dropdown-item:active {
+  color: white !important;
+}
+
 .grid-center {
   display: grid;
   place-items: center;
@@ -30,12 +34,4 @@ h2 {
 
 .list-style-none {
   list-style: none;
-}
-
-.bg-green1 {
-  background: var(--clr-green-dark1);
-}
-
-.bg-green1-gradient {
-  background: var(--bg-clr-green1);
 }
