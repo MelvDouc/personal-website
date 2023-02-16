@@ -1,4 +1,4 @@
-import Link from "./Link.jsx";
+import Link from "../Link.js";
 import "./Header.scss";
 
 export default function Header() {
@@ -12,7 +12,7 @@ export default function Header() {
             </Link>
           </h1>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-white"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown"

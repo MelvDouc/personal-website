@@ -1,5 +1,5 @@
 import "./App.scss";
-import Header from "./components/Header.jsx";
+import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main.jsx";
 import router from "./routing/router.js";
 
