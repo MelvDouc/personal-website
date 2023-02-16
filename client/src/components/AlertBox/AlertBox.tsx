@@ -2,7 +2,10 @@ import "./AlertBox.scss";
 
 export default function displayAlterBox(props: Parameters<typeof AlertBox>[0]) {
   document.body.prepend(
-    <AlertBox message={props.message} handleClose={props.handleClose} />
+    <AlertBox
+      message={props.message}
+      handleClose={props.handleClose}
+    />
   );
 }
 
@@ -29,9 +32,7 @@ function AlertBox({
     >
       <form>
         <p>{message}</p>
-        <button className="btn btn-primary" onclick={quit}>
-          OK
-        </button>
+        <button className="btn btn-primary" onclick={quit}>OK</button>
       </form>
     </div>
   );
