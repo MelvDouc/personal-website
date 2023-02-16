@@ -1,3 +1,4 @@
+import urls, { projects } from "../../routing/urls.js";
 import Link from "../Link.js";
 import "./Header.scss";
 
@@ -7,7 +8,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <h1 className="m-0 d-flex align-items-center">
-            <Link className="navbar-brand" href="/">
+            <Link className="navbar-brand" href={urls.HOME.url}>
               Melvin Doucet
             </Link>
           </h1>
@@ -26,13 +27,13 @@ export default function Header() {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link href="/" className="nav-link">
+                <Link href={urls.HOME.url} className="nav-link">
                   Home
                 </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
-                  href="/projects"
+                  href={urls.PROJECTS.url}
                   className="nav-link dropdown-toggle"
                   aria-expanded="false"
                   data-bs-toggle="dropdown"
@@ -40,25 +41,15 @@ export default function Header() {
                   Projects
                 </a>
                 <ul className="dropdown-menu">
-                  <li>
-                    <Link href="/projects/calculator" className="dropdown-item">
-                      Calculator
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/projects/password-generator" className="dropdown-item">
-                      Password Generator
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/projects/minesweeper" className="dropdown-item">
-                      Minesweeper
-                    </Link>
-                  </li>
+                  {Object.values(projects).map(({ url, title }) => (
+                    <li>
+                      <Link href={url} className="dropdown-item">{title}</Link>
+                    </li>
+                  ))}
                 </ul>
               </li>
               <li className="nav-item">
-                <Link href="/contact" className="nav-link">
+                <Link href={urls.CONTACT.url} className="nav-link">
                   Contact
                 </Link>
               </li>

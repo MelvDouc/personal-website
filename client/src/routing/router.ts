@@ -1,8 +1,10 @@
+import Calculator from "../components/Calculator/Calculator.jsx";
+import Minesweeper from "../components/Minesweeper/Minesweeper.jsx";
+import PasswordGenerator from "../components/PasswordGenerator/PasswordGenerator.jsx";
 import ContactPage from "../pages/ContactPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
-import NotFoundPage from "../pages/NotFoundPage.jsx";
-import ProjectPage from "../pages/ProjectPage.jsx";
 import ProjectsPage from "../pages/ProjectsPage.jsx";
+import urls from "./urls.js";
 
 export class Router {
   private url!: string;
@@ -10,10 +12,6 @@ export class Router {
   private routes = new Map<string | RegExp, Page>();
 
   constructor() {
-    this.routes.set("404", {
-      title: "Page Not Found",
-      component: NotFoundPage
-    });
   }
 
   public getPage(url: string | RegExp) {
@@ -48,28 +46,31 @@ export class Router {
 }
 
 const router = new Router();
-const home = {
-  title: "Home",
-  component: HomePage
-};
 
-router
-  .addPage("/", home)
-  .addPage("/home", home)
-  .addPage("/projects", {
-    title: "Test",
-    component: ProjectsPage
-  })
-  .addPage(/^\/projects\/[^/]+$/, {
-    title: "Projects",
-    component: () => {
-      const { pathname } = location;
-      return ProjectPage({ path: pathname.slice(pathname.lastIndexOf("/")) })();
-    }
-  })
-  .addPage("/contact", {
-    title: "Contact",
-    component: ContactPage
-  });
+router.addPage(urls.HOME.url, {
+  title: urls.HOME.title,
+  component: HomePage
+});
+router.addPage(urls.HOME_ALIAS.url, router.getPage(urls.HOME.url)!);
+router.addPage(urls.CONTACT.url, {
+  title: urls.CONTACT.title,
+  component: ContactPage
+});
+router.addPage(urls.PROJECTS.url, {
+  title: urls.PROJECTS.title,
+  component: ProjectsPage
+});
+router.addPage(urls.PROJECTS_CALCULATOR.url, {
+  title: urls.PROJECTS_CALCULATOR.title,
+  component: Calculator
+});
+router.addPage(urls.PROJECTS_MINESWEEPER.url, {
+  title: urls.PROJECTS_MINESWEEPER.title,
+  component: Minesweeper
+});
+router.addPage(urls.PROJECTS_PASSWORD_GENERATOR.url, {
+  title: urls.PROJECTS_PASSWORD_GENERATOR.title,
+  component: PasswordGenerator
+});
 
 export default router;

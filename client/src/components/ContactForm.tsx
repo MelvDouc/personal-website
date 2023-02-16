@@ -1,5 +1,6 @@
 import { Observable } from "reactfree-jsx";
 import router from "../routing/router.js";
+import urls from "../routing/urls.js";
 import { sendEmail } from "../utils/api.js";
 import displayAlterBox from "./AlertBox/AlertBox.jsx";
 
@@ -30,7 +31,7 @@ export default function ContactForm() {
         displayAlterBox({
           message:
             "Your message was sent. An admin will try and get back to you soon.",
-          handleClose: () => router.setUrl("/")
+          handleClose: () => router.setUrl(urls.HOME.url)
         });
       }}
     >
