@@ -14,7 +14,7 @@ export default function Minesweeper() {
       <div className="d-flex flex-column gap-2">
         <div className="minesweeper">{game.cells.flat()}</div>
         <div className="d-flex justify-content-center">
-          <button onclick={() => game.reset()}>New Game</button>
+          <button className="btn btn-primary" onclick={() => game.reset()}>New Game</button>
         </div>
       </div>
     </SmallComponentWrapper>

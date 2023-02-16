@@ -31,7 +31,8 @@ export default class MinesweeperCell extends HTMLElement {
       e.preventDefault();
       if (this.#game.isOver)
         return;
-      this.#game.toggleFlag(this);
+      if (this.covered)
+        this.#game.toggleFlag(this);
     });
   }
 
