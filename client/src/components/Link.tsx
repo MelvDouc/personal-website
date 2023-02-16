@@ -1,37 +1,24 @@
 import router from "../routing/router.js";
 
-export default function Link({
-  href,
-  className,
-  attributes,
-  children
-}: {
-  href: string;
-  className?: string;
-  attributes?: Record<string, string>;
-  children?: any;
-}) {
-  return (
-    <a
-      href={href}
-      $init={element => {
-        element.addEventListener("click", handleClick(href, router));
-        if (className) element.className = className;
-        if (attributes)
-          Object.entries(attributes).forEach(([name, value]) => {
-            element.setAttribute(name, value);
-          });
-      }}
-    >
-      {children}
-    </a>
-  );
+export default class Link extends HTMLAnchorElement {
+  #pathname: string;
+
+  constructor({ href, className }: {
+    href: string;
+    className?: string;
+  }) {
+    super();
+    this.href = href;
+    this.#pathname = href;
+    if (className)
+      this.className = className;
+
+    this.addEventListener("click", (e) => {
+      e.preventDefault();
+      history.pushState({}, "", this.href);
+      router.setUrl(this.#pathname);
+    });
+  }
 }
 
-function handleClick(href: string, router: { setUrl: (url: string) => void }) {
-  return (e: Event) => {
-    e.preventDefault();
-    history.pushState({}, "", href);
-    router.setUrl(href);
-  };
-}
+customElements.define("a-link", Link, { extends: "a" });

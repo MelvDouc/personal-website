@@ -34,11 +34,8 @@ export default function Header() {
                 <a
                   href="/projects"
                   className="nav-link dropdown-toggle"
-                  role="button"
-                  $init={a => {
-                    a.dataset.bsToggle = "dropdown";
-                    a.setAttribute("aria-expanded", "false");
-                  }}
+                  aria-expanded="false"
+                  data-bs-toggle="dropdown"
                 >
                   Projects
                 </a>
