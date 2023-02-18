@@ -1,0 +1,15 @@
+.form-group {
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--gap);
+
+  & input,
+  & textarea {
+    padding: var(--gap);
+  }
+
+  & input {
+    width: 100%;
+    height: 2rem;
+  }
+}

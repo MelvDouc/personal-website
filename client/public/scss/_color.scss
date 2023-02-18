@@ -1,0 +1,25 @@
+.bg-primary {
+  background-color: $clr_green_lighter;
+}
+
+.bg-primary-gradient {
+  background-color: $clr_green_lighter;
+  background-image: linear-gradient(to right, $clr_green_lighter, $clr_green_light);
+}
+
+.bg-secondary {
+  background-color: $clr_blue_light;
+}
+
+.bg-secondary-gradient {
+  background-color: $clr_blue_light;
+  background-image: linear-gradient(to right, $clr_blue_lighter, $clr_blue_light);
+}
+
+.bg-light {
+  background-color: rgb(239, 245, 245);
+}
+
+.text-light {
+  color: white;
+}

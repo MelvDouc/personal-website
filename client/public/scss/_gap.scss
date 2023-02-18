@@ -1,0 +1,13 @@
+@for $i from 1 through 6 {
+  .gap-#{$i} {
+    gap: calc(var(--gap) * $i);
+  }
+
+  .m-#{$i} {
+    margin: calc(var(--gap) * $i);
+  }
+
+  .p-#{$i} {
+    padding: calc(var(--gap) * $i);
+  }
+}
