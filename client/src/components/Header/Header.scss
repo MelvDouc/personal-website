@@ -1,7 +1,5 @@
 header {
-  padding: 0.8em;
-  color: white;
-  background-color: var(--clr-green-light);
+  font-size: 1.1rem;
 
   section {
     display: flex;
@@ -17,4 +15,9 @@ header {
     display: grid;
     place-items: center;
   }
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
 }

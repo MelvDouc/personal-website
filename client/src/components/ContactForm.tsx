@@ -20,7 +20,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="d-flex flex-column flex-nowrap gap-3 p-3 rounded bg-primary bg-gradient text-light"
+      className="d-flex flex-column flex-nowrap gap-3 p-3 border-rounded bg-secondary-gradient text-light"
       onsubmit={async e => {
         e.preventDefault();
         const response = await sendEmail(formDataObs.getValue());
@@ -39,7 +39,6 @@ export default function ContactForm() {
         <label htmlFor="contact-email">Email</label>
         <input
           type="email"
-          className="form-control"
           id="contact-email"
           oninput={setData("email")}
           required
@@ -49,7 +48,6 @@ export default function ContactForm() {
         <label htmlFor="contact-subject">Subject</label>
         <input
           type="text"
-          className="form-control"
           id="contact-subject"
           oninput={setData("subject")}
           required
@@ -58,7 +56,6 @@ export default function ContactForm() {
       <div className="form-group">
         <label htmlFor="contact-message">Message</label>
         <textarea
-          className="form-control"
           id="contact-message"
           rows={10}
           oninput={setData("message")}

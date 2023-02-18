@@ -4,7 +4,7 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header className="d-flex gap-6">
+    <header className="d-flex flex-wrap justify-content-center-portrait gap-6 p-3 text-light bg-primary-gradient">
       <section>
         <h1>
           <Link href={urls.HOME.url}>Melvin Doucet</Link>
