@@ -1,5 +1,5 @@
 .minesweeper {
-  width: clamp(240px, 50vmin, 60vh);
+  width: min(100%, 600px);
   aspect-ratio: 1;
   display: grid;
   grid-template-columns: repeat(10, 10%);

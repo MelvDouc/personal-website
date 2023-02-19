@@ -6,7 +6,7 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header className="d-flex flex-wrap gap-4 p-3 text-light bg-primary-gradient">
+    <header className="d-flex flex-wrap flex-nowrap-landscape gap-4 p-3 text-light bg-primary-gradient">
       <section>
         <h1 className="w-100 text-center">
           <Link href={urls.HOME.url}>Melvin Doucet</Link>
@@ -14,7 +14,7 @@ export default function Header() {
       </section>
       <section>
         <nav className="w-100">
-          <ul className="list-style-none d-flex flex-wrap-portrait w-100 h-100">
+          <ul className="list-style-none d-flex flex-wrap flex-nowrap-landscape w-100 h-100">
             <li>
               <Link href={urls.HOME.url}>Home</Link>
             </li>

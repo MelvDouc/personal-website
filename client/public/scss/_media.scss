@@ -1,13 +1,9 @@
-@media only screen and (orientation: portrait) {
-  header section {
-    width: 100%;
+@media only screen and (orientation: landscape) {
+  .flex-nowrap-landscape {
+    flex-wrap: nowrap;
   }
 
-  .flex-wrap-portrait {
-    flex-wrap: wrap;
-  }
-
-  .justify-content-center-portrait {
+  .justify-content-center-landscape {
     justify-content: center;
   }
 }
