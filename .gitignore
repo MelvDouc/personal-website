@@ -13,5 +13,4 @@ server/**/*.db.json
 server/dist
 
 # Client
-
 client/public/css/style.css
