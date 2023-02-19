@@ -11,22 +11,26 @@ minesweeper-cell {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
   background-image: radial-gradient(white, rgb(235, 235, 245));
   user-select: none;
 
   &[data-covered="1"] {
     background-image: linear-gradient(var(--bg-orientation), hsl(200, 80%, 20%), rgb(245, 245, 245));
 
-    &:hover {
+    &:not(&[data-flagged="1"]):hover {
       --bg-orientation: 225deg;
     }
   }
 
   &[data-flagged="1"] {
-    background: green;
+    background-size: 97.5%;
+    background-image: url("/img/minesweeper-flag.png"), linear-gradient(var(--bg-orientation), hsl(200, 80%, 20%), rgb(245, 245, 245));
   }
 
   &[data-mined="1"] {
-    background: red;
+    background-image: url("/img/minesweeper-mine.png"), linear-gradient(180deg, rgb(255, 0, 0, 0.8), rgb(255, 0, 0, 1));
   }
 }
