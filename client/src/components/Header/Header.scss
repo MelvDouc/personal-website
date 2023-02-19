@@ -1,25 +1,9 @@
 header {
-  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
 
   > section {
     display: flex;
-    width: 100%;
-
-    @media only screen and (orientation: landscape) {
-      width: unset;
-    }
-  }
-
-  h1 a {
-    padding: var(--gap) calc(var(--gap) * 1.618);
-    border-style: solid;
-    border-width: 1px;
-    border-color: transparent;
-    border-radius: 5px;
-
-    &:hover {
-      border-color: currentColor;
-    }
   }
 
   nav {
@@ -44,5 +28,21 @@ header {
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  @media only screen and (min-width: 400px) {
+    justify-content: stretch;
+  }
+}
+
+h1 a {
+  padding: var(--gap) calc(var(--gap) * 1.618);
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  border-radius: 5px;
+
+  &:hover {
+    border-color: currentColor;
   }
 }

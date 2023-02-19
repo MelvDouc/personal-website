@@ -1,6 +1,7 @@
 .page {
   max-width: 700px;
   margin: 0 auto;
+  padding: calc(var(--gap) * 4);
 
   h2 {
     background-color: $clr_green_light;

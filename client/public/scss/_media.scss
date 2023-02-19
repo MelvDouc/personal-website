@@ -1,23 +1,9 @@
-@media only screen and (orientation: landscape) {
-  .flex-nowrap-landscape {
-    flex-wrap: nowrap;
-  }
-
-  .justify-content-center-landscape {
-    justify-content: center;
-  }
-}
-
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 400px) {
   :root {
-    --gap: 0.2em;
+    --gap: 0.25em;
   }
-}
 
-@media only screen and (max-width: 520px) {
-  .alert-box {
-    form {
-      width: 80%;
-    }
+  .flex-wrap-sm {
+    flex-wrap: nowrap;
   }
 }

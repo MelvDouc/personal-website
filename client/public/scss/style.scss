@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400&display=swap&family=Orbitron:wght@400;700&display=swap");
 
 :root {
-  --gap: 0.25em;
+  --gap: 0.2em;
 }
 
 *,
@@ -25,7 +25,6 @@ body {
 
 main {
   height: 100%;
-  padding: calc(var(--gap) * 4);
 }
 
 input,
@@ -40,12 +39,13 @@ textarea {
 @import "variables";
 @import "size";
 @import "gap";
-@import "font-size";
+@import "font";
 @import "text";
 @import "flex";
 @import "grid";
 @import "color";
 @import "display";
+@import "background";
 @import "page";
 @import "table";
 @import "btn";
