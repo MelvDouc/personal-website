@@ -18,7 +18,7 @@ body {
 }
 
 body {
-  font-family: Montserrat, Lato, "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Lato, Montserrat, "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -40,11 +40,14 @@ textarea {
 @import "variables";
 @import "size";
 @import "gap";
+@import "font-size";
+@import "text";
 @import "flex";
 @import "grid";
 @import "color";
 @import "display";
 @import "page";
+@import "table";
 @import "btn";
 @import "form";
 @import "list";

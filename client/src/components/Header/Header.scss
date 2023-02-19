@@ -5,19 +5,27 @@ header {
     display: flex;
   }
 
-  li {
-    display: flex;
+  nav {
+    ul li {
+      display: flex;
+      width: 100%;
+
+      a {
+        width: 100%;
+        padding: 0.1em calc(var(--gap) * 2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
   a {
     text-decoration: none;
     color: inherit;
-    display: grid;
-    place-items: center;
   }
-}
-
-h1 {
-  font-size: 2em;
-  text-align: center;
 }

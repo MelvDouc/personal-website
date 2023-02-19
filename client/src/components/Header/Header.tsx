@@ -5,20 +5,20 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header className="d-flex flex-wrap justify-content-center-portrait gap-6 p-3 text-light bg-primary-gradient">
+    <header className="d-flex flex-wrap gap-4 p-3 text-light bg-primary-gradient">
       <section>
-        <h1>
+        <h1 className="w-100 text-center">
           <Link href={urls.HOME.url}>Melvin Doucet</Link>
         </h1>
       </section>
       <section>
-        <nav>
-          <ul className="list-style-none d-flex gap-4 w-100 h-100">
+        <nav className="w-100">
+          <ul className="list-style-none d-flex flex-wrap-portrait w-100 h-100">
             <li>
               <Link href={urls.HOME.url}>Home</Link>
             </li>
             <li>
-              <div className="grid-center">Projects</div>
+              <Link href={urls.PROJECTS.url}>Projects</Link>
               <ul className="d-none">
                 {projects.map(({ url, title }) => (
                   <li>

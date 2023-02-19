@@ -1,4 +1,12 @@
 @media only screen and (orientation: portrait) {
+  header section {
+    width: 100%;
+  }
+
+  .flex-wrap-portrait {
+    flex-wrap: wrap;
+  }
+
   .justify-content-center-portrait {
     justify-content: center;
   }
