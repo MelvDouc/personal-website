@@ -1,0 +1,16 @@
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+
+  h2 {
+    background-color: $clr_green_light;
+    color: white;
+    text-align: center;
+    margin-bottom: calc(var(--gap) * 2);
+    padding: var(--gap);
+  }
+
+  > section + section {
+    margin-top: calc(var(--gap) * 6);
+  }
+}

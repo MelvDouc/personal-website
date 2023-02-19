@@ -1,9 +1,7 @@
-import Calculator from "../components/Calculator/Calculator.jsx";
-import Minesweeper from "../components/Minesweeper/Minesweeper.jsx";
-import PasswordGenerator from "../components/PasswordGenerator/PasswordGenerator.jsx";
 import ContactPage from "../pages/ContactPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
 import ProjectsPage from "../pages/ProjectsPage.jsx";
+import projects from "./projects.js";
 import urls from "./urls.js";
 
 export class Router {
@@ -34,7 +32,10 @@ export class Router {
 
   public notify(): void {
     for (const [url, page] of this.routes) {
-      if ((typeof url === "string" && this.url === url) || (url instanceof RegExp && url.test(this.url))) {
+      if (
+        typeof url === "string" && this.url === url
+        || url instanceof RegExp && url.test(this.url)
+      ) {
         this.urlChangeSubscriptions.forEach(subscription => subscription(page));
         return;
       }
@@ -47,30 +48,26 @@ export class Router {
 
 const router = new Router();
 
-router.addPage(urls.HOME.url, {
-  title: urls.HOME.title,
-  component: HomePage
-});
-router.addPage(urls.HOME_ALIAS.url, router.getPage(urls.HOME.url)!);
-router.addPage(urls.CONTACT.url, {
-  title: urls.CONTACT.title,
-  component: ContactPage
-});
-router.addPage(urls.PROJECTS.url, {
-  title: urls.PROJECTS.title,
-  component: ProjectsPage
-});
-router.addPage(urls.PROJECTS_CALCULATOR.url, {
-  title: urls.PROJECTS_CALCULATOR.title,
-  component: Calculator
-});
-router.addPage(urls.PROJECTS_MINESWEEPER.url, {
-  title: urls.PROJECTS_MINESWEEPER.title,
-  component: Minesweeper
-});
-router.addPage(urls.PROJECTS_PASSWORD_GENERATOR.url, {
-  title: urls.PROJECTS_PASSWORD_GENERATOR.title,
-  component: PasswordGenerator
+router
+  .addPage(urls.HOME.url, {
+    title: urls.HOME.title,
+    component: HomePage
+  })
+  .addPage(urls.HOME_ALIAS.url, router.getPage(urls.HOME.url)!)
+  .addPage(urls.CONTACT.url, {
+    title: urls.CONTACT.title,
+    component: ContactPage
+  })
+  .addPage(urls.PROJECTS.url, {
+    title: urls.PROJECTS.title,
+    component: ProjectsPage
+  });
+
+projects.forEach(({ url, title, component }) => {
+  router.addPage(url, {
+    component,
+    title
+  });
 });
 
 export default router;

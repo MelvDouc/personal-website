@@ -3,12 +3,12 @@
   flex-flow: column wrap;
   gap: var(--gap);
 
-  & input,
-  & textarea {
+  input,
+  textarea {
     padding: var(--gap);
   }
 
-  & input {
+  input {
     width: 100%;
     height: 2rem;
   }

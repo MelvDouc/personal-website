@@ -7,7 +7,23 @@
     margin: calc(var(--gap) * $i);
   }
 
+  .mx-#{$i} {
+    margin-inline: calc(var(--gap) * $i);
+  }
+
+  .my-#{$i} {
+    margin-block: calc(var(--gap) * $i);
+  }
+
   .p-#{$i} {
     padding: calc(var(--gap) * $i);
+  }
+
+  .px-#{$i} {
+    padding-inline: calc(var(--gap) * $i);
+  }
+
+  .py-#{$i} {
+    padding-block: calc(var(--gap) * $i);
   }
 }

@@ -1,4 +1,5 @@
-import urls, { projects } from "../../routing/urls.js";
+import projects from "../../routing/projects.js";
+import urls from "../../routing/urls.js";
 import Link from "../Link.js";
 import "./Header.scss";
 
@@ -19,7 +20,7 @@ export default function Header() {
             <li>
               <div className="grid-center">Projects</div>
               <ul className="d-none">
-                {Object.values(projects).map(({ url, title }) => (
+                {projects.map(({ url, title }) => (
                   <li>
                     <Link href={url}>{title}</Link>
                   </li>
