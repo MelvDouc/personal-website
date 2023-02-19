@@ -12,4 +12,8 @@
   input {
     height: 2rem;
   }
+
+  textarea {
+    resize: vertical;
+  }
 }
