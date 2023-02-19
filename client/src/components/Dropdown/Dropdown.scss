@@ -1,0 +1,33 @@
+.dropdown {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  &-list {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: white;
+
+    li {
+      color: black;
+      overflow: hidden;
+
+      &:hover {
+        background-color: blue;
+        color: white;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none !important;
+        padding: var(--gap) calc(var(--gap) * 2);
+      }
+    }
+  }
+}

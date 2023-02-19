@@ -2,6 +2,14 @@
   text-align: center;
 }
 
-.text-underline-hover:hover {
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+.text-decoration-underline-hover:hover {
   text-decoration: underline;
 }

@@ -1,5 +1,6 @@
 import projects from "../../routing/projects.js";
 import urls from "../../routing/urls.js";
+import Dropdown from "../Dropdown/Dropdown.jsx";
 import Link from "../Link.js";
 import "./Header.scss";
 
@@ -18,14 +19,11 @@ export default function Header() {
               <Link href={urls.HOME.url}>Home</Link>
             </li>
             <li>
-              <Link href={urls.PROJECTS.url}>Projects</Link>
-              <ul className="d-none">
-                {projects.map(({ url, title }) => (
-                  <li>
-                    <Link href={url}>{title}</Link>
-                  </li>
-                ))}
-              </ul>
+              <Dropdown
+                mainHref={urls.PROJECTS.url}
+                mainText={urls.PROJECTS.title}
+                links={projects.map(({ url, title }) => ({ href: url, text: title }))}
+              />
             </li>
             <li>
               <Link href={urls.CONTACT.url}>Contact</Link>
