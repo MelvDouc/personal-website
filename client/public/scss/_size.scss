@@ -1,4 +1,4 @@
-@for $i from 0 through 100 {
+@for $i from 0 through 20 {
   .h-#{$i * 5} {
     height: $i * 5%;
   }
