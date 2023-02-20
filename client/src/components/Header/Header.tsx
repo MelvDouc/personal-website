@@ -6,15 +6,25 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header className="d-flex flex-wrap gap-4 p-3 text-light bg-primary-gradient">
-      <section>
-        <h1 className="fs-6 w-100 grid-center">
-          <Link className="text-center" href={urls.HOME.url}>Melvin Doucet</Link>
-        </h1>
+    <header className="d-flex justify-content-between align-items-center gap-4 p-3 text-light">
+      <section className="d-flex gap-3 align-items-center">
+        <article className="">
+          <Link className="" href={urls.HOME.url}>
+            <img
+              src="/img/favicon.png"
+              alt="Logo"
+              style={{ maxWidth: "50px" }}
+            />
+          </Link>
+        </article>
+        <article className="text-uppercase">
+          <h1 className="fs-6">Melvin Doucet</h1>
+          <p>Full-Stack Web Development</p>
+        </article>
       </section>
-      <section>
+      <section className="d-flex align-items-center">
         <nav className="w-100">
-          <ul className="list-style-none d-flex flex-wrap-sm w-100 h-100">
+          <ul className="list-style-none d-flex justify-content-end gap-3 w-100 h-100">
             <li>
               <Link href={urls.HOME.url}>Home</Link>
             </li>

@@ -14,10 +14,14 @@
   flex-wrap: wrap;
 }
 
-.flex-wrap-sm {
-  flex-wrap: wrap;
+.justify-content-between {
+  justify-content: space-between;
 }
 
 .justify-content-center {
   justify-content: center;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
 }

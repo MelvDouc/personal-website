@@ -21,6 +21,10 @@ body {
   font-family: Lato, Montserrat, "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-flow: column nowrap;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: radial-gradient(rgba(24, 39, 24, 0.6), rgba(24, 39, 24, 0.7)), url("/img/bg-computer.jpg");
 }
 
 main {

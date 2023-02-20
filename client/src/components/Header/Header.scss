@@ -1,26 +1,21 @@
 header {
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 
   > section {
-    display: flex;
+    width: 100%;
   }
 
-  nav {
-    > ul > li {
-      display: flex;
-      width: 100%;
+  nav > ul {
+    flex-direction: column;
+    align-items: center;
+
+    > li {
+      text-align: center;
 
       a {
-        width: 100%;
-        padding: 0.1em calc(var(--gap) * 2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:hover {
-          text-decoration: underline;
-        }
+        text-transform: uppercase;
+        padding: var(--gap) calc(2 * var(--gap));
       }
     }
   }
@@ -29,20 +24,22 @@ header {
     text-decoration: none;
     color: inherit;
   }
-
-  @media only screen and (min-width: 400px) {
-    justify-content: stretch;
-  }
 }
 
-h1 a {
-  padding: var(--gap) calc(var(--gap) * 1.618);
-  border-style: solid;
-  border-width: 1px;
-  border-color: transparent;
-  border-radius: 5px;
+@media only screen and (min-width: 640px) {
+  header {
+    flex-direction: row;
 
-  &:hover {
-    border-color: currentColor;
+    > section {
+      width: unset;
+
+      &:nth-child(2) {
+        height: 100%;
+      }
+    }
+
+    nav > ul {
+      flex-direction: row;
+    }
   }
 }
