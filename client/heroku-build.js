@@ -12,5 +12,5 @@ if (!dirs.includes("node_modules")) {
   await run("npm --prefix client install");
 }
 
-await run("npm --prefix client run build && rm -rf client/node_modules");
+await run("npm --prefix client run build && rm -rf client/!(dist)");
 console.log("Client was successfully built.");
