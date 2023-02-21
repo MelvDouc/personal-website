@@ -7,6 +7,10 @@
   background-image: linear-gradient(to right, $clr_green_lighter, $clr_green_light);
 }
 
+.bg-primary-transparent {
+  background-color: rgba($clr_green_lighter, 0.5);
+}
+
 .bg-secondary {
   background-color: $clr_blue_light;
 }

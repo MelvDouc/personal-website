@@ -18,7 +18,7 @@ export default function Header() {
           </Link>
         </article>
         <article className="text-transform-uppercase">
-          <h1 className="fs-6">Melvin Doucet</h1>
+          <p className="fs-6"><strong>Melvin Doucet</strong></p>
           <p>Full-Stack Web Development</p>
         </article>
       </section>
@@ -30,8 +30,7 @@ export default function Header() {
             </li>
             <li>
               <Dropdown
-                mainHref={urls.PROJECTS.url}
-                mainText={urls.PROJECTS.title}
+                link={<a href={urls.PROJECTS.url}>Projects</a>}
                 links={projects.map(({ url, title }) => ({ href: url, text: title }))}
               />
             </li>

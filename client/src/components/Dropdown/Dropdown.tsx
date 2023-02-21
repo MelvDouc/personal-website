@@ -2,15 +2,18 @@ import { Observable } from "reactfree-jsx";
 import Link from "../Link.jsx";
 import "./Dropdown.scss";
 
-export default function Dropdown({ mainText, mainHref, links }: {
-  mainText: string;
-  mainHref: string;
+export default function Dropdown({ link, links }: {
+  link: HTMLAnchorElement;
   links: {
     href: string;
     text: string;
   }[];
 }) {
   const visibilityObs = new Observable(false);
+  link.onclick = (e) => {
+    e.preventDefault();
+    visibilityObs.updateValue(prev => !prev);
+  };
 
   return (
     <div className="dropdown" $init={(dropdown) => {
@@ -19,13 +22,7 @@ export default function Dropdown({ mainText, mainHref, links }: {
           visibilityObs.setValue(false);
       });
     }}>
-      <a
-        href={mainHref}
-        onclick={(e) => {
-          e.preventDefault();
-          visibilityObs.updateValue(isVisible => !isVisible);
-        }}
-      >{mainText}</a>
+      {link}
       <ul
         className="dropdown-list d-none"
         $init={element => {

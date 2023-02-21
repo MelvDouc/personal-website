@@ -13,9 +13,25 @@ header {
     > li {
       text-align: center;
 
-      a {
+      > a,
+      > .dropdown > a {
         text-transform: uppercase;
         padding: var(--gap) calc(2 * var(--gap));
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: calc(var(--gap) * -1);
+          left: 0;
+          width: 0%;
+          border-bottom: 2px solid currentColor;
+          transition: width 300ms;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
       }
     }
   }

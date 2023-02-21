@@ -1,4 +1,4 @@
-@for $i from 1 through 6 {
+@for $i from 1 through 10 {
   .fs-#{$i} {
     font-size: 0.25rem * $i;
   }
