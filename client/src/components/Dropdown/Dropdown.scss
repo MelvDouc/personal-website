@@ -18,7 +18,6 @@
     li {
       color: black;
       overflow: hidden;
-      padding: calc(var(--gap) * 2) calc(var(--gap) * 3);
 
       &:hover {
         background-color: blue;
@@ -26,6 +25,9 @@
       }
 
       a {
+        display: block;
+        width: 100%;
+        padding: calc(var(--gap) * 2) calc(var(--gap) * 3);
         color: inherit;
         text-decoration: none !important;
       }

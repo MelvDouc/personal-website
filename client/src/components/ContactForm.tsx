@@ -20,8 +20,8 @@ export default function ContactForm() {
 
   return (
     <form
-      className="d-flex flex-column flex-nowrap gap-3 p-3 border-rounded bg-secondary-gradient text-light"
-      onsubmit={async e => {
+      className="w-100 d-flex flex-column flex-nowrap gap-3 p-3 border-rounded bg-secondary-transparent text-light"
+      onsubmit={async (e) => {
         e.preventDefault();
         const response = await sendEmail(formDataObs.getValue());
         if (!response?.success) {
