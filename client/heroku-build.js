@@ -12,5 +12,11 @@ if (!dirs.includes("node_modules")) {
   await run("npm --prefix client install");
 }
 
-await run("npm --prefix client run build && rm -rf client/!(dist)");
+const dirsToDelete = dirs
+  .reduce((acc, dir) => {
+    (dir !== "dist") && acc.push(`client/${dir}`);
+    return acc;
+  }, [])
+  .join(" ");
+await run(`npm --prefix client run build && rm -rf ${dirsToDelete}`);
 console.log("Client was successfully built.");
