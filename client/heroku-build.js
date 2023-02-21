@@ -19,4 +19,5 @@ const dirsToDelete = dirs
   }, [])
   .join(" ");
 await run(`npm --prefix client run build && rm -rf ${dirsToDelete}`);
+console.log(dirsToDelete);
 console.log("Client was successfully built.");
