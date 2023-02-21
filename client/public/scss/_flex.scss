@@ -25,3 +25,13 @@
 .justify-content-end {
   justify-content: flex-end;
 }
+
+.row {
+  display: flex;
+
+  @for $i from 0 through 20 {
+    .col-#{($i * 5)} {
+      width: $i * 5%;
+    }
+  }
+}

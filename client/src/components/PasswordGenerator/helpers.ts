@@ -12,7 +12,7 @@ export const randomCharFns = {
   lowercase: randomLowercase,
   uppercase: randomUppercase,
   digits: randomDigit,
-  specialChars: randomSpecialChar
+  "special-characters": randomSpecialChar
 } as const;
 
 export function isValidLength(length: number) {

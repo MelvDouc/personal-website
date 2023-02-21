@@ -5,8 +5,8 @@ export default function Checkbox({ key, charsTypesObs }: {
   const id = `checkbox-${key}`;
 
   return (
-    <div className="password-generator-checkbox">
-      <label htmlFor={id}>{key}</label>
+    <div className="d-flex justify-content-between align-items-center">
+      <label className="text-light text-transform-capitalize" htmlFor={id}>{key.replace(/\-+/g, " ")}</label>
       <input
         type="checkbox"
         id={id}

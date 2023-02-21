@@ -55,9 +55,7 @@ export default function Calculator() {
           <div className="calculator-row">
             <CalcButton handleClick={() => append(".")}>.</CalcButton>
             <CalcButton handleClick={() => append("0")}>0</CalcButton>
-            <CalcButton handleClick={compute} doubleCol>
-              =
-            </CalcButton>
+            <CalcButton handleClick={compute} doubleCol>=</CalcButton>
           </div>
         </section>
       </div>

@@ -17,5 +17,10 @@
 
   &-primary {
     background-color: $clr_green_light;
+
+    &:hover,
+    &:focus {
+      background-image: radial-gradient(darken($clr_green_light, 5%), $clr_green_light);
+    }
   }
 }

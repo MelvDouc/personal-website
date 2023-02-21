@@ -28,22 +28,32 @@ export default function PasswordGenerator(): HTMLElement {
   lengthObs.subscribe(setPassword);
 
   const passwordGenerator = (
-    <div className="password-generator">
-      <section className="password-generator__top">
+    <div className="password-generator border-rounded overflow-hidden">
+      <section className="password-generator__top d-flex justify-content-center align-items-center p-2">
         <output
+          className="fs-5 text-center word-break-all"
           $init={element => {
             passwordObs.subscribe(password => (element.innerText = password));
           }}
         ></output>
       </section>
-      <section className="password-generator__bottom">
-        <div className="password-generator-form form-check form-switch">
-          <article className="password-generator-length-inputs">
-            <div>
-              <input type="number" $init={e => initLengthInput(e, lengthObs)} />
+      <section className="password-generator__bottom grid-center">
+        <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap">
+          <article className="row gap-2">
+            <div className="col-15">
+              <input
+                type="number"
+                className="w-100 px-1"
+                style={{ height: "1.8em" }}
+                $init={e => initLengthInput(e, lengthObs)}
+              />
             </div>
-            <div>
-              <input type="range" $init={e => initLengthInput(e, lengthObs)} />
+            <div className="col-85 d-flex align-items-center">
+              <input
+                type="range"
+                className="w-100"
+                $init={e => initLengthInput(e, lengthObs)}
+              />
             </div>
           </article>
           <article className="d-flex flex-column gap-3">
@@ -53,17 +63,20 @@ export default function PasswordGenerator(): HTMLElement {
           </article>
           <article className="d-flex justify-content-center align-items-center flex-wrap gap-2">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary fs-inherit"
               onclick={() => lengthObs.notify()}
             >
               New Password
             </button>
             <button
-              className="btn btn-primary"
+              className="btn btn-primary fs-inherit"
               onclick={async () => {
-                if (!navigator.clipboard) return;
-                await navigator.clipboard.writeText(passwordObs.getValue());
-                displayAlterBox({ message: "Password was copied!" });
+                try {
+                  await navigator.clipboard.writeText(passwordObs.getValue());
+                  displayAlterBox({ message: "Password was copied!" });
+                } catch (error) {
+                  displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });
+                }
               }}
             >
               Copy Password
