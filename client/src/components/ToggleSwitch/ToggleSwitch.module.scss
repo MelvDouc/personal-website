@@ -1,12 +1,13 @@
 @import "/public/scss/variables";
 
+$width: 3em;
+$height: 1.5em;
+$before_height: $height * 0.75;
+$before_gap: 4px;
+
 .switch {
-  --width: 3em;
-  --height: 1.5em;
-  --before-height: calc(var(--height) * 0.75);
-  --before-gap: 4px;
-  width: var(--width);
-  height: var(--height);
+  width: $width;
+  height: $height;
   border-radius: 99999px;
   position: relative;
 
@@ -20,7 +21,7 @@
         background-color: $clr_blue_light;
 
         &::before {
-          left: var(--before-gap);
+          left: $before_gap;
         }
       }
     }
@@ -42,11 +43,11 @@
 
     &::before {
       content: "";
-      height: var(--before-height);
-      width: var(--before-height);
+      height: $before_height;
+      width: $before_height;
       position: absolute;
       top: 50%;
-      left: calc(var(--width) - var(--before-height) - 4px);
+      left: calc($width - $before_height - 4px);
       border-radius: 50%;
       transform: translateY(-50%);
       transition: left 400ms;
