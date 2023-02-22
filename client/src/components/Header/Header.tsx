@@ -9,7 +9,7 @@ export default function Header() {
     <header className={classes.header}>
       <section className="d-flex gap-3 align-items-center">
         <article className="">
-          <Link className="" href={urls.HOME.url}>
+          <Link href={urls.HOME.url}>
             <img
               src="/img/favicon.png"
               alt="Logo"
@@ -26,16 +26,16 @@ export default function Header() {
         <nav className={classes.headerNav}>
           <ul className="list-style-none d-flex justify-content-end gap-3 w-100 h-100">
             <li>
-              <Link href={urls.HOME.url}>Home</Link>
+              <Link className={classes.headerLink} href={urls.HOME.url}>Home</Link>
             </li>
             <li>
               <Dropdown
-                link={<a href={urls.PROJECTS.url}>Projects</a>}
+                link={<a className={classes.headerLink} href={urls.PROJECTS.url}>Projects</a>}
                 links={projects.map(({ url, title }) => ({ href: url, text: title }))}
               />
             </li>
             <li>
-              <Link href={urls.CONTACT.url}>Contact</Link>
+              <Link className={classes.headerLink} href={urls.CONTACT.url}>Contact</Link>
             </li>
           </ul>
         </nav>

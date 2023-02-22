@@ -16,15 +16,15 @@ export default function Dropdown({ link, links }: {
   };
 
   return (
-    <div className="dropdown" $init={(dropdown) => {
+    <div className="dropdown" $init={(element) => {
       document.addEventListener("click", ({ target }) => {
-        if (target !== dropdown && (!(target instanceof Node) || !dropdown.contains(target)))
+        if (target instanceof Node && !element.contains(target))
           visibilityObs.setValue(false);
       });
     }}>
       {link}
       <ul
-        className="dropdown-list d-none"
+        classNames={["dropdown-list", "d-none"]}
         $init={element => {
           visibilityObs.subscribe((isVisible) => {
             isVisible
