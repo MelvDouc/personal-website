@@ -4,10 +4,10 @@ import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
 import Checkbox from "./Checkbox.jsx";
 import {
   createPassword,
-  initLengthInput,
   isValidLength,
   randomCharFns
 } from "./helpers.js";
+import LengthInput from "./LengthInput.jsx";
 
 export default function PasswordGenerator(): HTMLElement {
   const lengthObs = new Observable<number>(15);
@@ -39,19 +39,18 @@ export default function PasswordGenerator(): HTMLElement {
       <section className="grid-center bg-dark-transparent">
         <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap">
           <article className="row gap-2">
-            <div className="col-15">
-              <input
+            <div className="col-15" style={{ height: "1.8em" }}>
+              <LengthInput
                 type="number"
-                className="w-100 px-1"
-                style={{ height: "1.8em" }}
-                $init={e => initLengthInput(e, lengthObs)}
+                className="w-100 h-100 px-1"
+                lengthObs={lengthObs}
               />
             </div>
             <div className="col-85 d-flex align-items-center">
-              <input
+              <LengthInput
                 type="range"
                 className="w-100"
-                $init={e => initLengthInput(e, lengthObs)}
+                lengthObs={lengthObs}
               />
             </div>
           </article>
@@ -64,9 +63,7 @@ export default function PasswordGenerator(): HTMLElement {
             <button
               className="btn btn-primary fs-inherit"
               onclick={() => lengthObs.notify()}
-            >
-              New Password
-            </button>
+            >New Password</button>
             <button
               className="btn btn-primary fs-inherit"
               onclick={async () => {
@@ -77,9 +74,7 @@ export default function PasswordGenerator(): HTMLElement {
                   displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });
                 }
               }}
-            >
-              Copy Password
-            </button>
+            >Copy Password</button>
           </article>
         </div>
       </section>

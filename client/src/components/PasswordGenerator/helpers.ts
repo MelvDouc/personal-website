@@ -5,8 +5,8 @@ import {
   randomSpecialChar
 } from "../../utils/random.js";
 
-const MIN_LENGTH = 1;
-const MAX_LENGTH = 50;
+export const MIN_LENGTH = 1;
+export const MAX_LENGTH = 50;
 
 export const randomCharFns = {
   lowercase: randomLowercase,
@@ -17,23 +17,6 @@ export const randomCharFns = {
 
 export function isValidLength(length: number) {
   return length >= MIN_LENGTH && length <= MAX_LENGTH;
-}
-
-export function initLengthInput(
-  input: HTMLInputElement,
-  lengthObs: Obs<number>
-) {
-  input.min = String(MIN_LENGTH);
-  input.max = String(MAX_LENGTH);
-  input.oninput = () => {
-    const value = input.valueAsNumber;
-    if (isValidLength(value))
-      lengthObs.setValue(value);
-  };
-  lengthObs.subscribe(length => {
-    if (length !== input.valueAsNumber)
-      input.value = String(length);
-  });
 }
 
 export function createPassword(length: number, options: Set<string>) {
