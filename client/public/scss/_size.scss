@@ -7,3 +7,7 @@
     width: $i * 5%;
   }
 }
+
+.w-max-page {
+  max-width: var(--max-page-width);
+}

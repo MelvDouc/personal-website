@@ -7,11 +7,13 @@ export default function CalculatorButton({
   doubleCol?: boolean;
   children?: any;
 }) {
-  const classNames = ["calculator-button"];
-  if (doubleCol) classNames.push("span-2");
-
   return (
-    <button classNames={classNames} onclick={handleClick}>
+    <button
+      classObj={{
+        "span-2": !!doubleCol
+      }}
+      onclick={handleClick}
+    >
       {children}
     </button>
   );

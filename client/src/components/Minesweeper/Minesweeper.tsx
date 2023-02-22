@@ -1,6 +1,6 @@
 import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
-import "./Minesweeper.scss";
 import MinesweeperGame from "./MinesweeperGame.js";
+import "./Minesweeper.scss";
 
 export default function Minesweeper() {
   const game = new MinesweeperGame({

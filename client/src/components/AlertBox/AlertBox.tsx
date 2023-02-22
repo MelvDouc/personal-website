@@ -1,4 +1,4 @@
-import "./AlertBox.scss";
+import classes from "./AlertBox.module.scss";
 
 export default function displayAlterBox(props: Parameters<typeof AlertBox>[0]) {
   document.body.prepend(
@@ -27,7 +27,7 @@ function AlertBox({
 
   return (
     <div
-      className="alert-box"
+      className={classes.alertBox}
       $init={element => remove = () => element.remove()}
     >
       <form>

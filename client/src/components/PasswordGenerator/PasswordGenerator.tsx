@@ -8,7 +8,6 @@ import {
   isValidLength,
   randomCharFns
 } from "./helpers.js";
-import "./PasswordGenerator.scss";
 
 export default function PasswordGenerator(): HTMLElement {
   const lengthObs = new Observable<number>(15);
@@ -28,16 +27,16 @@ export default function PasswordGenerator(): HTMLElement {
   lengthObs.subscribe(setPassword);
 
   const passwordGenerator = (
-    <div className="password-generator border-rounded overflow-hidden">
-      <section className="password-generator__top d-flex justify-content-center align-items-center p-2">
+    <div className="w-100 w-max-page fs-4_5 border-rounded overflow-hidden">
+      <section className=" d-flex justify-content-center align-items-center p-2 bg-dark text-green">
         <output
-          className="fs-5 text-center word-break-all"
+          className="fs-5 ff-monospace text-center word-break-all"
           $init={element => {
             passwordObs.subscribe(password => (element.innerText = password));
           }}
         ></output>
       </section>
-      <section className="password-generator__bottom grid-center">
+      <section className="grid-center bg-dark-transparent">
         <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap">
           <article className="row gap-2">
             <div className="col-15">

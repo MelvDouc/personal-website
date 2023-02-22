@@ -1,12 +1,27 @@
-header {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(var(--gap) * 4);
+  padding: calc(var(--gap) * 3);
   flex-direction: column;
   flex-wrap: wrap;
+  color: white;
 
   > section {
     width: 100%;
   }
 
-  nav > ul {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.headerNav {
+  width: 100%;
+
+  ul {
     flex-direction: column;
     align-items: center;
 
@@ -35,15 +50,10 @@ header {
       }
     }
   }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
 }
 
 @media only screen and (min-width: 640px) {
-  header {
+  .header {
     flex-direction: row;
 
     > section {
@@ -54,7 +64,7 @@ header {
       }
     }
 
-    nav > ul {
+    .headerNav > ul {
       flex-direction: row;
     }
   }

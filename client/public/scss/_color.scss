@@ -24,8 +24,12 @@
   background-color: rgba($clr_blue_light, 0.5);
 }
 
+.bg-dark {
+  background-color: $clr_dark;
+}
+
 .bg-dark-transparent {
-  background-color: rgba($clr_dark, 0.775);
+  background-color: $clr_dark_transparent;
 }
 
 .bg-light {
@@ -38,4 +42,8 @@
 
 .text-light {
   color: white;
+}
+
+.text-green {
+  color: lime;
 }

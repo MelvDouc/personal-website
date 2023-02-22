@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400&display=swap&family=Orbitron:wght@400;700&display=swap");
+@import "variables";
 
 :root {
   --gap: 0.2em;
@@ -19,7 +19,7 @@ body {
 }
 
 body {
-  font-family: Lato, Montserrat, "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: $ff_primary;
   display: flex;
   flex-flow: column nowrap;
   background-repeat: no-repeat;
@@ -41,7 +41,6 @@ textarea {
   font-family: inherit;
 }
 
-@import "variables";
 @import "size";
 @import "gap";
 @import "font";

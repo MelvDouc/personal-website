@@ -1,9 +1,27 @@
+.ff-primary {
+  font-family: $ff_primary;
+}
+
+.ff-monospace {
+  font-family: $ff_monospace;
+}
+
 @for $i from 1 through 10 {
   .fs-#{$i} {
     font-size: 0.25rem * $i !important;
   }
 }
 
+.fs-4_5 {
+  font-size: 1.1rem;
+}
+
 .fs-inherit {
   font-size: inherit !important;
+}
+
+@for $i from 1 through 8 {
+  .fw-#{$i} {
+    font-weight: $i * 100;
+  }
 }

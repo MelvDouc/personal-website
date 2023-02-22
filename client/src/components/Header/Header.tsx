@@ -2,11 +2,11 @@ import projects from "../../routing/projects.js";
 import urls from "../../routing/urls.js";
 import Dropdown from "../Dropdown/Dropdown.jsx";
 import Link from "../Link.js";
-import "./Header.scss";
+import classes from "./Header.module.scss";
 
 export default function Header() {
   return (
-    <header className="d-flex justify-content-between align-items-center gap-4 p-3 text-light">
+    <header className={classes.header}>
       <section className="d-flex gap-3 align-items-center">
         <article className="">
           <Link className="" href={urls.HOME.url}>
@@ -23,7 +23,7 @@ export default function Header() {
         </article>
       </section>
       <section className="d-flex align-items-center">
-        <nav className="w-100">
+        <nav className={classes.headerNav}>
           <ul className="list-style-none d-flex justify-content-end gap-3 w-100 h-100">
             <li>
               <Link href={urls.HOME.url}>Home</Link>
