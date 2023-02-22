@@ -1,0 +1,56 @@
+@import "/public/scss/variables";
+
+.switch {
+  --width: 3em;
+  --height: 1.5em;
+  --before-height: calc(var(--height) * 0.75);
+  --before-gap: 4px;
+  width: var(--width);
+  height: var(--height);
+  border-radius: 99999px;
+  position: relative;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked {
+      + .switchSlider {
+        background-color: $clr_blue_light;
+
+        &::before {
+          left: var(--before-gap);
+        }
+      }
+    }
+
+    &:focus + .switchSlider {
+      box-shadow: 0 0 1px $clr_blue_light;
+    }
+  }
+
+  .switchSlider {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: gray;
+    border-radius: inherit;
+    transition: background-color 400ms;
+
+    &::before {
+      content: "";
+      height: var(--before-height);
+      width: var(--before-height);
+      position: absolute;
+      top: 50%;
+      left: calc(var(--width) - var(--before-height) - 4px);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition: left 400ms;
+      background-color: white;
+    }
+  }
+}
