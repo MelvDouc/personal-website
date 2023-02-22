@@ -27,10 +27,12 @@ export function initLengthInput(
   input.max = String(MAX_LENGTH);
   input.oninput = () => {
     const value = input.valueAsNumber;
-    if (isValidLength(value)) lengthObs.setValue(value);
+    if (isValidLength(value))
+      lengthObs.setValue(value);
   };
   lengthObs.subscribe(length => {
-    if (length !== input.valueAsNumber) input.value = String(length);
+    if (length !== input.valueAsNumber)
+      input.value = String(length);
   });
 }
 
@@ -44,7 +46,7 @@ export function createPassword(length: number, options: Set<string>) {
   }
 
   return password
-    .slice(0, length)
     .sort(() => Math.random() - 0.5)
+    .slice(0, length)
     .join("");
 }
