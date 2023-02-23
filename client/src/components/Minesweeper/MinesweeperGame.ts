@@ -1,12 +1,10 @@
 import { Observable } from "reactfree-jsx";
+import { adjacentCoords, coordsToIndex } from "../../utils/coords.js";
 import { randomInt } from "../../utils/random.js";
 import displayAlterBox from "../AlertBox/AlertBox.jsx";
 import MinesweeperCell from "./MinesweeperCell.jsx";
 
 export default class MinesweeperGame {
-  static readonly #xOffsets = [-1, -1, -1, 0, 0, 1, 1, 1];
-  static readonly #yOffsets = [-1, 0, 1, -1, 1, -1, 0, 1];
-
   readonly #numberOfRows: number;
   readonly #numberOfCols: number;
   readonly #numberOfMines: number;
@@ -60,21 +58,8 @@ export default class MinesweeperGame {
     return this.#numberOfRows;
   }
 
-  *#adjacentCells(x: number, y: number): Generator<MinesweeperCell> {
-    for (let i = 0; i < MinesweeperGame.#xOffsets.length; i++) {
-      const nextX = x + MinesweeperGame.#xOffsets[i];
-      const nextY = y + MinesweeperGame.#yOffsets[i];
-      if (this.#isSafe(nextX, nextY))
-        yield this.#cells[nextX][nextY];
-    }
-  }
-
-  #isCellMined(cell: MinesweeperCell): boolean {
-    return this.#minedIndices.has(cell.index);
-  }
-
-  #isSafe(x: number, y: number): boolean {
-    return x >= 0 && x < this.#numberOfRows && y >= 0 && y < this.#numberOfCols;
+  #isMineAtIndex(index: number): boolean {
+    return this.#minedIndices.has(index);
   }
 
   #setLoss(): void {
@@ -82,7 +67,7 @@ export default class MinesweeperGame {
       row.forEach((cell) => {
         cell.covered = false;
         cell.flagged = false;
-        if (this.#isCellMined(cell))
+        if (this.#isMineAtIndex(cell.index))
           cell.revealMine();
       });
     });
@@ -102,8 +87,8 @@ export default class MinesweeperGame {
   countAdjacentMines(x: number, y: number): number {
     let count = 0;
 
-    for (const cell of this.#adjacentCells(x, y))
-      if (this.#isCellMined(cell))
+    for (const coords of adjacentCoords(x, y, this.#numberOfRows, this.#numberOfCols))
+      if (this.#isMineAtIndex(coordsToIndex(coords.x, coords.y, this.#numberOfRows)))
         count++;
 
     return count;
@@ -112,21 +97,20 @@ export default class MinesweeperGame {
   isWin(): boolean {
     return this.flagCount === 0 && this.#cells.every((row) => {
       return row.every((cell) => {
-        return this.#isCellMined(cell) ? cell.flagged : !cell.covered;
+        return this.#isMineAtIndex(cell.index) ? cell.flagged : !cell.covered;
       });
     });
   }
 
   placeMines(excludedIndex: number): void {
-    const minedIndices = new Set<number>([excludedIndex]);
+    this.#minedIndices = new Set<number>([excludedIndex]);
     const numberOfCells = this.#numberOfRows * this.#numberOfCols;
 
-    while (minedIndices.size < this.#numberOfMines + 1) {
-      minedIndices.add(randomInt(0, numberOfCells - 1));
+    while (this.#minedIndices.size < this.#numberOfMines + 1) {
+      this.#minedIndices.add(randomInt(0, numberOfCells - 1));
     }
 
-    minedIndices.delete(excludedIndex);
-    this.#minedIndices = minedIndices;
+    this.#minedIndices.delete(excludedIndex);
   }
 
   reset(): void {
@@ -150,14 +134,15 @@ export default class MinesweeperGame {
     }
   }
 
-  uncover(cell: MinesweeperCell, isFirstTime: boolean): void {
+  uncover(cell: MinesweeperCell, isFirstTime = true, visitedIndices = new Set<number>()): void {
     cell.covered = false;
 
-    if (this.#isCellMined(cell) && isFirstTime) {
+    if (this.#isMineAtIndex(cell.index)) {
       this.#setLoss();
       return;
     }
 
+    visitedIndices.add(cell.index);
     const adjacentMineCount = this.countAdjacentMines(cell.x, cell.y);
 
     if (adjacentMineCount > 0)
@@ -171,8 +156,10 @@ export default class MinesweeperGame {
     if (adjacentMineCount > 0 && !isFirstTime)
       return;
 
-    for (const peer of this.#adjacentCells(cell.x, cell.y))
-      if (peer.canBeUncovered() && !this.#isCellMined(peer))
-        this.uncover(peer, false);
+    for (const coords of adjacentCoords(cell.x, cell.y, this.#numberOfRows, this.#numberOfCols)) {
+      const peer = this.#cells[coords.x][coords.y];
+      if (!visitedIndices.has(peer.index) && peer.canBeUncovered() && !this.#isMineAtIndex(peer.index))
+        this.uncover(peer, false, visitedIndices);
+    }
   }
 }

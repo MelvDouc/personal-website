@@ -23,9 +23,9 @@ export default class MinesweeperCell extends HTMLElement {
       if (this.#game.isOver)
         return;
       if (!this.#game.areMinesPlaced)
-        this.#game.placeMines(this.#index);
+        this.#game.placeMines(this.index);
       if (this.canBeUncovered())
-        this.#game.uncover(this, true);
+        this.#game.uncover(this);
     });
     this.addEventListener("contextmenu", (e) => {
       e.preventDefault();
