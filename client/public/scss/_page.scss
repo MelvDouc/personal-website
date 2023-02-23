@@ -15,4 +15,9 @@
   > section + section {
     margin-top: calc(var(--gap) * 6);
   }
+
+  &.page-center {
+    display: flex;
+    flex-flow: column nowrap;
+  }
 }

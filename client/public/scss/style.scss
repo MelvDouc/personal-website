@@ -3,6 +3,7 @@
 :root {
   --gap: 0.2em;
   --max-page-width: 700px;
+  font-size: 14px;
 }
 
 *,
@@ -13,12 +14,8 @@
   box-sizing: border-box;
 }
 
-html,
 body {
   height: 100vh;
-}
-
-body {
   font-family: $ff_primary;
   display: flex;
   flex-flow: column nowrap;
@@ -26,10 +23,6 @@ body {
   background-size: cover;
   background-position: center;
   background-image: radial-gradient(rgba(15, 24, 15, 0.6), rgba(24, 39, 24, 0.7)), url("/img/bg-computer.jpg");
-}
-
-main {
-  height: 100%;
 }
 
 input,
