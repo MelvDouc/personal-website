@@ -11,7 +11,7 @@ export default class MinesweeperGame {
   readonly #cells: MinesweeperCell[][];
   readonly #flagCountObs: Observable<number>;
   #minedIndices!: Set<number>;
-  #isOver = false;
+  #statusObs: Obs<"ongoing" | "win" | "loss">;
 
   constructor({ numberOfRows, numberOfCols, numberOfMines }: {
     numberOfRows: number;
@@ -27,10 +27,29 @@ export default class MinesweeperGame {
       });
     });
     this.#flagCountObs = new Observable(numberOfMines);
+    this.#statusObs = new Observable("ongoing");
 
     this.#flagCountObs.subscribe(() => {
       if (this.isWin())
-        this.#setWin();
+        this.#statusObs.setValue("win");
+    });
+
+    this.#statusObs.subscribe((status) => {
+      switch (status) {
+        case "win":
+          displayAlterBox({ message: "You win!" });
+          break;
+        case "loss":
+          this.#cells.forEach((row) => {
+            row.forEach((cell) => {
+              cell.covered = false;
+              cell.flagged = false;
+              if (this.#isMineAtIndex(cell.index))
+                cell.revealMine();
+            });
+          });
+          displayAlterBox({ message: "Boom!" });
+      }
     });
   }
 
@@ -42,16 +61,8 @@ export default class MinesweeperGame {
     return this.#cells;
   }
 
-  get flagCount(): number {
-    return this.#flagCountObs.getValue();
-  }
-
-  set flagCount(value: number) {
-    this.#flagCountObs.setValue(value);
-  }
-
   get isOver(): boolean {
-    return this.#isOver;
+    return this.#statusObs.getValue() !== "ongoing";
   }
 
   get numberOfRows(): number {
@@ -60,28 +71,6 @@ export default class MinesweeperGame {
 
   #isMineAtIndex(index: number): boolean {
     return this.#minedIndices.has(index);
-  }
-
-  #setLoss(): void {
-    this.#cells.forEach((row) => {
-      row.forEach((cell) => {
-        cell.covered = false;
-        cell.flagged = false;
-        if (this.#isMineAtIndex(cell.index))
-          cell.revealMine();
-      });
-    });
-    displayAlterBox({
-      message: "Boom!"
-    });
-    this.#isOver = true;
-  }
-
-  #setWin(): void {
-    displayAlterBox({
-      message: "You win!"
-    });
-    this.#isOver = true;
   }
 
   countAdjacentMines(x: number, y: number): number {
@@ -95,7 +84,7 @@ export default class MinesweeperGame {
   }
 
   isWin(): boolean {
-    return this.flagCount === 0 && this.#cells.every((row) => {
+    return this.#flagCountObs.getValue() === 0 && this.#cells.every((row) => {
       return row.every((cell) => {
         return this.#isMineAtIndex(cell.index) ? cell.flagged : !cell.covered;
       });
@@ -119,18 +108,18 @@ export default class MinesweeperGame {
     this.#cells.forEach((row) => {
       row.forEach((cell) => cell.reset());
     });
-    this.#isOver = false;
+    this.#statusObs.setValue("ongoing");
   }
 
   toggleFlag(cell: MinesweeperCell): void {
     if (cell.flagged) {
       cell.flagged = false;
-      this.flagCount++;
+      this.#flagCountObs.updateValue(count => count + 1);
       return;
     }
-    if (this.flagCount > 0) {
+    if (this.#flagCountObs.getValue() > 0) {
       cell.flagged = true;
-      this.flagCount--;
+      this.#flagCountObs.updateValue(count => count - 1);
     }
   }
 
@@ -138,7 +127,7 @@ export default class MinesweeperGame {
     cell.covered = false;
 
     if (this.#isMineAtIndex(cell.index)) {
-      this.#setLoss();
+      this.#statusObs.setValue("loss");
       return;
     }
 
@@ -149,7 +138,7 @@ export default class MinesweeperGame {
       cell.innerText = String(adjacentMineCount);
 
     if (this.isWin()) {
-      this.#setWin();
+      this.#statusObs.setValue("win");
       return;
     }
 
