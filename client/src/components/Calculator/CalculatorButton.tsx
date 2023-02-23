@@ -9,7 +9,7 @@ export default function CalculatorButton({
 }) {
   return (
     <button
-      classObj={{
+      classes={{
         "span-2": !!doubleCol
       }}
       onclick={handleClick}
