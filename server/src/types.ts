@@ -31,7 +31,7 @@ declare global {
 
 export type EntityChanges<T> = {
   updates: Partial<T>;
-  removedProperties: string[];
+  removedProperties: Omit<Array<keyof T>, "_id">;
 };
 
 export interface Word extends Document {

@@ -6,10 +6,7 @@ async function contactAdmin(req: Request, res: Response) {
   const emailData = req.body as EmailData;
   const htmlText = await emailService.getEmailText("contact", {
     sender: emailData.email,
-    message: emailData.message
-      .split(/\n+/)
-      .map(line => `<div>${line}</div>`)
-      .join("")
+    message: emailData.message.replace(/\n/g, "<br>")
   });
   const sendResult = await emailService.sendEmail({
     subject: emailData.subject,

@@ -6,7 +6,7 @@ import {
 } from "../types.js";
 
 export default abstract class Model<T> {
-  readonly collection: Collection<T>;
+  public readonly collection: Collection<T>;
 
   constructor(collection: Collection<T>) {
     this.collection = collection;
@@ -16,31 +16,38 @@ export default abstract class Model<T> {
     return { _id: id } as Filter<T>;
   }
 
-  findOneById(id: string) {
+  public findOneById(id: string) {
     return this.collection.findOne(this.getIdFilter(id));
   }
 
-  findAll(filter: Filter<T> = {}) {
+  public findAll(filter: Filter<T> = {}) {
     return this.collection.find(filter).toArray();
   }
 
-  save(doc: OptionalUnlessRequiredId<T>) {
+  public save(doc: OptionalUnlessRequiredId<T>) {
     return this.collection.insertOne(doc);
   }
 
-  async update(id: string, { updates, removedProperties }: EntityChanges<T>) {
+  public async update(id: string, { updates, removedProperties }: EntityChanges<T>) {
     const filter = this.getIdFilter(id);
     await this.collection.updateOne(filter, {
       $set: updates,
-      $unset: removedProperties.reduce<Record<string, "">>(
-        (acc, prop) => ((acc[prop] = ""), acc),
-        {}
-      )
+      $unset: removedProperties.reduce((acc, prop) => {
+        acc[prop] = "";
+        return acc;
+      }, {} as Record<keyof T, "">)
     });
     return this.collection.findOne(filter);
   }
 
-  delete(id: string) {
+  public delete(id: string) {
     return this.collection.deleteOne(this.getIdFilter(id));
   }
+
+  public isObject(entity: unknown): entity is object {
+    return typeof entity === "object"
+      && entity !== null;
+  }
+
+  public abstract isValidEntity(entity: unknown): boolean;
 }
