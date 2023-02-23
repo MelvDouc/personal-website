@@ -12,7 +12,7 @@ async function home(req: Request, res: Response) {
     console.log(error);
     res.contentType("html").end(`
       <h1>Something went wrong...</h1>
-      <p style="color: navy">${(<Error>error).message}</p>
+      <p>Please try again later.</p>
     `);
   }
 }
