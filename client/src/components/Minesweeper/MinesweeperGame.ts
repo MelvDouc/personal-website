@@ -10,7 +10,7 @@ export default class MinesweeperGame {
   readonly #numberOfMines: number;
   readonly #cells: MinesweeperCell[][];
   readonly #flagCountObs: Observable<number>;
-  #minedIndices!: Set<number>;
+  readonly #minedIndices = new Set<number>();
   #statusObs: Obs<"ongoing" | "win" | "loss">;
 
   constructor({ numberOfRows, numberOfCols, numberOfMines }: {
@@ -34,10 +34,16 @@ export default class MinesweeperGame {
         this.#statusObs.setValue("win");
     });
 
+    document.body.addEventListener("animationend", (e) => {
+      if (e.animationName !== "rotate_body") return;
+      document.body.classList.remove("rotate-body");
+      displayAlterBox({ message: "You win!" });
+    });
+
     this.#statusObs.subscribe((status) => {
       switch (status) {
         case "win":
-          displayAlterBox({ message: "You win!" });
+          document.body.classList.add("rotate-body");
           break;
         case "loss":
           this.#cells.forEach((row) => {
@@ -49,6 +55,13 @@ export default class MinesweeperGame {
             });
           });
           displayAlterBox({ message: "Boom!" });
+          break;
+        case "ongoing":
+          this.#flagCountObs.setValue(this.#numberOfMines);
+          this.#minedIndices.clear();
+          this.#cells.forEach((row) => {
+            row.forEach((cell) => cell.reset());
+          });
       }
     });
   }
@@ -92,7 +105,7 @@ export default class MinesweeperGame {
   }
 
   placeMines(excludedIndex: number): void {
-    this.#minedIndices = new Set<number>([excludedIndex]);
+    this.#minedIndices.add(excludedIndex);
     const numberOfCells = this.#numberOfRows * this.#numberOfCols;
 
     while (this.#minedIndices.size < this.#numberOfMines + 1) {
@@ -103,11 +116,6 @@ export default class MinesweeperGame {
   }
 
   reset(): void {
-    this.#flagCountObs.setValue(this.#numberOfMines);
-    this.#minedIndices.clear();
-    this.#cells.forEach((row) => {
-      row.forEach((cell) => cell.reset());
-    });
     this.#statusObs.setValue("ongoing");
   }
 
