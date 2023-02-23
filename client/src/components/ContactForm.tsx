@@ -29,8 +29,7 @@ export default function ContactForm() {
           return;
         }
         displayAlterBox({
-          message:
-            "Your message was sent. An admin will try and get back to you soon.",
+          message: "Your message was sent. I'll try and get back to you soon.",
           handleClose: () => router.setUrl(urls.HOME.url)
         });
       }}
@@ -40,6 +39,7 @@ export default function ContactForm() {
         <input
           type="email"
           id="contact-email"
+          title="An email so I can get back to you"
           oninput={setData("email")}
           required
         />
@@ -49,6 +49,7 @@ export default function ContactForm() {
         <input
           type="text"
           id="contact-subject"
+          title="A summary of why you want to get in touch"
           oninput={setData("subject")}
           required
         />
@@ -58,6 +59,7 @@ export default function ContactForm() {
         <textarea
           id="contact-message"
           rows={10}
+          title="Are you interested in my services?"
           oninput={setData("message")}
           required
         ></textarea>
