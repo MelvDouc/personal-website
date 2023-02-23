@@ -1,5 +1,4 @@
 import { Observable } from "reactfree-jsx";
-import CalcButton from "./CalculatorButton.jsx";
 import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
 import classes from "./Calculator.module.scss";
 
@@ -30,33 +29,33 @@ export default function Calculator() {
         </section>
         <section className={classes.calculatorBottom}>
           <div className={classes.calculatorRow}>
-            <CalcButton handleClick={clear}>C</CalcButton>
-            <CalcButton handleClick={() => append("%")}>%</CalcButton>
-            <CalcButton handleClick={del}>&#10232;</CalcButton>
-            <CalcButton handleClick={() => append("/")}>/</CalcButton>
+            <button onclick={clear}>C</button>
+            <button onclick={() => append("%")}>%</button>
+            <button onclick={del}>&#10232;</button>
+            <button onclick={() => append("/")}>/</button>
           </div>
           <div className={classes.calculatorRow}>
-            <CalcButton handleClick={() => append("7")}>7</CalcButton>
-            <CalcButton handleClick={() => append("8")}>8</CalcButton>
-            <CalcButton handleClick={() => append("9")}>9</CalcButton>
-            <CalcButton handleClick={() => append("*")}>*</CalcButton>
+            <button onclick={() => append("7")}>7</button>
+            <button onclick={() => append("8")}>8</button>
+            <button onclick={() => append("9")}>9</button>
+            <button onclick={() => append("*")}>*</button>
           </div>
           <div className={classes.calculatorRow}>
-            <CalcButton handleClick={() => append("4")}>4</CalcButton>
-            <CalcButton handleClick={() => append("5")}>5</CalcButton>
-            <CalcButton handleClick={() => append("6")}>6</CalcButton>
-            <CalcButton handleClick={() => append("-")}>-</CalcButton>
+            <button onclick={() => append("4")}>4</button>
+            <button onclick={() => append("5")}>5</button>
+            <button onclick={() => append("6")}>6</button>
+            <button onclick={() => append("-")}>-</button>
           </div>
           <div className={classes.calculatorRow}>
-            <CalcButton handleClick={() => append("1")}>1</CalcButton>
-            <CalcButton handleClick={() => append("2")}>2</CalcButton>
-            <CalcButton handleClick={() => append("3")}>3</CalcButton>
-            <CalcButton handleClick={() => append("+")}>+</CalcButton>
+            <button onclick={() => append("1")}>1</button>
+            <button onclick={() => append("2")}>2</button>
+            <button onclick={() => append("3")}>3</button>
+            <button onclick={() => append("+")}>+</button>
           </div>
           <div className={classes.calculatorRow}>
-            <CalcButton handleClick={() => append(".")}>.</CalcButton>
-            <CalcButton handleClick={() => append("0")}>0</CalcButton>
-            <CalcButton handleClick={compute} doubleCol>=</CalcButton>
+            <button onclick={() => append(".")}>.</button>
+            <button onclick={() => append("0")}>0</button>
+            <button onclick={compute} className="span-2">=</button>
           </div>
         </section>
       </div>

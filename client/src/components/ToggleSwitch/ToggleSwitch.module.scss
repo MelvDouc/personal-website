@@ -10,6 +10,7 @@ $before_gap: 4px;
   height: $height;
   border-radius: 99999px;
   position: relative;
+  cursor: pointer;
 
   input {
     opacity: 0;

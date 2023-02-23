@@ -6,7 +6,7 @@ export default function Minesweeper() {
   const game = new MinesweeperGame({
     numberOfRows: 10,
     numberOfCols: 10,
-    numberOfMines: 2
+    numberOfMines: 20
   });
 
   return (
