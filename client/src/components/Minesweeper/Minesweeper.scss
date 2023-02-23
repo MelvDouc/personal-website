@@ -1,7 +1,3 @@
-html:has(body.rotate-body) {
-  background-color: white;
-}
-
 body.rotate-body {
   animation: rotate_body 3s 250ms ease-out;
 }
