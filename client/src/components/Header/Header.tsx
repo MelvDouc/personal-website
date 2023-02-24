@@ -9,11 +9,11 @@ export default function Header() {
     <header className={classes.header}>
       <section className="d-flex gap-3 align-items-center">
         <article className="">
-          <Link href={urls.HOME.url}>
+          <Link href={urls.HOME.url} className="hello-world">
             <img
               src="/img/favicon.png"
               alt="Logo"
-              style={{ maxWidth: "50px" }}
+              className={classes.logo}
             />
           </Link>
         </article>
