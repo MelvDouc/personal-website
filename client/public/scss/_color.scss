@@ -33,7 +33,19 @@
 }
 
 .bg-light {
-  background-color: rgb(239, 245, 245);
+  background-color: $clr_light;
+}
+
+.bg-light-transparent {
+  background-color: rgba($clr_light, 0.275);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-white-transparent {
+  background-color: rgb(255, 255, 255, 0.85);
 }
 
 .bg-transparent {

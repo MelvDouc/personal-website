@@ -28,7 +28,7 @@ export default function PasswordGenerator(): HTMLElement {
 
   const passwordGenerator = (
     <div className="w-100 w-max-page fs-4_5 border-rounded overflow-hidden">
-      <section className=" d-flex justify-content-center align-items-center p-2 bg-dark text-green">
+      <section className="d-flex justify-content-center align-items-center p-2 bg-light-transparent text-green">
         <output
           className="fs-5 ff-monospace text-center word-break-all"
           $init={element => {
@@ -36,8 +36,8 @@ export default function PasswordGenerator(): HTMLElement {
           }}
         ></output>
       </section>
-      <section className="grid-center bg-dark-transparent">
-        <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap">
+      <section className="grid-center bg-white-transparent">
+        <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap text-dark">
           <article className="row gap-2">
             <div className="col-15" style={{ height: "1.8em" }}>
               <LengthInput

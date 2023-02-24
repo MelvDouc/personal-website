@@ -8,7 +8,7 @@ export default function Checkbox({ key, charsTypesObs }: {
 
   return (
     <div className="d-flex justify-content-between align-items-center">
-      <label className="text-light text-transform-capitalize" htmlFor={id}>{key.replace(/\-+/g, " ")}</label>
+      <label className="text-transform-capitalize" htmlFor={id}>{key.replace(/\-+/g, " ")}</label>
       <ToggleSwitch
         id={id}
         checked={charsTypesObs.getValue().has(key)}
