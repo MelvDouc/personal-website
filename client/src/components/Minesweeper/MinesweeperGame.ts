@@ -34,15 +34,14 @@ export default class MinesweeperGame {
         this.#statusObs.setValue("win");
     });
 
-    document.body.addEventListener("animationend", (e) => {
-      if (e.animationName !== "rotate_body") return;
-      document.body.classList.remove("rotate-body");
-      displayAlterBox({ message: "You win!" });
-    });
-
     this.#statusObs.subscribe((status) => {
       switch (status) {
         case "win":
+          document.body.addEventListener("animationend", (e) => {
+            if (e.animationName !== "rotate_body") return;
+            document.body.classList.remove("rotate-body");
+            displayAlterBox({ message: "You win!" });
+          }, { once: true });
           document.body.classList.add("rotate-body");
           break;
         case "loss":
