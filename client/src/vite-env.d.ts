@@ -23,3 +23,8 @@ interface EmailData {
   subject: string;
   message: string;
 }
+
+interface Coords {
+  x: number;
+  y: number;
+}
