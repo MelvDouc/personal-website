@@ -1,6 +1,7 @@
 import Calculator from "../components/Calculator/Calculator.jsx";
 import Minesweeper from "../components/Minesweeper/Minesweeper.jsx";
 import PasswordGenerator from "../components/PasswordGenerator/PasswordGenerator.jsx";
+import Snake from "../components/Snake/SnakeCanvas.jsx";
 
 const projects = [
   {
@@ -17,7 +18,12 @@ const projects = [
     url: "/projects/password-generator",
     title: "Password Generator",
     component: PasswordGenerator
-  }
+  },
+  {
+    url: "/projects/snake",
+    title: "Snake",
+    component: Snake
+  },
 ] as {
   url: string;
   title: string;
