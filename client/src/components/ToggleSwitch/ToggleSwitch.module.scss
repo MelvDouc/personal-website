@@ -18,7 +18,7 @@ $before_gap: 4px;
     height: 0;
 
     &:checked {
-      + .switchSlider {
+      + .slider {
         background-color: $clr_blue_light;
 
         &::before {
@@ -27,32 +27,32 @@ $before_gap: 4px;
       }
     }
 
-    &:focus + .switchSlider {
+    &:focus + .slider {
       box-shadow: 0 0 1px $clr_blue_light;
     }
   }
+}
 
-  .switchSlider {
-    width: 100%;
-    height: 100%;
-    display: block;
+.slider {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: gray;
+  border-radius: inherit;
+  transition: background-color 400ms;
+
+  &::before {
+    content: "";
+    height: $before_height;
+    width: $before_height;
     position: absolute;
-    inset: 0;
-    background-color: gray;
-    border-radius: inherit;
-    transition: background-color 400ms;
-
-    &::before {
-      content: "";
-      height: $before_height;
-      width: $before_height;
-      position: absolute;
-      top: 50%;
-      left: calc($width - $before_height - $before_gap);
-      border-radius: 50%;
-      transform: translateY(-50%);
-      transition: left 400ms;
-      background-color: white;
-    }
+    top: 50%;
+    left: calc($width - $before_height - $before_gap);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: left 400ms;
+    background-color: white;
   }
 }
