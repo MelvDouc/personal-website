@@ -1,7 +1,7 @@
 import ContactPage from "../pages/ContactPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
+import ProjectPage from "../pages/ProjectPage.jsx";
 import ProjectsPage from "../pages/ProjectsPage.jsx";
-import projects from "./projects.js";
 import urls from "./urls.js";
 
 export class Router {
@@ -58,10 +58,10 @@ router
   .addPage(urls.PROJECTS.url, {
     title: urls.PROJECTS.title,
     component: ProjectsPage
+  })
+  .addPage(urls.PROJECT.url, {
+    title: "?",
+    component: () => ProjectPage({ pathname: location.pathname })
   });
-
-projects.forEach(({ url, title, component }) => {
-  router.addPage(url, { component, title });
-});
 
 export default router;
