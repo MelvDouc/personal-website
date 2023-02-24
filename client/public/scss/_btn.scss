@@ -20,7 +20,9 @@
 
     &:hover,
     &:focus {
-      background-image: radial-gradient(darken($clr_green_light, 5%), $clr_green_light);
+      color: $clr_green_light;
+      outline: 2px solid $clr_green_light;
+      background-color: white;
     }
   }
 }
