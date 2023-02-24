@@ -25,11 +25,13 @@ function AlertBox({ message, handleClose }: {
   return (
     <div className={classes.alertBoxContainer} $init={(element) => {
       alertBoxContainer = element;
-      document.addEventListener("keydown", (e: KeyboardEvent) => {
+      const handleEnter = (e: KeyboardEvent) => {
         if (e.key !== "Enter") return;
         e.preventDefault();
         quit();
-      }, { once: true });
+        document.removeEventListener("keydown", handleEnter);
+      };
+      document.addEventListener("keydown", handleEnter);
     }}>
       <div className={classes.alertBox}>
         <p>{message}</p>

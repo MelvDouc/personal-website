@@ -3,7 +3,7 @@ import urls from "../routing/urls.js";
 
 export default function HomePage() {
   return (
-    <div className="page page-center text-light">
+    <div className="page page-center-sm text-light">
       <section>
         <h1 className="fs-9">A Website Bespoke And Exactly Your Size</h1>
       </section>

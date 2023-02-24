@@ -1,3 +1,5 @@
+import { setIntervalOnAnimationFrame } from "../../utils/animation.js";
+import displayAlterBox from "../AlertBox/AlertBox.jsx";
 import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
 import Food from "./Food.jsx";
 import Snake from "./Snake.js";
@@ -9,9 +11,8 @@ export default function _SnakeCanvas() {
 }
 
 export class SnakeCanvas extends HTMLCanvasElement {
-  public readonly squaresPerRow = 15;
-  public readonly squaresPerCol = 15;
-  public readonly squareSize = 40;
+  public readonly squaresPerLine: number = 15;
+  public readonly squareSize: number;
   public readonly snake: Snake;
   public readonly food: Food;
   public score = 0;
@@ -19,11 +20,12 @@ export class SnakeCanvas extends HTMLCanvasElement {
 
   constructor() {
     super();
-    this.width = this.squaresPerRow * this.squareSize;
+    this.width = Math.min(Math.floor(window.innerWidth * 0.8), 600);
+    this.squareSize = this.width / this.squaresPerLine;
     this.height = this.width;
     this.snake = new Snake(this);
     this.food = new Food(this);
-    this.steerSnake = (e) => { console.log("steering"); this.snake.steer(e.key); };
+    this.steerSnake = (e) => this.snake.steer(e.key);
   }
 
   connectedCallback() {
@@ -35,19 +37,36 @@ export class SnakeCanvas extends HTMLCanvasElement {
     document.removeEventListener("keydown", this.steerSnake);
   }
 
-  playGame() {
+  private createGradient(ctx: CanvasRenderingContext2D) {
+    const gradient = ctx.createLinearGradient(0, 0, this.width, 0);
+    gradient.addColorStop(0, "#33DD24");
+    gradient.addColorStop(0.5, "#83E358");
+    gradient.addColorStop(1, "#33DD24");
+    return gradient;
+  }
+
+  private playGame(): void {
     const ctx = this.getContext("2d")!;
     const { width, squareSize, snake, food } = this;
     const abortController = new AbortController();
+    ctx.font = "45px Verdana";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const gradient = this.createGradient(ctx);
+
+    abortController.signal.addEventListener("abort", () => {
+      displayAlterBox({
+        message: "The snake swallowed its own tail!"
+      });
+    });
 
     setIntervalOnAnimationFrame(() => {
-      ctx.fillStyle = "lightgreen";
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, width);
       ctx.fillStyle = "white";
-      ctx.font = "45px Verdana";
-      ctx.fillText(`${this.score}`, width / 2 - squareSize / 2, width / 2);
+      ctx.fillText(`${this.score}`, width / 2, width / 2);
       ctx.fillStyle = "purple";
-      ctx.strokeStyle = "red";
+      ctx.strokeStyle = "lightpurple";
 
       for (const { x, y } of snake) {
         ctx.fillRect(x, y, squareSize, squareSize);
@@ -73,27 +92,3 @@ export class SnakeCanvas extends HTMLCanvasElement {
 }
 
 customElements.define("snake-canvas", SnakeCanvas, { extends: "canvas" });
-
-
-
-
-
-function setIntervalOnAnimationFrame(callback: VoidFunction, interval: number, abortController: AbortController): void {
-  let prevTime = 0;
-  let handle: number;
-  abortController.signal.onabort = () => {
-    cancelAnimationFrame(handle);
-  };
-
-  const animate = (time: number) => {
-    handle = requestAnimationFrame(animate);
-
-    if (time - prevTime < interval)
-      return;
-
-    prevTime = time;
-    callback();
-  };
-
-  animate(interval);
-}

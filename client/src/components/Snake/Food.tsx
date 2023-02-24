@@ -7,15 +7,15 @@ export default class Food {
   public y: number;
   public randomizeCoords: VoidFunction;
 
-  constructor(canvas: SnakeCanvas) {
+  constructor({ width, squareSize, squaresPerLine, snake }: SnakeCanvas) {
     this.image = <img src="/img/snake/food.png" />;
-    this.x = canvas.width - canvas.squareSize * 2;
-    this.y = canvas.squareSize;
+    this.x = width - squareSize * 2;
+    this.y = squareSize;
     this.randomizeCoords = () => {
       do {
-        this.x = randomInt(0, canvas.squaresPerRow - 1) * canvas.squareSize;
-        this.y = randomInt(0, canvas.squaresPerCol - 1) * canvas.squareSize;
-      } while (canvas.snake.some(({ x, y }) => x === this.x && y === this.y));
+        this.x = randomInt(0, squaresPerLine - 1) * squareSize;
+        this.y = randomInt(0, squaresPerLine - 1) * squareSize;
+      } while (snake.some(({ x, y }) => x === this.x && y === this.y));
     };
   }
 }
