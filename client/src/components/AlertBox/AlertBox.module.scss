@@ -1,4 +1,4 @@
-.alertBox {
+.alertBoxContainer {
   position: absolute;
   z-index: 9999;
   height: 100vh;
@@ -6,16 +6,16 @@
   display: grid;
   place-items: center;
   background-color: rgba(31, 85, 80, 0.55);
+}
 
-  form {
-    width: min(50%, 400px);
-    padding: 1em;
-    border-radius: 10px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    gap: 1em;
-    background-color: white;
-    user-select: none;
-  }
+.alertBox {
+  width: min(50%, 400px);
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1em;
+  background-color: white;
+  user-select: none;
 }
