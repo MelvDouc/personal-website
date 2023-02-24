@@ -1,24 +1,12 @@
 import router from "../routing/router.js";
 
-export default class Link extends HTMLAnchorElement {
-  #pathname: string;
+export default function Link(props: JSX.IntrinsicElements["a"] & Required<Pick<JSX.IntrinsicElements["a"], "href">> & { children?: any; }) {
+  const { children, ...otherProps } = props;
+  otherProps.onclick = (e) => {
+    e.preventDefault();
+    history.pushState({}, "", (e.target as HTMLAnchorElement).href);
+    router.setUrl(props.href);
+  };
 
-  constructor({ href, className }: {
-    href: string;
-    className?: string;
-  }) {
-    super();
-    this.href = href;
-    this.#pathname = href;
-    if (className)
-      this.className = className;
-
-    this.addEventListener("click", (e) => {
-      e.preventDefault();
-      history.pushState({}, "", this.href);
-      router.setUrl(this.#pathname);
-    });
-  }
+  return h("a", otherProps, ...(children ?? [])) as HTMLAnchorElement;
 }
-
-customElements.define("a-link", Link, { extends: "a" });

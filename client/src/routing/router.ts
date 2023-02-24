@@ -9,9 +9,6 @@ export class Router {
   private urlChangeSubscriptions = new Set<(page: Page) => any>();
   private routes = new Map<string | RegExp, Page>();
 
-  constructor() {
-  }
-
   public getPage(url: string | RegExp) {
     return this.routes.get(url);
   }
@@ -64,10 +61,7 @@ router
   });
 
 projects.forEach(({ url, title, component }) => {
-  router.addPage(url, {
-    component,
-    title
-  });
+  router.addPage(url, { component, title });
 });
 
 export default router;

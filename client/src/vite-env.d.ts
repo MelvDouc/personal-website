@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+declare function h(tagName: string, props: Record<string, any>, ...children: any[]): any;
+
 type OptionalPromise<T> = T | Promise<T>;
 type Obs<T> = import("reactfree-jsx").Observable<T>;
 
