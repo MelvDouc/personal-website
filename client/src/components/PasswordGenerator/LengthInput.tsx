@@ -1,14 +1,12 @@
 import { isValidLength, MAX_LENGTH, MIN_LENGTH } from "./helpers.js";
 
-export default function LengthInput({ type, className, lengthObs }: {
+export default function LengthInput({ type, lengthObs }: {
   type: "number" | "range";
   lengthObs: Obs<number>;
-  className: string;
 }) {
   return (
     <input
       type={type}
-      className={className}
       min={String(MIN_LENGTH)}
       max={String(MAX_LENGTH)}
       oninput={(e) => {

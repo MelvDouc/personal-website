@@ -5,5 +5,12 @@ export default defineConfig({
     jsxFactory: "h",
     jsxFragment: "Fragment",
     jsxInject: "import {h, Fragment} from 'reactfree-jsx';"
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "../../../public/scss/mixins/index";'
+      }
+    }
   }
 });

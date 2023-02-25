@@ -8,6 +8,7 @@ import {
   randomCharFns
 } from "./helpers.js";
 import LengthInput from "./LengthInput.jsx";
+import cssClasses from "./PasswordGenerator.module.scss";
 
 export default function PasswordGenerator(): HTMLElement {
   const lengthObs = new Observable<number>(15);
@@ -36,7 +37,7 @@ export default function PasswordGenerator(): HTMLElement {
 
   return <SmallComponentWrapper>
     <div
-      className="w-100 w-max-page fs-4_5 border-rounded overflow-hidden"
+      className={cssClasses.passwordGenerator}
       $init={() => lengthObs.notify()}
     >
       <section className="d-flex justify-content-center align-items-center p-2 bg-light-transparent text-green">
@@ -51,11 +52,7 @@ export default function PasswordGenerator(): HTMLElement {
         <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap text-dark">
           <article className="row gap-2">
             <div className="col-15" style={{ height: "1.8em" }}>
-              <LengthInput
-                type="number"
-                className="w-100 h-100 px-1"
-                lengthObs={lengthObs}
-              />
+              <LengthInput type="number" lengthObs={lengthObs} />
             </div>
             <div className="col-85 d-flex align-items-center">
               <LengthInput

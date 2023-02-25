@@ -1,0 +1,11 @@
+@mixin margin($x, $y) {
+  margin: calc(var(--gap) * $x) calc(var(--gap) * $y);
+}
+
+@mixin padding($x, $y) {
+  padding: calc(var(--gap) * $x) calc(var(--gap) * $y);
+}
+
+@mixin gap($multiplier) {
+  gap: calc(var(--gap) * $multiplier);
+}
