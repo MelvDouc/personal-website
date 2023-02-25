@@ -2,11 +2,3 @@
   display: grid;
   place-items: center;
 }
-
-.grid-center {
-  @include grid-center;
-}
-
-.span-2 {
-  grid-column: span 2;
-}

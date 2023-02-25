@@ -1,0 +1,30 @@
+@import "../mixins/index";
+@import "btn";
+@import "form";
+@import "page";
+
+@for $i from 1 through 10 {
+  .fs-#{$i} {
+    @include fs($i);
+  }
+}
+
+@for $i from 1 through 6 {
+  .mb-#{$i} {
+    margin-bottom: calc(var(--gap) * $i);
+  }
+}
+
+.grid-center {
+  @include grid-center;
+}
+
+.small-component-wrapper {
+  height: 100%;
+  @include padding(2, 2);
+  @include flex-center(column, nowrap);
+}
+
+.span-2 {
+  grid-column: span 2;
+}
