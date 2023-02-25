@@ -1,6 +1,6 @@
 import { Observable } from "reactfree-jsx";
 import Link from "../Link.jsx";
-import "./Dropdown.scss";
+import cssClasses from "./Dropdown.module.scss";
 
 export default function Dropdown({ link, links }: {
   link: HTMLAnchorElement;
@@ -16,7 +16,7 @@ export default function Dropdown({ link, links }: {
   };
 
   return (
-    <div className="dropdown" $init={(element) => {
+    <div className={cssClasses.dropdown} $init={(element) => {
       document.addEventListener("click", ({ target }) => {
         if (target instanceof Node && !element.contains(target))
           visibilityObs.setValue(false);
@@ -24,12 +24,12 @@ export default function Dropdown({ link, links }: {
     }}>
       {link}
       <ul
-        classNames={["dropdown-list", "d-none"]}
+        classNames={[cssClasses.dropdownList, cssClasses.hidden]}
         $init={element => {
           visibilityObs.subscribe((isVisible) => {
             isVisible
-              ? element.classList.remove("d-none")
-              : element.classList.add("d-none");
+              ? element.classList.remove(cssClasses.hidden)
+              : element.classList.add(cssClasses.hidden);
           });
         }}
       >

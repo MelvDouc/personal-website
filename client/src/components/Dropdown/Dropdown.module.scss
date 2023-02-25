@@ -1,0 +1,39 @@
+@import "/public/scss/variables";
+
+.dropdown {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.dropdownList {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  width: max-content;
+  border: 1px solid darkgray;
+  background-color: white;
+  z-index: 1;
+
+  li {
+    color: black;
+    overflow: hidden;
+
+    &:hover {
+      background-color: $clr_green_light;
+      color: white;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      @include padding(2, 3);
+      color: inherit;
+      text-decoration: none !important;
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
