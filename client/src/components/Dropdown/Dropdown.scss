@@ -3,12 +3,9 @@
 .dropdown {
   height: 100%;
   width: 100%;
-  display: grid;
-  place-items: center;
   position: relative;
 
   &-list {
-    overflow: hidden;
     list-style: none;
     position: absolute;
     top: 100%;

@@ -1,19 +1,18 @@
-import projects from "../../routing/projects.js";
 import urls from "../../routing/urls.js";
-import Dropdown from "../Dropdown/Dropdown.jsx";
 import Link from "../Link.js";
-import classes from "./Header.module.scss";
+import Nav from "../Nav/Nav.jsx";
+import cssClasses from "./Header.module.scss";
 
 export default function Header() {
   return (
-    <header className={classes.header}>
-      <section className="d-flex gap-3 align-items-center">
-        <article className="">
-          <Link href={urls.HOME.url} className="hello-world">
+    <header className={cssClasses.header}>
+      <section className={cssClasses.headerTop}>
+        <article>
+          <Link href={urls.HOME.url}>
             <img
               src="/img/favicon.png"
               alt="Logo"
-              className={classes.logo}
+              className={cssClasses.logo}
             />
           </Link>
         </article>
@@ -22,23 +21,8 @@ export default function Header() {
           <p>Full-Stack Web Development</p>
         </article>
       </section>
-      <section className="d-flex align-items-center">
-        <nav className={classes.headerNav}>
-          <ul className="list-style-none d-flex justify-content-end gap-3 w-100 h-100">
-            <li>
-              <Link className={classes.headerLink} href={urls.HOME.url}>Home</Link>
-            </li>
-            <li>
-              <Dropdown
-                link={<a className={classes.headerLink} href={urls.PROJECTS.url}>Projects</a>}
-                links={projects.map(({ url, title }) => ({ href: url, text: title }))}
-              />
-            </li>
-            <li>
-              <Link className={classes.headerLink} href={urls.CONTACT.url}>Contact</Link>
-            </li>
-          </ul>
-        </nav>
+      <section>
+        <Nav />
       </section>
     </header>
   );
