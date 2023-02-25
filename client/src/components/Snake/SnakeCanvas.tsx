@@ -20,7 +20,7 @@ export class SnakeCanvas extends HTMLCanvasElement {
 
   constructor() {
     super();
-    this.width = Math.min(Math.floor(window.innerWidth * 0.8), 600);
+    this.width = this.getIdealWidth();
     this.squareSize = this.width / this.squaresPerLine;
     this.height = this.width;
     this.snake = new Snake(this);
@@ -43,6 +43,13 @@ export class SnakeCanvas extends HTMLCanvasElement {
     gradient.addColorStop(0.5, "#83E358");
     gradient.addColorStop(1, "#33DD24");
     return gradient;
+  }
+
+  private getIdealWidth(): number {
+    let width = Math.floor(window.innerWidth * 0.8);
+    while (width % this.squaresPerLine !== 0)
+      width--;
+    return Math.min(width, 600);
   }
 
   private playGame(): void {
