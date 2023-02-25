@@ -22,12 +22,23 @@ export default function PasswordGenerator(): HTMLElement {
     if (isValidLength(length) && options.size > 0)
       passwordObs.setValue(createPassword(length, options));
   };
+  const copyPassword = async () => {
+    try {
+      await navigator.clipboard.writeText(passwordObs.getValue());
+      displayAlterBox({ message: "Password was copied!" });
+    } catch (error) {
+      displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });
+    }
+  };
 
   charsTypesObs.subscribe(setPassword);
   lengthObs.subscribe(setPassword);
 
-  const passwordGenerator = (
-    <div className="w-100 w-max-page fs-4_5 border-rounded overflow-hidden">
+  return <SmallComponentWrapper>
+    <div
+      className="w-100 w-max-page fs-4_5 border-rounded overflow-hidden"
+      $init={() => lengthObs.notify()}
+    >
       <section className="d-flex justify-content-center align-items-center p-2 bg-light-transparent text-green">
         <output
           className="fs-5 ff-monospace text-center word-break-all"
@@ -66,21 +77,11 @@ export default function PasswordGenerator(): HTMLElement {
             >New Password</button>
             <button
               className="btn btn-primary fs-inherit"
-              onclick={async () => {
-                try {
-                  await navigator.clipboard.writeText(passwordObs.getValue());
-                  displayAlterBox({ message: "Password was copied!" });
-                } catch (error) {
-                  displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });
-                }
-              }}
+              onclick={copyPassword}
             >Copy Password</button>
           </article>
         </div>
       </section>
     </div>
-  );
-
-  lengthObs.notify();
-  return <SmallComponentWrapper>{passwordGenerator}</SmallComponentWrapper>;
+  </SmallComponentWrapper>;
 }

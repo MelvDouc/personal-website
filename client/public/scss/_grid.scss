@@ -1,6 +1,10 @@
-.grid-center {
+@mixin grid-center {
   display: grid;
   place-items: center;
+}
+
+.grid-center {
+  @include grid-center;
 }
 
 .span-2 {

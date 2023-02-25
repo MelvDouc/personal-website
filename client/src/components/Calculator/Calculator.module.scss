@@ -1,4 +1,14 @@
+@import "../../../public/scss/grid";
+@import "../../../public/scss/size";
+@import "../../../public/scss/table";
+@import "../../../public/scss/variables";
+
 .calculator {
+  @include full-size;
+  @include border-rounded;
+  font-family: $ff_monospace;
+  padding: calc(var(--gap) * 2);
+  gap: calc(var(--gap) * 2);
   max-width: 520px;
   max-height: 720px;
   display: grid;
@@ -6,6 +16,7 @@
   background: rgb(230, 230, 230);
 
   output {
+    @include grid-center;
     background: rgb(34, 34, 34);
     background: linear-gradient(to right, rgb(34, 34, 34), rgb(62, 62, 62));
   }

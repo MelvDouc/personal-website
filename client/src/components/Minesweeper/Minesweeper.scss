@@ -1,3 +1,6 @@
+@import "../../../public/scss/background";
+@import "../../../public/scss/flex";
+
 body.rotate-body {
   animation: rotate_body 3s 250ms ease-out;
 }
@@ -8,16 +11,13 @@ body.rotate-body {
   display: grid;
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
+  margin-bottom: 1em;
 }
 
 minesweeper-cell {
   --bg-orientation: 45deg;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
+  @include flex-center;
+  @include bg-center-100;
   background-image: radial-gradient(white, rgb(235, 235, 245));
   user-select: none;
 

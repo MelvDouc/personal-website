@@ -18,10 +18,10 @@ export default function Calculator() {
 
   return (
     <SmallComponentWrapper>
-      <div classNames={[classes.calculator, "w-100", "h-100", "border-rounded", "p-2", "g-2", "ff-monospace"]}>
+      <div className={classes.calculator}>
         <section className="d-grid">
           <output
-            className="fw-700 fs-8 grid-center p-1 overflow-x-auto word-break-all text-green"
+            className="fw-700 fs-8 p-1 overflow-x-auto word-break-all text-green"
             $init={element => {
               resultObs.subscribe(value => element.innerText = value);
             }}

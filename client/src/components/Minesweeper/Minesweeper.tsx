@@ -11,11 +11,9 @@ export default function Minesweeper() {
 
   return (
     <SmallComponentWrapper>
-      <div className="d-flex flex-column justify-content-center align-items-center gap-2 w-100">
-        <div className="minesweeper">{game.cells.flat()}</div>
-        <div className="d-flex justify-content-center">
-          <button className="btn btn-primary" onclick={() => game.reset()}>New Game</button>
-        </div>
+      <div className="minesweeper">{game.cells.flat()}</div>
+      <div className="d-flex justify-content-center">
+        <button className="btn btn-primary" onclick={() => game.reset()}>New Game</button>
       </div>
     </SmallComponentWrapper>
   );

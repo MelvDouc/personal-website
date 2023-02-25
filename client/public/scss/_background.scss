@@ -1,11 +1,11 @@
-.background-no-repeat {
+@mixin bg-center-100 {
   background-repeat: no-repeat;
-}
-
-.background-center {
   background-position: center;
+  background-size: 100%;
 }
 
-.background-cover {
+@mixin bg-center-cover {
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
