@@ -17,7 +17,7 @@ export default function Header() {
           </Link>
         </article>
         <article className="text-transform-uppercase">
-          <p className="fs-6"><strong>Melvin Doucet</strong></p>
+          <p className="fs-6"><strong>Melvin&nbsp;Doucet</strong></p>
           <p>Full-Stack Web Development</p>
         </article>
       </section>

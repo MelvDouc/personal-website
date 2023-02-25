@@ -7,9 +7,7 @@ import cssClasses from "./Nav.module.scss";
 export default function Nav() {
   return (
     <nav className={cssClasses.nav}>
-      <input type="checkbox" id="navTogglerInput" className={cssClasses.navTogglerInput} />
-      <label className={cssClasses.navToggler} htmlFor="navTogglerInput"></label>
-      <ul className={cssClasses.navUl}>
+      <ul>
         <li>
           <Link className={cssClasses.navLink} href={urls.HOME.url}>Home</Link>
         </li>
