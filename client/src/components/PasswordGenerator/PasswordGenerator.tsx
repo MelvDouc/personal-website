@@ -35,50 +35,47 @@ export default function PasswordGenerator(): HTMLElement {
   charsTypesObs.subscribe(setPassword);
   lengthObs.subscribe(setPassword);
 
-  return <SmallComponentWrapper>
-    <div
-      className={cssClasses.passwordGenerator}
-      $init={() => lengthObs.notify()}
-    >
-      <section className="d-flex justify-content-center align-items-center p-2 bg-light-transparent text-green">
-        <output
-          className="fs-5 ff-monospace text-center word-break-all"
-          $init={element => {
-            passwordObs.subscribe(password => (element.innerText = password));
-          }}
-        ></output>
-      </section>
-      <section className="grid-center bg-white-transparent">
-        <div className="w-100 h-100 p-3 gap-5 d-flex flex-column flex-nowrap text-dark">
-          <article className="row gap-2">
-            <div className="col-15" style={{ height: "1.8em" }}>
-              <LengthInput type="number" lengthObs={lengthObs} />
-            </div>
-            <div className="col-85 d-flex align-items-center">
-              <LengthInput
-                type="range"
-                className="w-100"
-                lengthObs={lengthObs}
-              />
-            </div>
-          </article>
-          <article className="d-flex flex-column gap-3">
-            {Object.keys(randomCharFns).map(key => (
-              <Checkbox key={key} charsTypesObs={charsTypesObs} />
-            ))}
-          </article>
-          <article className="d-flex justify-content-center align-items-center flex-wrap gap-2">
-            <button
-              className="btn btn-primary fs-inherit"
-              onclick={() => lengthObs.notify()}
-            >New Password</button>
-            <button
-              className="btn btn-primary fs-inherit"
-              onclick={copyPassword}
-            >Copy Password</button>
-          </article>
-        </div>
-      </section>
-    </div>
-  </SmallComponentWrapper>;
+  return (
+    <SmallComponentWrapper>
+      <div
+        className={cssClasses.passwordGenerator}
+        $init={() => lengthObs.notify()}
+      >
+        <section>
+          <output
+            $init={(element) => {
+              passwordObs.subscribe((password) => element.innerText = password);
+            }}
+          ></output>
+        </section>
+        <section>
+          <div className={cssClasses.form}>
+            <article className={cssClasses.inputs}>
+              <div>
+                <LengthInput type="number" lengthObs={lengthObs} />
+              </div>
+              <div>
+                <LengthInput type="range" lengthObs={lengthObs} />
+              </div>
+            </article>
+            <article className={cssClasses.checkboxes}>
+              {Object.keys(randomCharFns).map(key => (
+                <Checkbox key={key} charsTypesObs={charsTypesObs} />
+              ))}
+            </article>
+            <article className={cssClasses.buttons}>
+              <button
+                className="btn btn-primary"
+                onclick={() => lengthObs.notify()}
+              >New Password</button>
+              <button
+                className="btn btn-primary"
+                onclick={copyPassword}
+              >Copy Password</button>
+            </article>
+          </div>
+        </section>
+      </div>
+    </SmallComponentWrapper>
+  );
 }
