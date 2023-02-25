@@ -8,8 +8,7 @@
   color: white;
   cursor: pointer;
   user-select: none;
-  transition-property: scale;
-  transition-duration: 200ms;
+  transition: scale 200ms;
 
   &:active {
     scale: 0.985;

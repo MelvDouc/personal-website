@@ -22,6 +22,14 @@
   gap: calc(var(--gap) * 2);
 }
 
+.headerTitles {
+  text-transform: uppercase;
+
+  strong {
+    @include fs(6);
+  }
+}
+
 @media only screen and (min-width: 500px) {
   .header {
     align-items: center;
