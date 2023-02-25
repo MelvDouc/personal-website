@@ -1,8 +1,12 @@
 .page {
   height: 100%;
-  max-width: 700px;
+  max-width: var(--max-page-width);
   margin: 0 auto;
   padding: calc(var(--gap) * 4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
 
   h2 {
     background-color: $clr_green_light;
@@ -14,10 +18,5 @@
 
   > section + section {
     margin-top: calc(var(--gap) * 6);
-  }
-
-  &.page-center-sm {
-    display: flex;
-    flex-flow: column nowrap;
   }
 }

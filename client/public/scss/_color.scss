@@ -1,3 +1,22 @@
+@import "./variables";
+
+@mixin bg-dark-transparent {
+  background-color: $clr_dark_transparent;
+}
+
+@mixin bg-secondary-gradient {
+  background-color: $clr_blue_light;
+  background-image: linear-gradient(to right, $clr_blue_lighter, $clr_blue_light);
+}
+
+@mixin bg-secondary-transparent {
+  background-color: rgba($clr_blue_light, 0.5);
+}
+
+@mixin text-light {
+  color: white;
+}
+
 .bg-primary {
   background-color: $clr_green_lighter;
 }
@@ -13,15 +32,6 @@
 
 .bg-secondary {
   background-color: $clr_blue_light;
-}
-
-.bg-secondary-gradient {
-  background-color: $clr_blue_light;
-  background-image: linear-gradient(to right, $clr_blue_lighter, $clr_blue_light);
-}
-
-.bg-secondary-transparent {
-  background-color: rgba($clr_blue_light, 0.5);
 }
 
 .bg-dark {

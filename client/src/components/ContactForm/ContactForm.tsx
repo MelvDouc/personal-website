@@ -1,8 +1,9 @@
 import { Observable } from "reactfree-jsx";
-import router from "../routing/router.js";
-import urls from "../routing/urls.js";
-import { sendEmail } from "../utils/api.js";
-import displayAlterBox from "./AlertBox/AlertBox.jsx";
+import router from "../../routing/router.js";
+import urls from "../../routing/urls.js";
+import { sendEmail } from "../../utils/api.js";
+import displayAlterBox from "../AlertBox/AlertBox.jsx";
+import cssClasses from "./ContactForm.module.scss";
 
 export default function ContactForm() {
   const formDataObs = new Observable<EmailData>({
@@ -20,7 +21,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="w-100 d-flex flex-column flex-nowrap gap-3 p-3 border-rounded bg-secondary-transparent text-light"
+      className={cssClasses.contactForm}
       onsubmit={async (e: SubmitEvent) => {
         e.preventDefault();
         const response = await sendEmail(formDataObs.getValue());

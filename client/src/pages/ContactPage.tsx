@@ -1,8 +1,8 @@
-import ContactForm from "../components/ContactForm.jsx";
+import ContactForm from "../components/ContactForm/ContactForm.jsx";
 
 export default function ContactPage() {
   return (
-    <div className="page grid-center">
+    <div className="page page-center">
       <ContactForm />
     </div>
   );

@@ -1,11 +1,12 @@
+@media only screen and (min-width: 200px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
 @media only screen and (min-width: 400px) {
   :root {
     --gap: 0.25em;
     font-size: 16px;
-  }
-
-  .page.page-center-sm {
-    justify-content: center;
-    align-items: center;
   }
 }

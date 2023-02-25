@@ -1,0 +1,12 @@
+@import "../../../public/scss/color";
+
+.contactForm {
+  width: min(500px, 90vw);
+  display: flex;
+  flex-flow: column nowrap;
+  gap: calc(var(--gap) * 3);
+  padding: calc(var(--gap) * 3);
+  border-radius: 5px;
+  @include bg-secondary-transparent;
+  @include text-light;
+}
