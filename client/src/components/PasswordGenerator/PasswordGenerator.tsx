@@ -54,7 +54,7 @@ export default function PasswordGenerator(): HTMLElement {
               <div>
                 <LengthInput type="number" lengthObs={lengthObs} />
               </div>
-              <div>
+              <div className="grid-center">
                 <LengthInput type="range" lengthObs={lengthObs} />
               </div>
             </article>
