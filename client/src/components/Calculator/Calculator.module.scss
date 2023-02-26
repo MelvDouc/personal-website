@@ -14,17 +14,21 @@
 
   output {
     @include grid-center;
+    text-align: center;
+    @include full-size;
+    font-size: 2rem;
+    color: lime;
     background: rgb(34, 34, 34);
     background: linear-gradient(to right, rgb(34, 34, 34), rgb(62, 62, 62));
   }
 }
 
-.calculatorBottom {
+.bottom {
   --gap: 0.075em;
   display: grid;
   gap: var(--gap);
 
-  .calculatorRow {
+  .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--gap);
