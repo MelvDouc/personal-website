@@ -1,5 +1,6 @@
 import ContactPage from "../pages/ContactPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
+import NotFoundPage from "../pages/NotFoundPage.jsx";
 import ProjectPage from "../pages/ProjectPage.jsx";
 import ProjectsPage from "../pages/ProjectsPage.jsx";
 import urls from "./urls.js";
@@ -62,6 +63,10 @@ router
   .addPage(urls.PROJECT.url, {
     title: "?",
     component: () => ProjectPage({ pathname: location.pathname })
+  })
+  .addPage("404", {
+    title: urls["404"].title,
+    component: NotFoundPage
   });
 
 export default router;
