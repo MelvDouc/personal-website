@@ -1,6 +1,6 @@
 import { Observable } from "reactfree-jsx";
-import displayAlterBox from "../AlertBox/AlertBox.jsx";
-import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
+import displayAlterBox from "@/components/AlertBox/AlertBox.jsx";
+import SmallComponentWrapper from "@/components/SmallComponentWrapper.jsx";
 import Checkbox from "./Checkbox.jsx";
 import {
   createPassword,

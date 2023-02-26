@@ -1,4 +1,4 @@
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
+import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch.jsx";
 
 export default function Checkbox({ key, charsTypesObs }: {
   key: string;

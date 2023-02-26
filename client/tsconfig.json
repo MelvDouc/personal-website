@@ -7,6 +7,12 @@
       "ESNext",
       "DOM"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "moduleResolution": "Node",
     "strict": true,
     "sourceMap": true,

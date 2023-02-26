@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
@@ -11,6 +12,11 @@ export default defineConfig({
       scss: {
         additionalData: '@import "../../../public/scss/mixins/index";'
       }
+    }
+  },
+  resolve: {
+    alias: {
+      "@": resolve(".", "src")
     }
   }
 });

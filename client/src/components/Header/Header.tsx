@@ -1,6 +1,6 @@
-import urls from "../../routing/urls.js";
-import Link from "../Link.js";
-import Nav from "../Nav/Nav.jsx";
+import urls from "@/routing/urls.js";
+import Link from "@/components/Link.js";
+import Nav from "@/components/Nav/Nav.jsx";
 import cssClasses from "./Header.module.scss";
 
 export default function Header() {

@@ -1,5 +1,5 @@
 import { Observable } from "reactfree-jsx";
-import Link from "../Link.jsx";
+import Link from "@/components/Link.js";
 import cssClasses from "./Dropdown.module.scss";
 
 export default function Dropdown({ link, links }: {
