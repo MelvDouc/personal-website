@@ -17,15 +17,15 @@ export default function PasswordGenerator(): HTMLElement {
     new Set(["lowercase", "uppercase", "digits"])
   );
   const setPassword = () => {
-    const options = charsTypesObs.getValue();
-    const length = lengthObs.getValue();
+    const options = charsTypesObs.value;
+    const length = lengthObs.value;
 
     if (isValidLength(length) && options.size > 0)
-      passwordObs.setValue(createPassword(length, options));
+      passwordObs.value = createPassword(length, options);
   };
   const copyPassword = async () => {
     try {
-      await navigator.clipboard.writeText(passwordObs.getValue());
+      await navigator.clipboard.writeText(passwordObs.value);
       displayAlterBox({ message: "Password was copied!" });
     } catch (error) {
       displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });

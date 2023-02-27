@@ -10,9 +10,9 @@ export default function LengthInput({ type, lengthObs }: {
       min={String(MIN_LENGTH)}
       max={String(MAX_LENGTH)}
       oninput={(e) => {
-        const value = (e.target as HTMLInputElement).valueAsNumber;
-        if (isValidLength(value))
-          lengthObs.setValue(value);
+        const length = (e.target as HTMLInputElement).valueAsNumber;
+        if (isValidLength(length))
+          lengthObs.value = length;
       }}
       $init={(input) => {
         lengthObs.subscribe(length => {

@@ -4,17 +4,17 @@ import classes from "./Calculator.module.scss";
 
 export default function Calculator() {
   const resultObs = new Observable("");
-  const append = (value: string) => resultObs.updateValue(prev => prev + value);
-  const compute = () =>
-    resultObs.updateValue(prev => {
-      try {
-        return eval(prev) ?? "";
-      } catch {
-        return prev;
-      }
-    });
-  const clear = () => resultObs.setValue("");
-  const del = () => resultObs.updateValue(prev => prev.slice(0, -1));
+  const append = (text: string) => resultObs.value += text;
+  const compute = () => {
+    const prev = resultObs.value;
+    try {
+      resultObs.value = eval(prev) ?? "";
+    } catch {
+      resultObs.value = prev;
+    }
+  };
+  const clear = () => resultObs.value = "";
+  const del = () => resultObs.value = resultObs.value.slice(0, -1);
 
   return (
     <SmallComponentWrapper>

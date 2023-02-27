@@ -12,11 +12,10 @@ export default function ContactForm() {
     message: ""
   });
   const setData = (key: string) => {
-    return (e: Event) =>
-      formDataObs.updateValue(value => {
-        value[key] = (e.target as HTMLInputElement).value;
-        return value;
-      });
+    return (e: Event) => {
+      formDataObs.value[key] = (e.target as HTMLInputElement).value;
+      formDataObs.notify();
+    };
   };
 
   return (
@@ -24,7 +23,7 @@ export default function ContactForm() {
       className={cssClasses.contactForm}
       onsubmit={async (e: SubmitEvent) => {
         e.preventDefault();
-        const response = await sendEmail(formDataObs.getValue());
+        const response = await sendEmail(formDataObs.value);
         if (!response?.success) {
           alert("Something went wrong. Please try again.");
           return;

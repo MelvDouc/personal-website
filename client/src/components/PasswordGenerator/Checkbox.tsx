@@ -11,12 +11,12 @@ export default function Checkbox({ key, charsTypesObs }: {
       <label className="text-transform-capitalize" htmlFor={id}>{key.replace(/\-+/g, " ")}</label>
       <ToggleSwitch
         id={id}
-        checked={charsTypesObs.getValue().has(key)}
+        checked={charsTypesObs.value.has(key)}
         oninput={() => {
-          charsTypesObs.updateValue((options) => {
-            options.has(key) ? options.delete(key) : options.add(key);
-            return options;
-          });
+          charsTypesObs.value.has(key)
+            ? charsTypesObs.value.delete(key)
+            : charsTypesObs.value.add(key);
+          charsTypesObs.notify();
         }}
       />
     </div>

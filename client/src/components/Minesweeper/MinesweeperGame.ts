@@ -31,7 +31,7 @@ export default class MinesweeperGame {
 
     this.#flagCountObs.subscribe(() => {
       if (this.isWin())
-        this.#statusObs.setValue("win");
+        this.#statusObs.value = "win";
     });
 
     this.#statusObs.subscribe((status) => {
@@ -56,7 +56,7 @@ export default class MinesweeperGame {
           displayAlterBox({ message: "Boom!" });
           break;
         case "ongoing":
-          this.#flagCountObs.setValue(this.#numberOfMines);
+          this.#flagCountObs.value = this.#numberOfMines;
           this.#minedIndices.clear();
           this.#cells.forEach((row) => {
             row.forEach((cell) => cell.reset());
@@ -74,7 +74,7 @@ export default class MinesweeperGame {
   }
 
   get isOver(): boolean {
-    return this.#statusObs.getValue() !== "ongoing";
+    return this.#statusObs.value !== "ongoing";
   }
 
   get numberOfRows(): number {
@@ -96,7 +96,7 @@ export default class MinesweeperGame {
   }
 
   isWin(): boolean {
-    return this.#flagCountObs.getValue() === 0 && this.#cells.every((row) => {
+    return this.#flagCountObs.value === 0 && this.#cells.every((row) => {
       return row.every((cell) => {
         return this.#isMineAtIndex(cell.index) ? cell.flagged : !cell.covered;
       });
@@ -115,18 +115,18 @@ export default class MinesweeperGame {
   }
 
   reset(): void {
-    this.#statusObs.setValue("ongoing");
+    this.#statusObs.value = "ongoing";
   }
 
   toggleFlag(cell: MinesweeperCell): void {
     if (cell.flagged) {
       cell.flagged = false;
-      this.#flagCountObs.updateValue(count => count + 1);
+      this.#flagCountObs.value++;
       return;
     }
-    if (this.#flagCountObs.getValue() > 0) {
+    if (this.#flagCountObs.value > 0) {
       cell.flagged = true;
-      this.#flagCountObs.updateValue(count => count - 1);
+      this.#flagCountObs.value--;
     }
   }
 
@@ -134,7 +134,7 @@ export default class MinesweeperGame {
     cell.covered = false;
 
     if (this.#isMineAtIndex(cell.index)) {
-      this.#statusObs.setValue("loss");
+      this.#statusObs.value = "loss";
       return;
     }
 
@@ -145,7 +145,7 @@ export default class MinesweeperGame {
       cell.innerText = String(adjacentMineCount);
 
     if (this.isWin()) {
-      this.#statusObs.setValue("win");
+      this.#statusObs.value = "win";
       return;
     }
 

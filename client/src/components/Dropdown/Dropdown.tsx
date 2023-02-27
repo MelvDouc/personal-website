@@ -12,14 +12,14 @@ export default function Dropdown({ link, links }: {
   const visibilityObs = new Observable(false);
   link.onclick = (e) => {
     e.preventDefault();
-    visibilityObs.updateValue(prev => !prev);
+    visibilityObs.value = !visibilityObs.value;
   };
 
   return (
     <div className={cssClasses.dropdown} $init={(element) => {
       document.addEventListener("click", ({ target }) => {
         if (target instanceof Node && !element.contains(target))
-          visibilityObs.setValue(false);
+          visibilityObs.value = false;
       });
     }}>
       {link}
@@ -34,7 +34,7 @@ export default function Dropdown({ link, links }: {
         }}
       >
         {links.map((link) => (
-          <li onclick={() => visibilityObs.setValue(false)}>
+          <li onclick={() => visibilityObs.value = false}>
             <Link href={link.href}>{link.text}</Link>
           </li>
         ))}
