@@ -2,7 +2,8 @@ import {
   randomDigit,
   randomLowercase,
   randomUppercase,
-  randomSpecialChar
+  randomSpecialChar,
+  shuffleArray
 } from "../../utils/random.js";
 
 export const MIN_LENGTH = 1;
@@ -12,7 +13,7 @@ export const randomCharFns = {
   lowercase: randomLowercase,
   uppercase: randomUppercase,
   digits: randomDigit,
-  "special-characters": randomSpecialChar
+  "special characters": randomSpecialChar
 } as const;
 
 export function isValidLength(length: number) {
@@ -28,8 +29,7 @@ export function createPassword(length: number, options: Set<string>) {
     }
   }
 
-  return password
-    .sort(() => Math.random() - 0.5)
+  return shuffleArray(password)
     .slice(0, length)
     .join("");
 }

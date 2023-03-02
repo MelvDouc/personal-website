@@ -5,17 +5,18 @@ export default function Checkbox({ key, charsTypesObs }: {
   charsTypesObs: Obs<Set<string>>;
 }) {
   const id = `checkbox-${key}`;
+  const charTypes = charsTypesObs.value;
 
   return (
     <div>
-      <label className="text-transform-capitalize" htmlFor={id}>{key.replace(/\-+/g, " ")}</label>
+      <label className="text-transform-capitalize" htmlFor={id}>{key}</label>
       <ToggleSwitch
         id={id}
-        checked={charsTypesObs.value.has(key)}
+        checked={charTypes.has(key)}
         oninput={() => {
-          charsTypesObs.value.has(key)
-            ? charsTypesObs.value.delete(key)
-            : charsTypesObs.value.add(key);
+          charTypes.has(key)
+            ? charTypes.delete(key)
+            : charTypes.add(key);
           charsTypesObs.notify();
         }}
       />
