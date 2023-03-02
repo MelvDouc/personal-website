@@ -20,11 +20,7 @@ export default function Calculator() {
     <SmallComponentWrapper>
       <div className={classes.calculator}>
         <section>
-          <output
-            $init={(element) => {
-              resultObs.subscribe(value => element.innerText = value);
-            }}
-          ></output>
+          <output obs_innerText={resultObs}></output>
         </section>
         <section className={classes.bottom}>
           <div className={classes.row}>
