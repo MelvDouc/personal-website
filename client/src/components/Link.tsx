@@ -5,7 +5,7 @@ export default function Link(props: JSX.IntrinsicElements["a"] & Required<Pick<J
   otherProps.onclick = (e) => {
     e.preventDefault();
     history.pushState({}, "", (e.target as HTMLAnchorElement).href);
-    router.setUrl(props.href);
+    router.setUrl(props.href as string);
   };
 
   return h("a", otherProps, ...(children ?? [])) as HTMLAnchorElement;

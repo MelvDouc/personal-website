@@ -14,8 +14,7 @@ export default function LengthInput({ type, lengthObs }: {
         if (isValidLength(length))
           lengthObs.value = length;
       }}
-      // @ts-ignore
-      obs_value={lengthObs}
+      value={lengthObs}
     />
   );
 }

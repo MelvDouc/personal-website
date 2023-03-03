@@ -42,7 +42,7 @@ export default function PasswordGenerator(): HTMLElement {
         $init={() => lengthObs.notify()}
       >
         <section>
-          <output obs_innerText={passwordObs}></output>
+          <output innerText={passwordObs}></output>
         </section>
         <section>
           <div className={cssClasses.form}>

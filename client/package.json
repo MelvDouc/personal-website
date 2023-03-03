@@ -14,7 +14,7 @@
     "vscode": "^1.74.3"
   },
   "dependencies": {
-    "reactfree-jsx": "^1.4.3",
+    "reactfree-jsx": "^1.5.0",
     "sass": "^1.57.1",
     "typescript": "^4.6.4",
     "vite": "^3.1.0"

@@ -20,7 +20,7 @@ export default function Calculator() {
     <SmallComponentWrapper>
       <div className={classes.calculator}>
         <section>
-          <output obs_innerText={resultObs}></output>
+          <output innerText={resultObs}></output>
         </section>
         <section className={classes.bottom}>
           <div className={classes.row}>
