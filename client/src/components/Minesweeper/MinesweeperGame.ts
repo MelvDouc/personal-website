@@ -1,6 +1,6 @@
 import { Observable } from "reactfree-jsx";
-import { adjacentCoords, coordsToIndex } from "../../utils/coords.js";
-import { randomInt } from "../../utils/random.js";
+import { adjacentCoords, coordsToIndex } from "@/utils/coords.js";
+import { randomInt } from "@/utils/random.js";
 import displayAlterBox from "../AlertBox/AlertBox.jsx";
 import MinesweeperCell from "./MinesweeperCell.jsx";
 

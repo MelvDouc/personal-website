@@ -1,5 +1,5 @@
-import projects from "../../routing/projects.js";
-import urls from "../../routing/urls.js";
+import projects from "@/routing/projects.js";
+import urls from "@/routing/urls.js";
 import Dropdown from "../Dropdown/Dropdown.jsx";
 import Link from "../Link.jsx";
 import cssClasses from "./Nav.module.scss";

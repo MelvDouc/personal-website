@@ -1,4 +1,4 @@
-import type { Router } from "../../routing/router.js";
+import type { Router } from "@/routing/router.js";
 
 export default function Main({ router }: { router: Router; }) {
   return (

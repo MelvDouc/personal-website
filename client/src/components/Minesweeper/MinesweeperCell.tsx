@@ -1,4 +1,4 @@
-import { coordsToIndex } from "../../utils/coords.js";
+import { coordsToIndex } from "@/utils/coords.js";
 import type MinesweeperGame from "./MinesweeperGame.js";
 
 export default class MinesweeperCell extends HTMLElement {
