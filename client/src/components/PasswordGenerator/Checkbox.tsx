@@ -1,23 +1,23 @@
 import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch.jsx";
 
-export default function Checkbox({ key, charsTypesObs }: {
+export default function Checkbox({ key, selectedOptionsObs }: {
   key: string;
-  charsTypesObs: Obs<Set<string>>;
+  selectedOptionsObs: Obs<Set<string>>;
 }) {
   const id = `checkbox-${key}`;
-  const charTypes = charsTypesObs.value;
+  const selectedOptions = selectedOptionsObs.value;
 
   return (
     <div>
       <label className="text-transform-capitalize" htmlFor={id}>{key}</label>
       <ToggleSwitch
         id={id}
-        checked={charTypes.has(key)}
+        checked={selectedOptions.has(key)}
         oninput={() => {
-          charTypes.has(key)
-            ? charTypes.delete(key)
-            : charTypes.add(key);
-          charsTypesObs.notify();
+          selectedOptions.has(key)
+            ? selectedOptions.delete(key)
+            : selectedOptions.add(key);
+          selectedOptionsObs.notify();
         }}
       />
     </div>

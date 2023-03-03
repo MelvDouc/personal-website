@@ -1,20 +1,20 @@
-import { isValidLength, MAX_LENGTH, MIN_LENGTH } from "./helpers.js";
+import type PasswordState from "@/components/PasswordGenerator/PasswordState.js";
 
-export default function LengthInput({ type, lengthObs }: {
+export default function LengthInput({ type, passwordState }: {
   type: "number" | "range";
-  lengthObs: Obs<number>;
+  passwordState: PasswordState;
 }) {
   return (
     <input
       type={type}
-      min={String(MIN_LENGTH)}
-      max={String(MAX_LENGTH)}
+      min={String(passwordState.MIN_LENGTH)}
+      max={String(passwordState.MAX_LENGTH)}
       oninput={(e) => {
         const length = (e.target as HTMLInputElement).valueAsNumber;
-        if (isValidLength(length))
-          lengthObs.value = length;
+        if (passwordState.isValidLength(length))
+          passwordState.length.value = length;
       }}
-      value={lengthObs}
+      value={passwordState.length}
     />
   );
 }

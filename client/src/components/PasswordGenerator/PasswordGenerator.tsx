@@ -1,73 +1,47 @@
-import { Observable } from "reactfree-jsx";
 import displayAlterBox from "@/components/AlertBox/AlertBox.jsx";
 import SmallComponentWrapper from "@/components/SmallComponentWrapper.jsx";
 import Checkbox from "./Checkbox.jsx";
-import {
-  createPassword,
-  isValidLength,
-  randomCharFns
-} from "./helpers.js";
 import LengthInput from "./LengthInput.jsx";
 import cssClasses from "./PasswordGenerator.module.scss";
+import PasswordState from "./PasswordState.js";
 
 export default function PasswordGenerator(): HTMLElement {
-  const lengthObs = new Observable<number>(15);
-  const passwordObs = new Observable<string>();
-  const charsTypesObs = new Observable(
-    new Set(["lowercase", "uppercase", "digits"])
-  );
-  const setPassword = () => {
-    const options = charsTypesObs.value;
-    const length = lengthObs.value;
+  const passwordState = new PasswordState();
+  const notify = () => passwordState.length.notify();
 
-    if (isValidLength(length) && options.size > 0)
-      passwordObs.value = createPassword(length, options);
-  };
   const copyPassword = async () => {
     try {
-      await navigator.clipboard.writeText(passwordObs.value);
+      await navigator.clipboard.writeText(passwordState.password.value);
       displayAlterBox({ message: "Password was copied!" });
     } catch (error) {
       displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });
     }
   };
 
-  charsTypesObs.subscribe(setPassword);
-  lengthObs.subscribe(setPassword);
-
   return (
     <SmallComponentWrapper>
-      <div
-        className={cssClasses.passwordGenerator}
-        $init={() => lengthObs.notify()}
-      >
+      <div className={cssClasses.passwordGenerator} $init={notify}>
         <section>
-          <output innerText={passwordObs}></output>
+          <output innerText={passwordState.password}></output>
         </section>
         <section>
           <div className={cssClasses.form}>
             <article className={cssClasses.inputs}>
               <div>
-                <LengthInput type="number" lengthObs={lengthObs} />
+                <LengthInput type="number" passwordState={passwordState} />
               </div>
               <div className="grid-center">
-                <LengthInput type="range" lengthObs={lengthObs} />
+                <LengthInput type="range" passwordState={passwordState} />
               </div>
             </article>
             <article className={cssClasses.checkboxes}>
-              {Object.keys(randomCharFns).map(key => (
-                <Checkbox key={key} charsTypesObs={charsTypesObs} />
+              {Object.keys(PasswordState.randomCharFunctions).map(key => (
+                <Checkbox key={key} selectedOptionsObs={passwordState.selectedOptions} />
               ))}
             </article>
             <article className={cssClasses.buttons}>
-              <button
-                className="btn btn-primary"
-                onclick={() => lengthObs.notify()}
-              >New Password</button>
-              <button
-                className="btn btn-primary"
-                onclick={copyPassword}
-              >Copy Password</button>
+              <button className="btn btn-primary" onclick={notify}>New Password</button>
+              <button className="btn btn-primary" onclick={copyPassword}>Copy Password</button>
             </article>
           </div>
         </section>
