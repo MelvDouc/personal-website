@@ -23,16 +23,19 @@ function AlertBox({ message, handleClose }: {
   };
 
   return (
-    <div className={classes.alertBoxContainer} $init={(element) => {
-      alertBoxContainer = element;
-      const handleEnter = (e: KeyboardEvent) => {
-        if (e.key !== "Enter") return;
-        e.preventDefault();
-        quit();
-        document.removeEventListener("keydown", handleEnter);
-      };
-      document.addEventListener("keydown", handleEnter);
-    }}>
+    <div
+      className={classes.alertBoxContainer}
+      $init={(element) => {
+        alertBoxContainer = element;
+        const handleEnter = (e: KeyboardEvent) => {
+          if (e.key !== "Enter") return;
+          e.preventDefault();
+          quit();
+          document.removeEventListener("keydown", handleEnter);
+        };
+        document.addEventListener("keydown", handleEnter);
+      }}
+    >
       <div className={classes.alertBox}>
         <p>{message}</p>
         <button

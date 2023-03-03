@@ -7,13 +7,16 @@ export default function ToggleSwitch({ id, checked, oninput }: {
 }) {
   return (
     <label className={classes.switch}>
-      <input type="checkbox" $init={(input) => {
-        if (typeof id === "string")
-          input.id = id;
-        input.checked = !!checked;
-        if (oninput)
-          input.oninput = oninput;
-      }} />
+      <input
+        type="checkbox"
+        $init={(input) => {
+          if (typeof id === "string")
+            input.id = id;
+          input.checked = !!checked;
+          if (oninput)
+            input.oninput = oninput;
+        }}
+      />
       <span className={classes.slider}></span>
     </label>
   );
