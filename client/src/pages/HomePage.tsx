@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div className="page page-lighter">
       <section>
-        <h1 className="fs-9">A Website Bespoke And Exactly Your Size</h1>
+        <h1>A Website Bespoke And Exactly Your Size</h1>
       </section>
       <section className="fs-5">
         <div>

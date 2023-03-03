@@ -11,7 +11,7 @@ export default function Link({ href, className, $init, children }: {
       href={href}
       onclick={(e) => {
         e.preventDefault();
-        history.pushState({}, "", (e.target as HTMLAnchorElement).href);
+        history.pushState({}, "", href);
         router.setUrl(href);
       }}
       $init={(a) => {

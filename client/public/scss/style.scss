@@ -36,5 +36,12 @@ main {
   display: grid;
 }
 
+h1 {
+  font-family: $ff_exo;
+  text-align: center;
+  font-size: 2.1rem;
+  color: lighten($clr_green_lighter, 20%);
+}
+
 @import "classes/index";
 @import "media";
