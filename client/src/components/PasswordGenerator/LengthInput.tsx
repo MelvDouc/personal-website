@@ -14,12 +14,8 @@ export default function LengthInput({ type, lengthObs }: {
         if (isValidLength(length))
           lengthObs.value = length;
       }}
-      $init={(input) => {
-        lengthObs.subscribe(length => {
-          if (length !== input.valueAsNumber)
-            input.value = String(length);
-        });
-      }}
+      // @ts-ignore
+      obs_value={lengthObs}
     />
   );
 }

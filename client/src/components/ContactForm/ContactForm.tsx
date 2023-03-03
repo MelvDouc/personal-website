@@ -21,7 +21,7 @@ export default function ContactForm() {
   return (
     <form
       className={cssClasses.contactForm}
-      onsubmit={async (e: SubmitEvent) => {
+      onsubmit={async (e) => {
         e.preventDefault();
         const response = await sendEmail(formDataObs.value);
         if (!response?.success) {
@@ -64,7 +64,7 @@ export default function ContactForm() {
           required
         ></textarea>
       </div>
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="grid-center">
         <button className="btn btn-primary">Send</button>
       </div>
     </form>
