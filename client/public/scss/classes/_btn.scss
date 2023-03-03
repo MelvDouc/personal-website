@@ -1,3 +1,13 @@
+@mixin btn-type($color) {
+  background-color: $color;
+
+  &:hover {
+    color: $color;
+    outline: 2px solid $color;
+    background-color: white;
+  }
+}
+
 .btn {
   font-family: inherit !important;
   text-align: center;
@@ -15,14 +25,11 @@
   }
 
   &-primary {
-    background-color: $clr_green_light;
+    @include btn-type($clr_green_light);
+  }
 
-    &:hover,
-    &:focus {
-      color: $clr_green_light;
-      outline: 2px solid $clr_green_light;
-      background-color: white;
-    }
+  &-danger {
+    @include btn-type(hsl(0, 100%, 50%));
   }
 }
 

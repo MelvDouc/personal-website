@@ -14,7 +14,10 @@ export default function PasswordGenerator(): HTMLElement {
       await navigator.clipboard.writeText(passwordState.password.value);
       displayAlterBox({ message: "Password was copied!" });
     } catch (error) {
-      displayAlterBox({ message: "Interacting with the clipboard is disallowed on this browser." });
+      displayAlterBox({
+        message: "Interacting with the clipboard is disallowed on this browser.",
+        type: "danger"
+      });
     }
   };
 

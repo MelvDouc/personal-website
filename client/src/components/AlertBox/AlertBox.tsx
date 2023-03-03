@@ -4,13 +4,15 @@ export default function displayAlterBox(props: Parameters<typeof AlertBox>[0]) {
   document.body.prepend(
     <AlertBox
       message={props.message}
+      type={props.type}
       handleClose={props.handleClose}
     />
   );
 }
 
-function AlertBox({ message, handleClose }: {
+function AlertBox({ message, type, handleClose }: {
   message: string;
+  type?: ButtonColor;
   /**
    * Will run after the element has been removed.
    */
@@ -39,7 +41,11 @@ function AlertBox({ message, handleClose }: {
       <div className={classes.alertBox}>
         <p>{message}</p>
         <button
-          className="btn btn-primary"
+          classes={{
+            btn: true,
+            "btn-primary": !type || type === "primary",
+            "btn-danger": type === "danger",
+          }}
           type="button"
           onclick={quit}
         >OK</button>
@@ -47,3 +53,6 @@ function AlertBox({ message, handleClose }: {
     </div>
   );
 }
+
+
+type ButtonColor = "primary" | "danger";

@@ -53,7 +53,7 @@ export default class MinesweeperGame {
                 cell.revealMine();
             });
           });
-          displayAlterBox({ message: "Boom!" });
+          displayAlterBox({ message: "Boom!", type: "danger" });
           break;
         case "ongoing":
           this.#flagCountObs.value = this.#numberOfMines;
