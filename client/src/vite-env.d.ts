@@ -3,7 +3,6 @@
 declare function h(tagName: string, props: Record<string, any>, ...children: any[]): any;
 
 type OptionalPromise<T> = T | Promise<T>;
-type Obs<T> = Observable<T>;
 
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
