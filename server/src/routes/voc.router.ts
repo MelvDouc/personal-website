@@ -3,10 +3,10 @@ import { englishVocController } from "../controllers/voc.controller.js";
 
 const vocRouter = Router();
 
-vocRouter.get("/one/:id", async (req, res) => await englishVocController.getOne(req, res));
-vocRouter.get("/all", async (req, res) => await englishVocController.getAll(req, res));
-vocRouter.post("/create", async (req, res) => await englishVocController.create(req, res));
-vocRouter.patch("/update/:id", async (req, res) => await englishVocController.update(req, res));
-vocRouter.delete("/delete/:id", async (req, res) => await englishVocController.delete(req, res));
+vocRouter.get("/one/:id", englishVocController.getOne);
+vocRouter.get("/all", englishVocController.getAll);
+vocRouter.post("/create", englishVocController.create);
+vocRouter.patch("/update/:id", englishVocController.update);
+vocRouter.delete("/delete/:id", englishVocController.delete);
 
 export default vocRouter;

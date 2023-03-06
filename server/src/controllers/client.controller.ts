@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { Req, Res } from "../types.js";
 
 const clientDir = join(process.cwd(), "client");
 
-async function home(req: Request, res: Response) {
+async function home(req: Req, res: Res) {
   try {
     const data = await readFile(join(clientDir, "dist", "index.html"));
     res.end(data);

@@ -1,8 +1,7 @@
-import { Request, Response } from "express";
 import emailService from "../services/email.service.js";
-import { EmailData } from "../types.js";
+import { EmailData, Req, Res } from "../types.js";
 
-async function contactAdmin(req: Request, res: Response) {
+async function contactAdmin(req: Req, res: Res) {
   const emailData = req.body as EmailData;
   const htmlText = await emailService.getEmailText("contact", {
     sender: emailData.email,

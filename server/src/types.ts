@@ -1,3 +1,4 @@
+import { Request as Req, Response as Res } from "express";
 import {
   Collection,
   DeleteResult,
@@ -13,7 +14,9 @@ export type {
   Document,
   Filter,
   InsertOneModel,
-  OptionalUnlessRequiredId
+  OptionalUnlessRequiredId,
+  Req,
+  Res
 };
 
 declare global {
@@ -44,3 +47,5 @@ export interface EmailData {
   email: string;
   subject: string;
 }
+
+export type Handler = (req: Req, res: Res) => any;
