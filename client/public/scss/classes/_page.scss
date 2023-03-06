@@ -14,6 +14,7 @@
     text-align: center;
     margin-bottom: calc(var(--gap) * 2);
     padding: var(--gap);
+    width: 100%;
   }
 
   > section + section {
@@ -22,5 +23,17 @@
 
   &.page-lighter {
     color: $clr_lighter;
+  }
+}
+
+.projects-list {
+  list-style: none;
+  font-size: 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  a {
+    color: white;
   }
 }

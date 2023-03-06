@@ -5,7 +5,7 @@ export default function ProjectsPage() {
   return (
     <div className="page">
       <h2>Projects</h2>
-      <ul className="list-style-inside">
+      <ul className="projects-list">
         {projects.map((project) => (
           <li>
             <router.Link href={project.url}>{project.getTitle()}</router.Link>
