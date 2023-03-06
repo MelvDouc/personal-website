@@ -1,18 +1,21 @@
 import Header from "./components/Header/Header.jsx";
-import Main from "./components/Main/Main.jsx";
-import router from "./routing/router.js";
+import Router from "./routing/router.jsx";
 
 export default function App() {
-  window.addEventListener("popstate", () => router.setUrl(location.pathname + location.search));
-  router.onUrlChange(({ title }) => document.title = `${title ?? "?"} | Melvin Doucet's Website`);
+  window.addEventListener("popstate", () => Router.updateUrl(location.pathname));
+  Router.onUrlChange(({ detail }) => {
+    document.title = `${detail.route.getTitle(detail.params)} | Melvin Doucet's Website`;
+  });
 
   const app = (
     <>
       <Header />
-      <Main router={router} />
+      <main>
+        <Router.Outlet />
+      </main>
     </>
   );
 
-  router.setUrl(location.pathname + location.search);
+  Router.updateUrl(location.pathname);
   return app;
 }

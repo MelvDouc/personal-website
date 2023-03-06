@@ -1,13 +1,9 @@
 import { Observable } from "reactfree-jsx";
-import Link from "@/components/Link.js";
 import cssClasses from "./Dropdown.module.scss";
 
 export default function Dropdown({ link, links }: {
   link: HTMLAnchorElement;
-  links: {
-    href: string;
-    text: string;
-  }[];
+  links: HTMLAnchorElement[];
 }) {
   const visibilityObs = new Observable(false);
   link.onclick = (e) => {
@@ -34,7 +30,7 @@ export default function Dropdown({ link, links }: {
       >
         {links.map((link) => (
           <li onclick={() => visibilityObs.value = false}>
-            <Link href={link.href}>{link.text}</Link>
+            {link}
           </li>
         ))}
       </ul>

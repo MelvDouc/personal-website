@@ -1,5 +1,4 @@
-import Link from "../components/Link.jsx";
-import urls from "../routing/urls.js";
+import router from "../routing/router.js";
 
 export default function HomePage() {
   return (
@@ -15,7 +14,7 @@ export default function HomePage() {
       </section>
       <section>
         <div className="grid-center">
-          <Link href={urls.CONTACT.url} className="fs-5 btn btn-primary">Contact</Link>
+          <router.Link href={router.routes.CONTACT.url!} className="fs-5 btn btn-primary">Contact</router.Link>
         </div>
       </section>
     </div>

@@ -1,7 +1,6 @@
-import projects from "@/routing/projects.js";
-import urls from "@/routing/urls.js";
+import router from "@/routing/router.jsx";
+import { projects } from "@/routing/routes.js";
 import Dropdown from "../Dropdown/Dropdown.jsx";
-import Link from "../Link.jsx";
 import cssClasses from "./Nav.module.scss";
 
 export default function Nav() {
@@ -9,16 +8,18 @@ export default function Nav() {
     <nav className={cssClasses.nav}>
       <ul>
         <li>
-          <Link className={cssClasses.navLink} href={urls.HOME.url}>Home</Link>
+          <router.Link className={cssClasses.navLink} href={router.routes.HOME.url!}>Home</router.Link>
         </li>
         <li>
           <Dropdown
-            link={<a className={cssClasses.navLink} href={urls.PROJECTS.url}>Projects</a>}
-            links={projects.map(({ url, title }) => ({ href: url, text: title }))}
+            link={<a className={cssClasses.navLink} href={router.routes.PROJECTS.url}>Projects</a>}
+            links={projects.map((project) => (
+              <router.Link href={project.url}>{project.getTitle()}</router.Link>
+            ))}
           />
         </li>
         <li>
-          <Link className={cssClasses.navLink} href={urls.CONTACT.url}>Contact</Link>
+          <router.Link className={cssClasses.navLink} href={router.routes.CONTACT.url!}>Contact</router.Link>
         </li>
       </ul>
     </nav>
