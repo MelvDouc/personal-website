@@ -19,6 +19,9 @@ export default function Nav() {
           />
         </li>
         <li>
+          <router.Link href={router.routes.CV.url}>CV</router.Link>
+        </li>
+        <li>
           <router.Link className={cssClasses.navLink} href={router.routes.CONTACT.url!}>Contact</router.Link>
         </li>
       </ul>
