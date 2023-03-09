@@ -6,6 +6,7 @@ import ContactPage from "../pages/ContactPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import ProjectsPage from "../pages/ProjectsPage.jsx";
+import ResumePage from "../pages/ResumePage/ResumePage.jsx";
 
 const routes = {
   HOME: {
@@ -17,6 +18,11 @@ const routes = {
     url: "/home",
     getTitle: () => "Home",
     component: HomePage
+  },
+  CV: {
+    url: "/cv",
+    getTitle: () => "CV",
+    component: ResumePage
   },
   CONTACT: {
     url: "/contact",

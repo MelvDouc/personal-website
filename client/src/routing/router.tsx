@@ -16,11 +16,11 @@ export class Router extends EventTarget {
     });
   }
 
-  Outlet = (): HTMLElement => {
+  public Outlet = (): HTMLElement => {
     return this.outlet;
   };
 
-  Link = ({ href, className, $init, children }: {
+  public Link = ({ href, className, $init, children }: {
     href: string;
     className?: string;
     $init?: (a: HTMLAnchorElement) => void;
@@ -42,7 +42,7 @@ export class Router extends EventTarget {
     );
   };
 
-  #getRouteAndParams(url: string): {
+  private getRouteAndParams(url: string): {
     route: Route;
     params?: Record<string, string>;
   } {
@@ -64,8 +64,8 @@ export class Router extends EventTarget {
     };
   }
 
-  updateUrl(url: string) {
-    const { route, params } = this.#getRouteAndParams(url);
+  public updateUrl(url: string) {
+    const { route, params } = this.getRouteAndParams(url);
 
     this.dispatchEvent(
       new CustomEvent(Router.urlChangeEventType, {
@@ -74,7 +74,7 @@ export class Router extends EventTarget {
     );
   }
 
-  onUrlChange(listener: (e: RouterUrlChangeEvent) => any) {
+  public onUrlChange(listener: (e: RouterUrlChangeEvent) => any) {
     // @ts-ignore
     this.addEventListener(Router.urlChangeEventType, listener);
   }
