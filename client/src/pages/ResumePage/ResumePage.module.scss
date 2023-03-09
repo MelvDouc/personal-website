@@ -155,7 +155,7 @@ $main-gap: 0.4em;
   }
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (orientation: landscape) {
   .cv {
     .pageBottom {
       grid-template-areas:

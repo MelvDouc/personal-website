@@ -35,7 +35,7 @@ export default function ResumePage() {
 
       <section className={cssClasses.pageBottom}>
         <article className={cssClasses.picContainer}>
-          <img src="/img/melvin-doucet.jpg" alt="Melvin Doucet" />
+          <img src="/img/cv/melvin-doucet.jpg" alt="Melvin Doucet" />
         </article>
 
         <article className={cssClasses.contactDetail}>
@@ -45,7 +45,7 @@ export default function ResumePage() {
             <dd>+33.6.09.21.97.14</dd>
             <dt>@</dt>
             <dd>melv.douc@gmail.com</dd>
-            <dt className="bi bi-github"></dt>
+            <dt><img src="/img/cv/github-logo.png" alt="GitHub Logo" /></dt>
             <dd><a href="https://github.com/MelvDouc">https://github.com/MelvDouc</a></dd>
             <dt><img src="/img/favicon.png" alt="Logo" /></dt>
             <dd><a href="https://www.melvin-doucet.com">https://www.melvin-doucet.com</a></dd>
