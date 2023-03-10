@@ -27,7 +27,8 @@ declare global {
       readonly NODEMAILER_USER: string;
       readonly NODEMAILER_PASSWORD: string;
       readonly CLIENT_DEV_ORIGIN: string;
-      readonly CLIENT_ORIGIN: string;
+      readonly CLIENT_ORIGIN0: string;
+      readonly CLIENT_ORIGIN1: string;
     }
   }
 }

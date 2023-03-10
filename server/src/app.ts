@@ -9,14 +9,17 @@ const app = express();
 
 app.use(express.static(join("client", "dist")));
 app.use(
-  cors({
-    origin: [process.env.CLIENT_DEV_ORIGIN, process.env.CLIENT_ORIGIN]
+  cors((req, callback) => {
+    const origins = [process.env.CLIENT_ORIGIN0, process.env.CLIENT_ORIGIN1];
+    callback(null, {
+      origin: process.env.NODE_ENV !== "production" || origins.some((origin) => req.url.startsWith(origin))
+    });
   })
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1", apiRouter);
-app.get("/*", clientController.home);
+app.get("*", clientController.home);
 
 app.listen(port, () => {
   console.log(`App running on http://localhost:${port} ...`);
