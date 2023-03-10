@@ -4,7 +4,7 @@ import classes from "./Calculator.module.scss";
 
 export default function Calculator() {
   const resultObs = new Observable("");
-  const append = (text: string) => resultObs.value += text;
+  const append = (text: string) => () => resultObs.value += text;
   const compute = () => {
     const prev = resultObs.value;
     try {
@@ -25,31 +25,31 @@ export default function Calculator() {
         <section className={classes.bottom}>
           <div className={classes.row}>
             <button onclick={clear}>C</button>
-            <button onclick={() => append("%")}>%</button>
+            <button onclick={append("%")}>%</button>
             <button onclick={del}>&#10232;</button>
-            <button onclick={() => append("/")}>/</button>
+            <button onclick={append("/")}>/</button>
           </div>
           <div className={classes.row}>
-            <button onclick={() => append("7")}>7</button>
-            <button onclick={() => append("8")}>8</button>
-            <button onclick={() => append("9")}>9</button>
-            <button onclick={() => append("*")}>*</button>
+            <button onclick={append("7")}>7</button>
+            <button onclick={append("8")}>8</button>
+            <button onclick={append("9")}>9</button>
+            <button onclick={append("*")}>*</button>
           </div>
           <div className={classes.row}>
-            <button onclick={() => append("4")}>4</button>
-            <button onclick={() => append("5")}>5</button>
-            <button onclick={() => append("6")}>6</button>
-            <button onclick={() => append("-")}>-</button>
+            <button onclick={append("4")}>4</button>
+            <button onclick={append("5")}>5</button>
+            <button onclick={append("6")}>6</button>
+            <button onclick={append("-")}>-</button>
           </div>
           <div className={classes.row}>
-            <button onclick={() => append("1")}>1</button>
-            <button onclick={() => append("2")}>2</button>
-            <button onclick={() => append("3")}>3</button>
-            <button onclick={() => append("+")}>+</button>
+            <button onclick={append("1")}>1</button>
+            <button onclick={append("2")}>2</button>
+            <button onclick={append("3")}>3</button>
+            <button onclick={append("+")}>+</button>
           </div>
           <div className={classes.row}>
-            <button onclick={() => append(".")}>.</button>
-            <button onclick={() => append("0")}>0</button>
+            <button onclick={append(".")}>.</button>
+            <button onclick={append("0")}>0</button>
             <button onclick={compute} className="span-2">=</button>
           </div>
         </section>
