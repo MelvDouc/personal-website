@@ -9,9 +9,15 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@routing/*": [
+        "src/routing/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
     },
     "moduleResolution": "Node",
     "strict": true,

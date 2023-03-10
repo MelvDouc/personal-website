@@ -1,6 +1,6 @@
 import { Observable } from "reactfree-jsx";
 import cssClasses from "./ResumePage.module.scss";
-import CvSkillsList from "@/components/CvSkillsList/CvSkillsList.jsx";
+import CvSkillsList from "@components/CvSkillsList/CvSkillsList.jsx";
 import { getCvTranslations } from "../../utils/api.js";
 
 let translations: Record<string, Pick<CvTranslation, CvLang>>;

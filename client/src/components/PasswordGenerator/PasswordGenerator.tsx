@@ -1,5 +1,5 @@
-import displayAlterBox from "@/components/AlertBox/AlertBox.jsx";
-import SmallComponentWrapper from "@/components/SmallComponentWrapper.jsx";
+import displayAlterBox from "@components/AlertBox/AlertBox.jsx";
+import SmallComponentWrapper from "@components/SmallComponentWrapper.jsx";
 import Checkbox from "./Checkbox.jsx";
 import LengthInput from "./LengthInput.jsx";
 import cssClasses from "./PasswordGenerator.module.scss";

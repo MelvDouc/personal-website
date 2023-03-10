@@ -1,4 +1,4 @@
-import { randomInt } from "@/utils/random.js";
+import { randomInt } from "@utils/random.js";
 import type { SnakeCanvas } from "./SnakeCanvas.jsx";
 
 export default class Food {

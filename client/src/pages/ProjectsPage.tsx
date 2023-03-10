@@ -1,5 +1,5 @@
-import router from "@/routing/router.js";
-import { projects } from "@/routing/routes.js";
+import router from "@routing/router.js";
+import { projects } from "@routing/routes.js";
 
 export default function ProjectsPage() {
   return (

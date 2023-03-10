@@ -1,4 +1,4 @@
-import type PasswordState from "@/components/PasswordGenerator/PasswordState.js";
+import type PasswordState from "@components/PasswordGenerator/PasswordState.js";
 
 export default function LengthInput({ type, passwordState }: {
   type: "number" | "range";

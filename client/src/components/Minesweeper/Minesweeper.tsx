@@ -1,4 +1,4 @@
-import SmallComponentWrapper from "../SmallComponentWrapper.jsx";
+import SmallComponentWrapper from "@components/SmallComponentWrapper.jsx";
 import MinesweeperGame from "./MinesweeperGame.js";
 import "./Minesweeper.scss";
 

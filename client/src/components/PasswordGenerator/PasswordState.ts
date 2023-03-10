@@ -5,7 +5,7 @@ import {
   randomDigit,
   randomSpecialChar,
   shuffleArray
-} from "@/utils/random.js";
+} from "@utils/random.js";
 
 export default class PasswordState {
   public static readonly randomCharFunctions = {

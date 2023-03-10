@@ -1,4 +1,4 @@
-import Router from "../routing/router.jsx";
+import Router from "@routing/router.jsx";
 
 export default function NotFoundPage() {
   return (

@@ -1,7 +1,7 @@
 import { Observable } from "reactfree-jsx";
-import router from "@/routing/router.jsx";
-import { sendEmail } from "@/utils/api.js";
-import displayAlterBox from "@/components/AlertBox/AlertBox.js";
+import router from "@routing/router.jsx";
+import { sendEmail } from "@utils/api.js";
+import displayAlterBox from "@components/AlertBox/AlertBox.js";
 import cssClasses from "./ContactForm.module.scss";
 
 export default function ContactForm() {
