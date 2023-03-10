@@ -10,13 +10,14 @@ if (
 }
 
 const client = await new MongoClient(process.env.MONGODB_URI).connect();
-
 console.log("Connected to database.");
 
-const vocDb = client.db("vocabulary");
 export const collections = {
   VOC: {
-    ENGLISH: vocDb.collection<Word>("english"),
-    GERMAN: vocDb.collection<Word>("pronunciation")
+    ENGLISH: () => client.db("vocabulary").collection<Word>("english"),
+    GERMAN: () => client.db("vocabulary").collection<Word>("pronunciation")
+  },
+  CV: {
+    TRANSLATIONS: () => client.db("cv").collection("translations")
   }
 } as const;

@@ -6,10 +6,14 @@ import {
 } from "../types.js";
 
 export default abstract class Model<T> {
-  public readonly collection: Collection<T>;
+  private readonly getCollection: () => Collection<T>;
 
-  constructor(collection: Collection<T>) {
-    this.collection = collection;
+  constructor(getCollection: () => Collection<T>) {
+    this.getCollection = getCollection;
+  }
+
+  public get collection() {
+    return this.getCollection();
   }
 
   private getIdFilter(id: string) {

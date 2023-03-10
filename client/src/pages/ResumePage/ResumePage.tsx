@@ -1,10 +1,16 @@
 import { Observable } from "reactfree-jsx";
-import translations from "./translations.js";
 import cssClasses from "./ResumePage.module.scss";
 import CvSkillsList from "@/components/CvSkillsList/CvSkillsList.jsx";
+import { getCvTranslations } from "../../utils/api.js";
 
-export default function ResumePage() {
-  const language = new Observable<"en" | "fr">("en");
+let translations: Record<string, Pick<CvTranslation, CvLang>>;
+
+export default async function ResumePage() {
+  const language = new Observable<CvLang>("en");
+  translations ??= ((await getCvTranslations()) ?? []).reduce((acc, { id, fr, en }) => {
+    acc[id] = { fr, en };
+    return acc;
+  }, {} as Record<string, Pick<CvTranslation, CvLang>>);
 
   return (
     <div
@@ -136,4 +142,11 @@ export default function ResumePage() {
       </section>
     </div>
   );
+}
+
+type CvLang = "en" | "fr";
+interface CvTranslation {
+  id: string;
+  fr: string;
+  en: string;
 }

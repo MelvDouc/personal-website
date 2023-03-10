@@ -1,5 +1,4 @@
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL ?? location.origin + "/api/v1";
+const API_BASE_URL = (import.meta.env.VITE_API_URL ?? location.origin) + "/api/v1";
 
 async function fetchApi<T>(path: `/${string}`, init?: RequestInit) {
   try {
@@ -12,11 +11,15 @@ async function fetchApi<T>(path: `/${string}`, init?: RequestInit) {
 }
 
 export function sendEmail(data: EmailData) {
-  return fetchApi<{ success: boolean }>("/contact", {
+  return fetchApi<{ success: boolean; }>("/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
   });
+}
+
+export function getCvTranslations() {
+  return fetchApi<CvTranslation[]>("/cv/translations");
 }
