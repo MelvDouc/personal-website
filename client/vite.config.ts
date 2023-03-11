@@ -16,7 +16,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": resolve(".", "src")
+      "@components": resolve(".", "src", "components"),
+      "@routing": resolve(".", "src", "routing"),
+      "@utils": resolve(".", "src", "utils"),
     }
   }
 });

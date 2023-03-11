@@ -34,3 +34,9 @@ interface Coords {
   x: number;
   y: number;
 }
+
+interface CvTranslation {
+  id: string;
+  fr: string;
+  en: string;
+}

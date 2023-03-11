@@ -21,5 +21,5 @@ export function sendEmail(data: EmailData) {
 }
 
 export function getCvTranslations() {
-  return fetchApi<CvTranslation[]>("/cv/translations");
+  return fetchApi<(CvTranslation & { _id: string; })[]>("/cv/translations");
 }

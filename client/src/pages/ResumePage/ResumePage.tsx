@@ -1,16 +1,15 @@
 import { Observable } from "reactfree-jsx";
 import cssClasses from "./ResumePage.module.scss";
 import CvSkillsList from "@components/CvSkillsList/CvSkillsList.jsx";
-import { getCvTranslations } from "../../utils/api.js";
+import { getCvTranslations } from "@utils/cv-translations.js";
 
-let translations: Record<string, Pick<CvTranslation, CvLang>>;
 
 export default async function ResumePage() {
   const language = new Observable<CvLang>("en");
-  translations ??= ((await getCvTranslations()) ?? []).reduce((acc, { id, fr, en }) => {
-    acc[id] = { fr, en };
+  const translations = (await getCvTranslations()).reduce((acc, { id, en, fr }) => {
+    acc[id] = { en, fr };
     return acc;
-  }, {} as Record<string, Pick<CvTranslation, CvLang>>);
+  }, {} as Record<string, Pick<CvTranslation, "en" | "fr">>);
 
   return (
     <div
@@ -30,8 +29,10 @@ export default async function ResumePage() {
         <h2 data-trl="1"></h2>
         <select
           className={cssClasses.langSelect}
-          oninput={(e) => {
-            language.value = (e.target as HTMLSelectElement).value as "en" | "fr";
+          $init={(select) => {
+            select.addEventListener("input", () => {
+              language.value = select.value as CvLang;
+            });
           }}
         >
           <option value="en" selected>English</option>
@@ -144,9 +145,5 @@ export default async function ResumePage() {
   );
 }
 
+
 type CvLang = "en" | "fr";
-interface CvTranslation {
-  id: string;
-  fr: string;
-  en: string;
-}
