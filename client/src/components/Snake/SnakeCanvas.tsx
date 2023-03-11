@@ -5,9 +5,11 @@ import Food from "./Food.jsx";
 import Snake from "./Snake.js";
 
 export default function _SnakeCanvas() {
-  return <SmallComponentWrapper>
-    {new SnakeCanvas()}
-  </SmallComponentWrapper>;
+  return (
+    <SmallComponentWrapper>
+      {new SnakeCanvas()}
+    </SmallComponentWrapper>
+  );
 }
 
 export class SnakeCanvas extends HTMLCanvasElement {

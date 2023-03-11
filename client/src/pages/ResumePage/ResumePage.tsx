@@ -2,7 +2,7 @@ import { Observable } from "reactfree-jsx";
 import cssClasses from "./ResumePage.module.scss";
 import CvSkillsList from "@components/CvSkillsList/CvSkillsList.jsx";
 import { getCvTranslations } from "@utils/cv-translations.js";
-
+import { CvTranslation } from "../../type.js";
 
 export default async function ResumePage() {
   const language = new Observable<CvLang>("en");

@@ -1,4 +1,5 @@
 import { getCvTranslations as getApiTranslations } from "./api.js";
+import { CvTranslation } from "../type.js";
 
 const TRANSLATIONS_STORE_NAME = "translations";
 

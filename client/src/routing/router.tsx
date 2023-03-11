@@ -1,4 +1,5 @@
 import routes from "./routes.js";
+import { RouterUrlChangeEvent, Route } from "../type.js";
 
 export class Router extends EventTarget {
   private static readonly urlChangeEventType = "router-url-change";

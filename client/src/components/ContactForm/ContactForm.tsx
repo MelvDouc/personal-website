@@ -3,6 +3,7 @@ import router from "@routing/router.jsx";
 import { sendEmail } from "@utils/api.js";
 import displayAlterBox from "@components/AlertBox/AlertBox.js";
 import cssClasses from "./ContactForm.module.scss";
+import { EmailData } from "../../type.js";
 
 export default function ContactForm() {
   const formDataObs = new Observable<EmailData>({

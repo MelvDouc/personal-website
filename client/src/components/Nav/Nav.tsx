@@ -1,6 +1,6 @@
 import router from "@routing/router.jsx";
 import { projects } from "@routing/routes.js";
-import Dropdown from "../Dropdown/Dropdown.jsx";
+import Dropdown from "@components/Dropdown/Dropdown.jsx";
 import cssClasses from "./Nav.module.scss";
 
 export default function Nav() {
