@@ -1,0 +1,5 @@
+.smallComponentWrapper {
+  height: 100%;
+  @include padding(3, 3);
+  @include flex-center(column, nowrap);
+}

@@ -19,12 +19,6 @@
   @include grid-center;
 }
 
-.small-component-wrapper {
-  height: 100%;
-  @include padding(3, 3);
-  @include flex-center(column, nowrap);
-}
-
 .span-2 {
   grid-column: span 2;
 }

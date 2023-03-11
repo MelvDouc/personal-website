@@ -1,6 +1,8 @@
+import cssClasses from "./SmallComponentWrapper.module.scss";
+
 export default function SmallComponentWrapper({ children }: { children?: any; }) {
   return (
-    <div className="small-component-wrapper">
+    <div className={cssClasses.smallComponentWrapper}>
       {children}
     </div>
   );

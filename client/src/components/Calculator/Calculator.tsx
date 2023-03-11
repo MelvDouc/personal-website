@@ -1,5 +1,5 @@
 import { Observable } from "reactfree-jsx";
-import SmallComponentWrapper from "@components/SmallComponentWrapper.jsx";
+import SmallComponentWrapper from "@components/SmallComponentWrapper/SmallComponentWrapper.jsx";
 import classes from "./Calculator.module.scss";
 
 export default function Calculator() {

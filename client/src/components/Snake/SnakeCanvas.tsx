@@ -1,6 +1,6 @@
 import { setIntervalOnAnimationFrame } from "@utils/animation.js";
 import displayAlterBox from "@components/AlertBox/AlertBox.jsx";
-import SmallComponentWrapper from "@components/SmallComponentWrapper.jsx";
+import SmallComponentWrapper from "@components/SmallComponentWrapper/SmallComponentWrapper.jsx";
 import Food from "./Food.jsx";
 import Snake from "./Snake.js";
 
