@@ -17,7 +17,7 @@ $before_gap: 4px;
 
     &:checked {
       + .slider {
-        background-color: $clr_blue_light;
+        background-color: vars.$clr_blue_light;
 
         &::before {
           left: $before_gap;
@@ -26,7 +26,7 @@ $before_gap: 4px;
     }
 
     &:focus + .slider {
-      box-shadow: 0 0 1px $clr_blue_light;
+      box-shadow: 0 0 1px vars.$clr_blue_light;
     }
   }
 }

@@ -1,11 +1,11 @@
-@import "../mixins/all";
-@import "btn";
-@import "form";
-@import "page";
+@use "../mixins/all" as mixins;
+@use "btn";
+@use "form";
+@use "page";
 
 @for $i from 1 through 10 {
   .fs-#{$i} {
-    @include fs($i);
+    @include mixins.fs($i);
   }
 }
 
@@ -16,7 +16,7 @@
 }
 
 .grid-center {
-  @include grid-center;
+  @include mixins.grid-center;
 }
 
 .span-2 {

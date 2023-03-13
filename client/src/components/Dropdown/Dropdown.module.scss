@@ -23,14 +23,14 @@
     overflow: hidden;
 
     &:hover {
-      background-color: $clr_green_light;
+      background-color: vars.$clr_green_light;
       color: white;
     }
 
     a {
       display: block;
       width: 100%;
-      @include padding(2, 3);
+      @include mixins.padding(2, 3);
       color: inherit;
       text-decoration: none !important;
     }

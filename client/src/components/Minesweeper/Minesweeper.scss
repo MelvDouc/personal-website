@@ -13,8 +13,8 @@ body.rotate-body {
 
 minesweeper-cell {
   --bg-orientation: 45deg;
-  @include flex-center;
-  @include bg-center(100%);
+  @include mixins.flex-center;
+  @include mixins.bg-center(100%);
   background-image: radial-gradient(white, rgb(235, 235, 245));
   user-select: none;
 

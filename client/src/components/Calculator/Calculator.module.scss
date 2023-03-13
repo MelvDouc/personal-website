@@ -1,7 +1,7 @@
 .calculator {
-  @include full-size;
-  @include border-rounded;
-  font-family: $ff_monospace;
+  @include mixins.full-size;
+  @include mixins.border-rounded;
+  font-family: vars.$ff_monospace;
   padding: calc(var(--gap) * 2);
   gap: calc(var(--gap) * 2);
   max-width: 520px;
@@ -11,9 +11,9 @@
   background: rgb(230, 230, 230);
 
   output {
-    @include grid-center;
+    @include mixins.grid-center;
     text-align: center;
-    @include full-size;
+    @include mixins.full-size;
     font-size: 2rem;
     color: lime;
     background: rgb(34, 34, 34);

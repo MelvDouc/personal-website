@@ -1,3 +1,5 @@
+@use "../variables";
+
 .page {
   height: 100%;
   max-width: var(--max-page-width);
@@ -9,7 +11,7 @@
   flex-flow: column nowrap;
 
   h2 {
-    background-color: $clr_green_light;
+    background-color: variables.$clr_green_light;
     color: white;
     text-align: center;
     margin-bottom: calc(var(--gap) * 2);
@@ -22,7 +24,7 @@
   }
 
   &.page-lighter {
-    color: $clr_lighter;
+    color: variables.$clr_lighter;
   }
 }
 

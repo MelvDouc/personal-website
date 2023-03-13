@@ -26,7 +26,7 @@
   text-transform: uppercase;
 
   strong {
-    @include fs(6);
+    @include mixins.fs(6);
   }
 }
 

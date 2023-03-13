@@ -1,3 +1,5 @@
+@use "../variables";
+
 @mixin btn-type($color) {
   background-color: $color;
 
@@ -25,7 +27,7 @@
   }
 
   &-primary {
-    @include btn-type($clr_green_light);
+    @include btn-type(variables.$clr_green_light);
   }
 
   &-danger {

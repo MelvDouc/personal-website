@@ -1,5 +1,5 @@
 .smallComponentWrapper {
   height: 100%;
-  @include padding(3, 3);
-  @include flex-center(column, nowrap);
+  @include mixins.padding(3, 3);
+  @include mixins.flex-center(column, nowrap);
 }
