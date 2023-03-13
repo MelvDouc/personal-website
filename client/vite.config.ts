@@ -9,13 +9,13 @@ export default defineConfig({
     jsxFragment: "Fragment",
     jsxInject: "import {h, Fragment} from 'reactfree-jsx';"
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: "@use '@styles/variables' as vars; @use '@styles/mixins/all' as mixins;"
-      }
-    }
-  },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: "@use '@styles/variables' as vars; @use '@styles/mixins/all' as mixins;"
+  //     }
+  //   }
+  // },
   resolve: {
     alias: {
       "@components": resolve(srcFolder, "components"),

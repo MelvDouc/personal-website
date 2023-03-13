@@ -1,3 +1,5 @@
+@use "@styles/variables" as vars;
+
 :root {
   --gap: 0.2em;
   --max-page-width: 700px;
@@ -41,5 +43,5 @@ h1 {
   color: lighten(vars.$clr_green_lighter, 20%);
 }
 
-@import "styles/classes/index";
+@import "styles/classes";
 @import "styles/media";

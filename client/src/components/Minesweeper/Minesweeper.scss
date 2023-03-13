@@ -1,3 +1,5 @@
+@use "@styles/mixins" as mixins;
+
 body.rotate-body {
   animation: rotate_body 3s 250ms ease-out;
 }

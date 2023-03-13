@@ -1,3 +1,5 @@
+@use "@styles/mixins" as mixins;
+
 .smallComponentWrapper {
   height: 100%;
   @include mixins.padding(3, 3);

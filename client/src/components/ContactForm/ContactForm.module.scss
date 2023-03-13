@@ -1,3 +1,5 @@
+@use "@styles/mixins" as mixins;
+
 .contactForm {
   width: min(600px, 90vw);
   display: flex;

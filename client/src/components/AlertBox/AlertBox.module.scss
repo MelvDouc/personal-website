@@ -1,3 +1,5 @@
+@use "@styles/mixins" as mixins;
+
 .alertBoxContainer {
   position: absolute;
   z-index: 9999;

@@ -1,3 +1,6 @@
+@use "@styles/variables" as vars;
+@use "@styles/mixins" as mixins;
+
 .calculator {
   @include mixins.full-size;
   @include mixins.border-rounded;
