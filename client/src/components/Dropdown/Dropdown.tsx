@@ -1,39 +1,40 @@
 import { Observable } from "reactfree-jsx";
 import cssClasses from "./Dropdown.module.scss";
 
-export default function Dropdown({ link, links }: {
-  link: HTMLAnchorElement;
-  links: HTMLAnchorElement[];
+export default function Dropdown({ children }: {
+  children?: HTMLElement[];
 }) {
-  const visibilityObs = new Observable(false);
-  link.onclick = (e) => {
-    e.preventDefault();
-    visibilityObs.value = !visibilityObs.value;
-  };
+  const [summary, content] = children!;
+  const isOpen = new Observable(false);
+
+  const observer = new MutationObserver((mutations) => {
+    for (const { type, target } of mutations) {
+      if (type === "attributes" && (target as HTMLDetailsElement).open !== isOpen.value) {
+        isOpen.value = (target as HTMLDetailsElement).open;
+        break;
+      }
+    }
+  });
 
   return (
-    <div
+    <details
       className={cssClasses.dropdown}
+      open={isOpen}
       $init={(element) => {
+        observer.observe(element, { attributes: true });
         document.addEventListener("click", ({ target }) => {
-          if (target instanceof Node && !element.contains(target))
-            visibilityObs.value = false;
+          if (isOpen.value && target instanceof Node && element !== target && !element.contains(target))
+            isOpen.value = false;
         });
       }}
     >
-      {link}
-      <ul
-        classes={{
-          [cssClasses.dropdownList]: true,
-          [cssClasses.visible]: visibilityObs
-        }}
+      <summary>{summary}</summary>
+      <div
+        className={cssClasses.dropdownContent}
+        onclick={() => isOpen.value &&= false}
       >
-        {links.map((link) => (
-          <li onclick={() => visibilityObs.value = false}>
-            {link}
-          </li>
-        ))}
-      </ul>
-    </div>
+        {content}
+      </div>
+    </details>
   );
 }
