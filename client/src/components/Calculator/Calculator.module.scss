@@ -52,7 +52,7 @@
     }
   }
 
-  @media only screen and (min-width: 400px) {
+  @media only screen and (min-width: vars.$break-point-smaller) {
     --gap: 0.1em;
   }
 }

@@ -23,8 +23,8 @@ export default function Dropdown({ children }: {
       $init={(element) => {
         observer.observe(element, { attributes: true });
         document.addEventListener("click", ({ target }) => {
-          if (isOpen.value && target instanceof Node && element !== target && !element.contains(target))
-            isOpen.value = false;
+          if (target instanceof Node && element !== target && !element.contains(target))
+            isOpen.value &&= false;
         });
       }}
     >

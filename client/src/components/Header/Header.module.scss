@@ -30,7 +30,7 @@
   }
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: vars.$break-point-medium) {
   .header {
     align-items: center;
     flex-direction: row;
