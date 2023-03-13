@@ -3,8 +3,8 @@ import Router from "./routing/router.jsx";
 
 export default function App() {
   window.addEventListener("popstate", () => Router.updateUrl(location.pathname));
-  Router.onUrlChange(({ detail }) => {
-    document.title = `${detail.route.getTitle(detail.params)} | Melvin Doucet's Website`;
+  Router.onUrlChange(({ route, params }) => {
+    document.title = `${route.getTitle(params)} | Melvin Doucet's Website`;
   });
 
   const app = (

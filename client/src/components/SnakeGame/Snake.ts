@@ -1,16 +1,16 @@
-import type { SnakeCanvas } from "./SnakeCanvas.jsx";
+import type SnakeCanvas from "./SnakeCanvas.jsx";
 import { Coords } from "../../type.js";
 
 export default class Snake extends Array<Coords> {
   private readonly canvas: SnakeCanvas;
   public direction!: "RIGHT" | "LEFT" | "UP" | "DOWN";
 
-  constructor(snakeCanvas: SnakeCanvas) {
+  constructor(canvas: SnakeCanvas) {
     super();
-    this.canvas = snakeCanvas;
+    this.canvas = canvas;
     this[0] = {
-      x: (Math.ceil(snakeCanvas.squaresPerLine / 2) - 1) * snakeCanvas.squareSize,
-      y: (Math.ceil(snakeCanvas.squaresPerLine / 2) - 1) * snakeCanvas.squareSize
+      x: (Math.ceil(canvas.squaresPerLine / 2) - 1) * canvas.squareSize,
+      y: (Math.ceil(canvas.squaresPerLine / 2) - 1) * canvas.squareSize
     };
   }
 

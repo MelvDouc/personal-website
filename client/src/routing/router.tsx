@@ -1,24 +1,25 @@
 import routes from "./routes.js";
-import { RouterUrlChangeEvent, Route } from "../type.js";
+import { Route } from "../type.js";
 
-export class Router extends EventTarget {
-  private static readonly urlChangeEventType = "router-url-change";
-
+export class Router {
   public readonly routes: typeof routes;
-  private readonly outlet: HTMLElement;
+  private readonly subscriptions = new Set<RouteSubscription>();
 
   constructor() {
-    super();
     this.routes = routes;
-    this.outlet = (<div className="router-outlet"></div>);
-    this.addEventListener(Router.urlChangeEventType, async (e) => {
-      const { detail } = e as RouterUrlChangeEvent;
-      this.outlet.replaceChildren(await detail.route.component(detail.params));
-    });
   }
 
   public Outlet = (): HTMLElement => {
-    return this.outlet;
+    return (
+      <div
+        className="router-outlet"
+        $init={(element) => {
+          this.onUrlChange(async ({ route, params }) => {
+            element.replaceChildren(await route.component(params));
+          });
+        }}
+      ></div>
+    );
   };
 
   public Link = ({ href, className, $init, children }: {
@@ -43,10 +44,7 @@ export class Router extends EventTarget {
     );
   };
 
-  private getRouteAndParams(url: string): {
-    route: Route;
-    params?: Record<string, string>;
-  } {
+  private getRouteAndParams(url: string): Omit<RouteInfo, "url"> {
     for (const name in this.routes) {
       if (name === "404")
         continue;
@@ -66,19 +64,25 @@ export class Router extends EventTarget {
   }
 
   public updateUrl(url: string) {
-    const { route, params } = this.getRouteAndParams(url);
-
-    this.dispatchEvent(
-      new CustomEvent(Router.urlChangeEventType, {
-        detail: { url, route, params }
-      })
-    );
+    const routeInfo = { url, ...this.getRouteAndParams(url) };
+    this.subscriptions.forEach((subscription) => subscription(routeInfo));
   }
 
-  public onUrlChange(listener: (e: RouterUrlChangeEvent) => any) {
-    // @ts-ignore
-    this.addEventListener(Router.urlChangeEventType, listener);
+  public onUrlChange(subscription: RouteSubscription) {
+    this.subscriptions.add(subscription);
   }
 }
 
 export default new Router();
+
+// ===== ===== ===== ===== =====
+// TYPES
+// ===== ===== ===== ===== =====
+
+interface RouteInfo {
+  url: string;
+  route: Route;
+  params?: Record<string, string>;
+}
+
+type RouteSubscription = (routeInfo: RouteInfo) => any;

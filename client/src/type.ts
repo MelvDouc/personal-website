@@ -1,9 +1,4 @@
 export type OptionalPromise<T> = T | Promise<T>;
-export type RouterUrlChangeEvent = CustomEvent<{
-  url: string;
-  route: Route;
-  params: Record<string, string> | undefined;
-}>;
 
 export interface Route {
   url?: string;
