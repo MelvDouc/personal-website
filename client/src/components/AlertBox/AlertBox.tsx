@@ -18,25 +18,10 @@ function AlertBox({ message, type, handleClose }: {
    */
   handleClose?: VoidFunction;
 }) {
-  let alertBoxContainer: HTMLElement;
-  const quit = () => {
-    alertBoxContainer.remove();
-    handleClose && handleClose();
-  };
-
   return (
     <div
       className={cssClasses.alertBoxContainer}
-      $init={(element) => {
-        alertBoxContainer = element;
-        const handleEnter = (e: KeyboardEvent) => {
-          if (e.key !== "Enter") return;
-          e.preventDefault();
-          quit();
-          document.removeEventListener("keydown", handleEnter);
-        };
-        document.addEventListener("keydown", handleEnter);
-      }}
+      $init={(element) => initAlertBox(element, handleClose)}
     >
       <div className={cssClasses.alertBox}>
         <p>{message}</p>
@@ -47,12 +32,30 @@ function AlertBox({ message, type, handleClose }: {
             "btn-danger": type === "danger",
           }}
           type="button"
-          onclick={quit}
         >OK</button>
       </div>
     </div>
   );
 }
 
+function initAlertBox(element: HTMLElement, handleClose: VoidFunction | undefined) {
+  const quit = () => {
+    element.remove();
+    handleClose && handleClose();
+  };
+
+  const handleEnter = (e: KeyboardEvent) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    quit();
+    document.removeEventListener("keydown", handleEnter);
+  };
+
+  element.addEventListener("click", ({ target }) => {
+    if (target instanceof HTMLElement && target.classList.contains("btn"))
+      quit();
+  });
+  document.addEventListener("keydown", handleEnter);
+}
 
 type ButtonColor = "primary" | "danger";
