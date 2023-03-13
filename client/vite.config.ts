@@ -1,6 +1,8 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 
+const srcFolder = resolve(".", "src");
+
 export default defineConfig({
   esbuild: {
     jsxFactory: "h",
@@ -10,15 +12,16 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "../../../public/scss/mixins/index";'
+        additionalData: "@import '@styles/variables'; @import '@styles/mixins/all';"
       }
     }
   },
   resolve: {
     alias: {
-      "@components": resolve(".", "src", "components"),
-      "@routing": resolve(".", "src", "routing"),
-      "@utils": resolve(".", "src", "utils"),
+      "@components": resolve(srcFolder, "components"),
+      "@routing": resolve(srcFolder, "routing"),
+      "@styles": resolve(srcFolder, "styles"),
+      "@utils": resolve(srcFolder, "utils"),
     }
   }
 });
