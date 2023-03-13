@@ -10,7 +10,7 @@
     "npm": "^9.3.1"
   },
   "scripts": {
-    "build": "tsc -p server && node client/heroku-build.js",
+    "build": "tsc -p server && bash client/heroku-build.sh",
     "client:dev": "npm --prefix client run dev",
     "server:dev": "nodemon --ignore client server/src/app.ts",
     "start": "node server/dist/app.js"
