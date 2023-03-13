@@ -1,18 +1,9 @@
 import { setIntervalOnAnimationFrame } from "@utils/animation.js";
 import displayAlterBox from "@components/AlertBox/AlertBox.jsx";
-import SmallComponentWrapper from "@components/SmallComponentWrapper/SmallComponentWrapper.jsx";
 import Food from "./Food.jsx";
 import Snake from "./Snake.js";
 
-export default function _SnakeCanvas() {
-  return (
-    <SmallComponentWrapper>
-      {new SnakeCanvas()}
-    </SmallComponentWrapper>
-  );
-}
-
-export class SnakeCanvas extends HTMLCanvasElement {
+export default class SnakeCanvas extends HTMLCanvasElement {
   public readonly squaresPerLine: number = 15;
   public readonly squareSize: number;
   public readonly snake: Snake;
@@ -49,8 +40,8 @@ export class SnakeCanvas extends HTMLCanvasElement {
 
   private getIdealWidth(): number {
     let width = Math.floor(window.innerWidth * 0.8);
-    while (width % this.squaresPerLine !== 0)
-      width--;
+    // get first multiple of `this.squaresPerLine` <= width
+    width -= width % this.squaresPerLine;
     return Math.min(width, 600);
   }
 

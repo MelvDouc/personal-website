@@ -1,14 +1,15 @@
-import router from "@routing/router.js";
+import Router from "@routing/router.js";
 import { projects } from "@routing/routes.js";
+import cssClasses from "./ProjectsPage.module.scss";
 
 export default function ProjectsPage() {
   return (
     <div className="page">
       <h2>Projects</h2>
-      <ul className="projects-list">
+      <ul className={cssClasses.projectsList}>
         {projects.map((project) => (
           <li>
-            <router.Link href={project.url}>{project.getTitle()}</router.Link>
+            <Router.Link href={project.url}>{project.getTitle()}</Router.Link>
           </li>
         ))}
       </ul>

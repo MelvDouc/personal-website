@@ -2,7 +2,7 @@ import router from "@routing/router.js";
 
 export default function HomePage() {
   return (
-    <div className="page page-lighter">
+    <div className="page page-center">
       <section>
         <h1>A Website Bespoke And Exactly Your Size</h1>
       </section>

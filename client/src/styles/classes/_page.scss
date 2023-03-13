@@ -6,9 +6,13 @@
   margin: 0 auto;
   padding: calc(var(--gap) * 4);
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-flow: column nowrap;
+  color: variables.$clr_lighter;
+
+  &.page-center {
+    justify-content: center;
+    align-items: center;
+  }
 
   h2 {
     background-color: variables.$clr_green_light;
@@ -21,21 +25,5 @@
 
   > section + section {
     margin-top: calc(var(--gap) * 6);
-  }
-
-  &.page-lighter {
-    color: variables.$clr_lighter;
-  }
-}
-
-.projects-list {
-  list-style: none;
-  font-size: 1.05rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-
-  a {
-    color: white;
   }
 }

@@ -39,7 +39,7 @@
 }
 
 .bg-dark-transparent {
-  background-color: vars.$clr_dark_transparent;
+  @include bg-dark-transparent;
 }
 
 .bg-light {
@@ -63,7 +63,7 @@
 }
 
 .text-light {
-  color: white;
+  @include text-light;
 }
 
 .text-green {
