@@ -6,10 +6,13 @@ const clientDir = join(process.cwd(), "client");
 
 async function home(req: Req, res: Res) {
   try {
-    if (process.env.NODE_ENV !== "production")
-      return res.end();
-    const data = await readFile(join(clientDir, "dist", "index.html"));
-    res.end(data);
+    if (process.env.NODE_ENV === "production") {
+      const data = await readFile(join(clientDir, "dist", "index.html"));
+      return res.end(data);
+    }
+
+    console.log({ NODE_ENV: process.env.NODE_ENV });
+    return res.end();
   } catch (error) {
     console.log({ clientError: error });
     res

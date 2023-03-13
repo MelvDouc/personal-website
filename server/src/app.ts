@@ -1,8 +1,8 @@
 import cors from "cors";
 import express from "express";
 import { join } from "path";
-import clientController from "./controllers/client.controller.js";
 import apiRouter from "./routes/api.router.js";
+import clientRouter from "./routes/client.router.js";
 
 const port = process.env.PORT ?? process.env.port ?? process.env.Port ?? 10_002;
 const app = express();
@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1", apiRouter);
-app.get("*", clientController.home);
+app.use(clientRouter);
 
 app.listen(port, () => {
   console.log(`App running on http://localhost:${port} ...`);
