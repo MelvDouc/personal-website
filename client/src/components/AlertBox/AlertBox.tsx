@@ -1,4 +1,4 @@
-import classes from "./AlertBox.module.scss";
+import cssClasses from "./AlertBox.module.scss";
 
 export default function displayAlterBox(props: Parameters<typeof AlertBox>[0]) {
   document.body.prepend(
@@ -26,7 +26,7 @@ function AlertBox({ message, type, handleClose }: {
 
   return (
     <div
-      className={classes.alertBoxContainer}
+      className={cssClasses.alertBoxContainer}
       $init={(element) => {
         alertBoxContainer = element;
         const handleEnter = (e: KeyboardEvent) => {
@@ -38,7 +38,7 @@ function AlertBox({ message, type, handleClose }: {
         document.addEventListener("keydown", handleEnter);
       }}
     >
-      <div className={classes.alertBox}>
+      <div className={cssClasses.alertBox}>
         <p>{message}</p>
         <button
           classes={{
