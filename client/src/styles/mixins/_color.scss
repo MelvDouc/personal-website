@@ -1,16 +1,16 @@
-@import "../variables";
+@use "../variables" as vars;
 
 @mixin bg-dark-transparent {
-  background-color: $clr_dark_transparent;
+  background-color: vars.$clr_dark_transparent;
 }
 
 @mixin bg-secondary-gradient {
-  background-color: $clr_blue_light;
-  background-image: linear-gradient(to right, $clr_blue_lighter, $clr_blue_light);
+  background-color: vars.$clr_blue_light;
+  background-image: linear-gradient(to right, vars.$clr_blue_lighter, vars.$clr_blue_light);
 }
 
 @mixin bg-secondary-transparent {
-  background-color: rgba($clr_blue_light, 0.5);
+  background-color: rgba(vars.$clr_blue_light, 0.5);
 }
 
 @mixin text-light {
@@ -18,36 +18,36 @@
 }
 
 .bg-primary {
-  background-color: $clr_green_lighter;
+  background-color: vars.$clr_green_lighter;
 }
 
 .bg-primary-gradient {
-  background-color: $clr_green_lighter;
-  background-image: linear-gradient(to right, $clr_green_lighter, $clr_green_light);
+  background-color: vars.$clr_green_lighter;
+  background-image: linear-gradient(to right, vars.$clr_green_lighter, vars.$clr_green_light);
 }
 
 .bg-primary-transparent {
-  background-color: rgba($clr_green_lighter, 0.5);
+  background-color: rgba(vars.$clr_green_lighter, 0.5);
 }
 
 .bg-secondary {
-  background-color: $clr_blue_light;
+  background-color: vars.$clr_blue_light;
 }
 
 .bg-dark {
-  background-color: $clr_dark;
+  background-color: vars.$clr_dark;
 }
 
 .bg-dark-transparent {
-  background-color: $clr_dark_transparent;
+  background-color: vars.$clr_dark_transparent;
 }
 
 .bg-light {
-  background-color: $clr_light;
+  background-color: vars.$clr_light;
 }
 
 .bg-light-transparent {
-  background-color: rgba($clr_light, 0.275);
+  background-color: rgba(vars.$clr_light, 0.275);
 }
 
 .bg-white {
