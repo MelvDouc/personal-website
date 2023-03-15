@@ -7,21 +7,11 @@ export default function Dropdown({ children }: {
   const [summary, content] = children!;
   const isOpen = new Observable(false);
 
-  const observer = new MutationObserver((mutations) => {
-    for (const { type, target } of mutations) {
-      if (type === "attributes" && (target as HTMLDetailsElement).open !== isOpen.value) {
-        isOpen.value = (target as HTMLDetailsElement).open;
-        return;
-      }
-    }
-  });
-
   return (
     <details
       className={cssClasses.dropdown}
       open={isOpen}
       $init={(element) => {
-        observer.observe(element, { attributeFilter: ["open"] });
         document.addEventListener("click", ({ target }) => {
           if (target instanceof Node && element !== target && !element.contains(target))
             isOpen.value &&= false;
