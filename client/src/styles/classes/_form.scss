@@ -17,20 +17,3 @@
     resize: vertical;
   }
 }
-
-input,
-textarea {
-  font-size: inherit;
-}
-
-input {
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  &[type="number"] {
-    appearance: textfield;
-  }
-}

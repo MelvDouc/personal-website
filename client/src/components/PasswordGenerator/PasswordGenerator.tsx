@@ -5,10 +5,10 @@ import LengthInput from "./LengthInput.jsx";
 import PasswordState from "./PasswordState.js";
 import cssClasses from "./PasswordGenerator.module.scss";
 
+
 export default function PasswordGenerator(): HTMLElement {
   const passwordState = new PasswordState();
   const notify = () => passwordState.length.notify();
-
   const copyPassword = async () => {
     try {
       await navigator.clipboard.writeText(passwordState.password.value);
@@ -25,7 +25,7 @@ export default function PasswordGenerator(): HTMLElement {
     <SmallComponentWrapper>
       <div className={cssClasses.passwordGenerator} $init={notify}>
         <section>
-          <output innerText={passwordState.password}></output>
+          <output>{passwordState.password}</output>
         </section>
         <section>
           <div className={cssClasses.form}>

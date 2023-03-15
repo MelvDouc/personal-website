@@ -4,14 +4,14 @@
 .calculator {
   @include mixins.full-size;
   @include mixins.border-rounded;
-  font-family: vars.$ff_monospace;
-  padding: calc(var(--gap) * 2);
-  gap: calc(var(--gap) * 2);
+  @include mixins.padding(2);
+  @include mixins.gap(2);
   max-width: 520px;
   max-height: 720px;
   display: grid;
   grid-template-rows: minmax(150px, auto) 1fr;
   background: rgb(230, 230, 230);
+  font-family: vars.$ff_monospace;
 
   output {
     @include mixins.grid-center;
@@ -25,14 +25,14 @@
 }
 
 .bottom {
-  --gap: 0.075em;
+  --bottom-gap: 0.075em;
   display: grid;
-  gap: var(--gap);
+  gap: var(--bottom-gap);
 
   .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--gap);
+    gap: var(--bottom-gap);
 
     button {
       border: 0;
@@ -56,6 +56,6 @@
   }
 
   @media only screen and (min-width: vars.$break-point-smaller) {
-    --gap: 0.1em;
+    --bottom-gap: 0.1em;
   }
 }

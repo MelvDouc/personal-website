@@ -9,7 +9,7 @@ export default function Checkbox({ key, selectedOptionsObs }: {
 
   return (
     <div>
-      <label className="text-transform-capitalize" htmlFor={id}>{key}</label>
+      <label htmlFor={id}>{key}</label>
       <ToggleSwitch
         id={id}
         checked={selectedOptions.has(key)}
