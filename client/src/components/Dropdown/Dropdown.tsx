@@ -11,7 +11,7 @@ export default function Dropdown({ children }: {
     for (const { type, target } of mutations) {
       if (type === "attributes" && (target as HTMLDetailsElement).open !== isOpen.value) {
         isOpen.value = (target as HTMLDetailsElement).open;
-        break;
+        return;
       }
     }
   });
@@ -21,7 +21,7 @@ export default function Dropdown({ children }: {
       className={cssClasses.dropdown}
       open={isOpen}
       $init={(element) => {
-        observer.observe(element, { attributes: true });
+        observer.observe(element, { attributeFilter: ["open"] });
         document.addEventListener("click", ({ target }) => {
           if (target instanceof Node && element !== target && !element.contains(target))
             isOpen.value &&= false;
