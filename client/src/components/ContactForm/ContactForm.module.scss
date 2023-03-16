@@ -1,7 +1,7 @@
 @use "@styles/mixins" as mixins;
 
 .contactForm {
-  width: min(600px, 90vw);
+  width: min(var(--max-page-width), 90vw);
   display: flex;
   flex-flow: column nowrap;
   border-radius: 5px;
