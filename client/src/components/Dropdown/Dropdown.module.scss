@@ -1,6 +1,7 @@
 @use "@styles/variables" as vars;
 
 .dropdown {
+  --triangle-rotation: -90deg;
   height: 100%;
   width: 100%;
   position: relative;
@@ -23,15 +24,13 @@
       margin-inline-start: 0.5em;
       background-color: vars.$clr_green_light;
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      rotate: -90deg;
+      rotate: var(--triangle-rotation);
       transition: rotate 150ms ease-out;
     }
   }
 
   &[open=""] {
-    summary::after {
-      rotate: 0deg;
-    }
+    --triangle-rotation: 0deg;
   }
 
   &Content {
