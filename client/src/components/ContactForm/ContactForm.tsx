@@ -1,4 +1,4 @@
-import displayAlterBox from "@components/AlertBox/AlertBox.js";
+import AlertBox from "@components/AlertBox/AlertBox.js";
 import FormGroup from "@components/FormGroup/FormGroup.jsx";
 import router from "@routing/router.jsx";
 import { sendEmail } from "@utils/api.js";
@@ -11,13 +11,28 @@ export default function ContactForm() {
       className={cssClasses.contactForm}
       onsubmit={async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target as HTMLFormElement);
-        const response = await sendEmail(Object.fromEntries(formData) as unknown as EmailData);
-        if (!response?.success) {
-          alert("Something went wrong. Please try again.");
-          return;
-        }
-        displayAlterBox({
+        const formData = Object.fromEntries(new FormData(e.target as HTMLFormElement)) as unknown as EmailData;
+        const errors = getFormErrors(formData);
+
+        if (errors.length)
+          return AlertBox.create({
+            message: (
+              <ul>
+                {errors.map((error) => (<li>{error}</li>))}
+              </ul>
+            ),
+            type: "danger"
+          });
+
+        const response = await sendEmail(formData);
+
+        if (!response?.success)
+          return AlertBox.create({
+            message: "Something went wrong. Please try again at a later time.",
+            type: "danger"
+          });
+
+        AlertBox.create({
           message: "Thanks for your message. I'll try and get back to you soon.",
           handleClose: () => router.updateUrl(router.routes.HOME.url!)
         });
@@ -52,4 +67,19 @@ export default function ContactForm() {
       </div>
     </form>
   );
+}
+
+function getFormErrors(formData: EmailData): string[] {
+  const errors: string[] = [];
+
+  if (typeof formData.email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+/.test(formData.email))
+    errors.push("Invalid email address.");
+
+  if (typeof formData.subject !== "string" || formData.subject.length < 1)
+    errors.push("A subject is required.");
+
+  if (typeof formData.message !== "string" || formData.message.length < 1)
+    errors.push("A message is required.");
+
+  return errors;
 }

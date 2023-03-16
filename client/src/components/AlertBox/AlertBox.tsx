@@ -1,29 +1,36 @@
-import cssClasses from "./AlertBox.module.scss";
+import "./AlertBox.scss";
 
-export default function displayAlterBox(props: Parameters<typeof AlertBox>[0]) {
-  document.body.prepend(
-    <AlertBox
-      message={props.message}
-      type={props.type}
-      handleClose={props.handleClose}
-    />
-  );
-}
+export default class AlertBox extends HTMLElement {
+  static create(props: {
+    message: string | Node;
+    type?: ButtonColor;
+    /**
+     * Will run after the element has been removed.
+     */
+    handleClose?: VoidFunction;
+  }) {
+    document.body.prepend(
+      new AlertBox(props)
+    );
+  }
 
-function AlertBox({ message, type, handleClose }: {
-  message: string;
-  type?: ButtonColor;
-  /**
-   * Will run after the element has been removed.
-   */
-  handleClose?: VoidFunction;
-}) {
-  return (
-    <div
-      className={cssClasses.alertBoxContainer}
-      $init={(element) => initAlertBox(element, handleClose)}
-    >
-      <div className={cssClasses.alertBox}>
+  constructor({ message, type, handleClose }: Parameters<typeof AlertBox["create"]>[0]) {
+    super();
+
+    const quit = () => {
+      this.remove();
+      handleClose && handleClose();
+    };
+
+    const handleEnter = (e: KeyboardEvent) => {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      quit();
+      document.removeEventListener("keydown", handleEnter);
+    };
+
+    this.append(
+      <div className="alert-box__main">
         <p>{message}</p>
         <button
           classes={{
@@ -32,30 +39,15 @@ function AlertBox({ message, type, handleClose }: {
             "btn-danger": type === "danger",
           }}
           type="button"
+          onclick={quit}
         >OK</button>
       </div>
-    </div>
-  );
+    );
+    document.addEventListener("keydown", handleEnter);
+  }
 }
 
-function initAlertBox(element: HTMLElement, handleClose: VoidFunction | undefined) {
-  const quit = () => {
-    element.remove();
-    handleClose && handleClose();
-  };
+customElements.define("alert-box", AlertBox);
 
-  const handleEnter = (e: KeyboardEvent) => {
-    if (e.key !== "Enter") return;
-    e.preventDefault();
-    quit();
-    document.removeEventListener("keydown", handleEnter);
-  };
-
-  element.addEventListener("click", ({ target }) => {
-    if (target instanceof HTMLElement && target.classList.contains("btn"))
-      quit();
-  });
-  document.addEventListener("keydown", handleEnter);
-}
 
 type ButtonColor = "primary" | "danger";

@@ -1,4 +1,4 @@
-import displayAlterBox from "@components/AlertBox/AlertBox.jsx";
+import AlertBox from "@components/AlertBox/AlertBox.jsx";
 import SmallComponentWrapper from "@components/SmallComponentWrapper/SmallComponentWrapper.jsx";
 import Checkbox from "./Checkbox.jsx";
 import LengthInput from "./LengthInput.jsx";
@@ -12,9 +12,9 @@ export default function PasswordGenerator(): HTMLElement {
   const copyPassword = async () => {
     try {
       await navigator.clipboard.writeText(passwordState.password.value);
-      displayAlterBox({ message: "Password was copied!" });
+      AlertBox.create({ message: "Password was copied!" });
     } catch (error) {
-      displayAlterBox({
+      AlertBox.create({
         message: "Interacting with the clipboard is disallowed on this browser.",
         type: "danger"
       });

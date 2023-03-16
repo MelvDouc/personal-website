@@ -1,7 +1,7 @@
 import { Observable } from "reactfree-jsx";
 import { adjacentCoords, coordsToIndex } from "@utils/coords.js";
 import { randomInt } from "@utils/random.js";
-import displayAlterBox from "@components/AlertBox/AlertBox.jsx";
+import AlertBox from "@components/AlertBox/AlertBox.jsx";
 import MinesweeperCell from "./MinesweeperCell.jsx";
 
 export default class MinesweeperGame {
@@ -40,7 +40,7 @@ export default class MinesweeperGame {
           document.body.addEventListener("animationend", (e) => {
             if (e.animationName !== "rotate_body") return;
             document.body.classList.remove("rotate-body");
-            displayAlterBox({ message: "You win!" });
+            AlertBox.create({ message: "You win!" });
           }, { once: true });
           document.body.classList.add("rotate-body");
           break;
@@ -53,7 +53,7 @@ export default class MinesweeperGame {
                 cell.revealMine();
             });
           });
-          displayAlterBox({ message: "Boom!", type: "danger" });
+          AlertBox.create({ message: "Boom!", type: "danger" });
           break;
         case "ongoing":
           this.#flagCountObs.value = this.#numberOfMines;

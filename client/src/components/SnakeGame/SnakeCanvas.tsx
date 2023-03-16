@@ -1,5 +1,5 @@
 import { setIntervalOnAnimationFrame } from "@utils/animation.js";
-import displayAlterBox from "@components/AlertBox/AlertBox.jsx";
+import AlertBox from "@components/AlertBox/AlertBox.jsx";
 import Food from "./Food.jsx";
 import Snake from "./Snake.js";
 
@@ -55,7 +55,7 @@ export default class SnakeCanvas extends HTMLCanvasElement {
     const gradient = this.createGradient(ctx);
 
     abortController.signal.addEventListener("abort", () => {
-      displayAlterBox({
+      AlertBox.create({
         message: "The snake swallowed its own tail!"
       });
     });
