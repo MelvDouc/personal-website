@@ -1,4 +1,4 @@
-{
+const translations = {
   "0": {
     "fr": "CV de Melvin DOUCET",
     "en": "Melvin Doucet's Résumé"
@@ -127,4 +127,6 @@
     "fr": "Lecture",
     "en": "Reading"
   }
-}
+};
+
+export default translations;

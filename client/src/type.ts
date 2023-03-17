@@ -4,7 +4,7 @@ export interface Route {
   url?: string;
   urlRegex?: RegExp;
   getTitle: (params?: Record<string, string>) => string;
-  component: (params?: Record<string, string>) => any;
+  component: (params?: Record<string, string>) => string | Node;
 }
 
 export interface EmailData {

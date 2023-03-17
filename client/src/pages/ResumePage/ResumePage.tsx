@@ -1,43 +1,13 @@
-import { Observable } from "reactfree-jsx";
-import cssClasses from "./ResumePage.module.scss";
 import CvSkillsList from "@components/CvSkillsList/CvSkillsList.jsx";
-import { getCvTranslations } from "@utils/cv-translations.js";
-import { CvTranslation } from "../../type.js";
+import { trl } from "../../utils/translations/translations.service.js";
+import cssClasses from "./ResumePage.module.scss";
 
-export default async function ResumePage() {
-  const language = new Observable<CvLang>("en");
-  const translations = (await getCvTranslations()).reduce((acc, { id, en, fr }) => {
-    acc[id] = { en, fr };
-    return acc;
-  }, {} as Record<string, Pick<CvTranslation, "en" | "fr">>);
-
+export default function ResumePage() {
   return (
-    <div
-      className={cssClasses.cv}
-      $init={(element) => {
-        language.subscribe((language) => {
-          element.querySelectorAll("[data-trl]").forEach((translatable) => {
-            const key = translatable.getAttribute("data-trl") as keyof typeof translations;
-            translatable.innerHTML = translations[key][language];
-          });
-        });
-        language.notify();
-      }}
-    >
+    <div className={cssClasses.cv}>
       <section className={cssClasses.pageTop}>
         <h1 data-trl="0"></h1>
         <h2 data-trl="1"></h2>
-        <select
-          className={cssClasses.langSelect}
-          $init={(select) => {
-            select.addEventListener("input", () => {
-              language.value = select.value as CvLang;
-            });
-          }}
-        >
-          <option value="en" selected>English</option>
-          <option value="fr">français</option>
-        </select>
       </section>
 
       <section className={cssClasses.pageBottom}>
@@ -89,7 +59,7 @@ export default async function ResumePage() {
                 <li>Sfeir Luxembourg</li>
               </ul>
             </li>
-            <li><span className={cssClasses.date}>02/2019</span> <span data-trl="6"></span></li>
+            <li><span className={cssClasses.date}>02/2019</span> {trl("6")}</li>
             <li><span className={cssClasses.date}>2016-2017</span> <span data-trl="7"></span></li>
             <li><span className={cssClasses.date}>2013-2016</span> <span data-trl="8"></span></li>
             <li>
@@ -144,6 +114,3 @@ export default async function ResumePage() {
     </div>
   );
 }
-
-
-type CvLang = "en" | "fr";
