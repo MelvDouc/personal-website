@@ -1,6 +1,6 @@
 import { Observable } from "reactfree-jsx";
 import translations from "./data.js";
-import { Language } from "../../type.js";
+import { Language } from "../../types.js";
 
 export const languageObs = new Observable<Language>();
 

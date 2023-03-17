@@ -1,4 +1,4 @@
-import router from "@routing/router.js";
+import router from "@routing/Router.jsx";
 
 export default function HomePage() {
   return (

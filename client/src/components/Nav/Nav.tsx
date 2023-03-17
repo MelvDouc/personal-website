@@ -1,4 +1,4 @@
-import Router from "@routing/router.jsx";
+import Router from "@routing/Router.jsx";
 import { projects } from "@routing/routes.js";
 import Dropdown from "@components/Dropdown/Dropdown.jsx";
 import cssClasses from "./Nav.module.scss";

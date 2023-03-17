@@ -1,4 +1,4 @@
-import Router from "@routing/router.jsx";
+import Router from "@routing/Router.jsx";
 import Nav from "@components/Nav/Nav.jsx";
 import cssClasses from "./Header.module.scss";
 

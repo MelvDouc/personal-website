@@ -1,13 +1,13 @@
 import CvSkillsList from "@components/CvSkillsList/CvSkillsList.jsx";
-import { trl } from "../../utils/translations/translations.service.js";
+import { trl } from "@utils/translations/translations.service.js";
 import cssClasses from "./ResumePage.module.scss";
 
 export default function ResumePage() {
   return (
     <div className={cssClasses.cv}>
       <section className={cssClasses.pageTop}>
-        <h1 data-trl="0"></h1>
-        <h2 data-trl="1"></h2>
+        <h1 data-trl="cv-title"></h1>
+        <h2 data-trl="cv-subtitle"></h2>
       </section>
 
       <section className={cssClasses.pageBottom}>

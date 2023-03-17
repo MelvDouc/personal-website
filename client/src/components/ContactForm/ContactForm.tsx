@@ -1,8 +1,8 @@
 import AlertBox from "@components/AlertBox/AlertBox.js";
 import FormGroup from "@components/FormGroup/FormGroup.jsx";
-import router from "@routing/router.jsx";
+import router from "@routing/Router.jsx";
 import { sendEmail } from "@utils/api.js";
-import { EmailData } from "../../type.js";
+import { EmailData } from "../../types.js";
 import cssClasses from "./ContactForm.module.scss";
 
 export default function ContactForm() {

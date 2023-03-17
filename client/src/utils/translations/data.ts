@@ -1,9 +1,9 @@
 const translations = {
-  "0": {
+  "cv-title": {
     "fr": "CV de Melvin DOUCET",
     "en": "Melvin Doucet's Résumé"
   },
-  "1": {
+  "cv-subtitle": {
     "fr": "Développeur full-stack",
     "en": "Full-Stack Developer"
   },

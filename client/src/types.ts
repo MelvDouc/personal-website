@@ -7,6 +7,14 @@ export interface Route {
   component: (params?: Record<string, string>) => string | Node;
 }
 
+export interface RouteInfo {
+  url: string;
+  route: Route;
+  params?: Record<string, string>;
+}
+
+export type RouteSubscription = (routeInfo: RouteInfo) => any;
+
 export interface EmailData {
   email: string;
   subject: string;

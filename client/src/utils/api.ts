@@ -1,4 +1,4 @@
-import { EmailData, CvTranslation } from "../type.js";
+import { EmailData, CvTranslation } from "../types.js";
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL ?? location.origin) + "/api/v1";
 

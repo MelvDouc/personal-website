@@ -1,4 +1,4 @@
-import Router from "@routing/router.js";
+import Router from "@routing/Router.jsx";
 import { projects } from "@routing/routes.js";
 import cssClasses from "./ProjectsPage.module.scss";
 
