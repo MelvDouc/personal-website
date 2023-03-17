@@ -7,7 +7,6 @@ export default function App() {
   window.addEventListener("popstate", () => Router.updateUrl(location.pathname));
   Router.onUrlChange(({ route, params }) => {
     document.title = `${route.getTitle(params)} | Melvin Doucet's Website`;
-    languageObs.notify();
   });
 
   return {
@@ -24,6 +23,7 @@ export default function App() {
         document.documentElement.lang = language;
         updateTranslations(language);
       });
+      Router.onUrlChange(() => languageObs.notify());
       languageObs.value = document.documentElement.lang as Language;
       Router.updateUrl(location.pathname);
     }

@@ -1,4 +1,4 @@
-import { EmailData, CvTranslation } from "../types.js";
+import { EmailData } from "../types.js";
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL ?? location.origin) + "/api/v1";
 
@@ -20,8 +20,4 @@ export function sendEmail(data: EmailData) {
     },
     body: JSON.stringify(data)
   });
-}
-
-export function getCvTranslations() {
-  return fetchApi<(CvTranslation & { _id: string; })[]>("/cv/translations");
 }

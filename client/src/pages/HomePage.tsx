@@ -1,4 +1,4 @@
-import router from "@routing/Router.jsx";
+import Router from "@routing/Router.jsx";
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
       </section>
       <section>
         <div className="grid-center">
-          <router.Link href={router.routes.CONTACT.url!} className="fs-5 btn btn-primary">Contact</router.Link>
+          <Router.Link href={Router.routes.CONTACT.url} className="fs-5 btn btn-primary">Contact</Router.Link>
         </div>
       </section>
     </div>

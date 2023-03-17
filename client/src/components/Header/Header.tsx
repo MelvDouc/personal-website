@@ -1,5 +1,5 @@
-import Router from "@routing/Router.jsx";
 import Nav from "@components/Nav/Nav.jsx";
+import Router from "@routing/Router.jsx";
 import cssClasses from "./Header.module.scss";
 
 export default function Header() {
