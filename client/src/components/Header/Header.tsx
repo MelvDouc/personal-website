@@ -1,4 +1,4 @@
-import router from "@routing/router.jsx";
+import Router from "@routing/router.jsx";
 import Nav from "@components/Nav/Nav.jsx";
 import cssClasses from "./Header.module.scss";
 
@@ -7,13 +7,13 @@ export default function Header() {
     <header className={cssClasses.header}>
       <section className={cssClasses.headerTop}>
         <article>
-          <router.Link href={router.routes.HOME.url!}>
+          <Router.Link href={Router.routes.HOME.url!}>
             <img
               src="/img/favicon.png"
               alt="Logo"
               className={cssClasses.logo}
             />
-          </router.Link>
+          </Router.Link>
         </article>
         <article className={cssClasses.headerTitles}>
           <p><strong>Melvin Doucet</strong></p>
