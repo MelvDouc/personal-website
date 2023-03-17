@@ -14,8 +14,8 @@ export class Router {
       <div
         className="router-outlet"
         $init={(element) => {
-          this.onUrlChange(async ({ route, params }) => {
-            element.replaceChildren(await route.component(params));
+          this.onUrlChange(({ route, params }) => {
+            element.replaceChildren(route.component(params));
           });
         }}
       ></div>
