@@ -30,12 +30,8 @@ export default function PasswordGenerator(): HTMLElement {
         <section>
           <div className={cssClasses.form}>
             <article className={cssClasses.inputs}>
-              <div>
-                <LengthInput type="number" passwordState={passwordState} />
-              </div>
-              <div>
-                <LengthInput type="range" passwordState={passwordState} />
-              </div>
+              <LengthInput type="number" passwordState={passwordState} />
+              <LengthInput type="range" passwordState={passwordState} />
             </article>
             <article className={cssClasses.checkboxes}>
               {Object.keys(PasswordState.randomCharFunctions).map((key) => (

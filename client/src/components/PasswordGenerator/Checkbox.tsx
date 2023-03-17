@@ -6,19 +6,24 @@ export default function Checkbox({ key, selectedOptionsObs }: {
 }) {
   const id = `checkbox-${key}`;
   const selectedOptions = selectedOptionsObs.value;
+  const disabledObs = selectedOptionsObs.map((set) => {
+    return set.size === 1 && set.has(key);
+  });
+  const handleInput = () => {
+    selectedOptions.has(key)
+      ? selectedOptions.delete(key)
+      : selectedOptions.add(key);
+    selectedOptionsObs.notify();
+  };
 
   return (
     <div>
-      <label htmlFor={id}>{key}</label>
+      <label htmlFor={id} data-trl={`pwd-label-${key}`}></label>
       <ToggleSwitch
         id={id}
         checked={selectedOptions.has(key)}
-        oninput={() => {
-          selectedOptions.has(key)
-            ? selectedOptions.delete(key)
-            : selectedOptions.add(key);
-          selectedOptionsObs.notify();
-        }}
+        disabled={disabledObs}
+        oninput={handleInput}
       />
     </div>
   );

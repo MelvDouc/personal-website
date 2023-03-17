@@ -12,7 +12,7 @@ export default class PasswordState {
     lowercase: randomLowercase,
     uppercase: randomUppercase,
     digits: randomDigit,
-    "special characters": randomSpecialChar
+    "special-chars": randomSpecialChar
   };
 
   public password: Obs<string>;
@@ -39,6 +39,9 @@ export default class PasswordState {
   }
 
   public updatePassword() {
+    if (!this.selectedOptions.value.size)
+      return;
+
     const password: string[] = [];
     const length = this.length.value;
 
