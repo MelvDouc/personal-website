@@ -18,8 +18,5 @@ export interface Coords {
   y: number;
 }
 
-export interface CvTranslation {
-  id: string;
-  fr: string;
-  en: string;
-}
+export type Language = "fr" | "en";
+export type Translation = Record<Language, string>;
