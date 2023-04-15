@@ -39,9 +39,9 @@ export default function ResumePage() {
         <article className={cssClasses.hobbies}>
           <h3 data-trl="28"></h3>
           <ul className={cssClasses.list}>
-            <li data-trl="29"></li>
-            <li data-trl="30"></li>
-            <li data-trl="31"></li>
+            <li data-trl="cv-hobbies-volunteering"></li>
+            <li data-trl="cv-hobbies-chess"></li>
+            <li data-trl="cv-hobbies-reading"></li>
           </ul>
         </article>
 
