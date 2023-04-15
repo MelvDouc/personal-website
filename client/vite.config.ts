@@ -21,6 +21,7 @@ export default defineConfig({
       "@components": resolve(srcFolder, "components"),
       "@routing": resolve(srcFolder, "routing"),
       "@styles": resolve(srcFolder, "styles"),
+      "@types": resolve(srcFolder, "types.ts"),
       "@utils": resolve(srcFolder, "utils"),
     }
   }

@@ -1,4 +1,4 @@
-import { Translation } from "../../types.js";
+import { Translation } from "@types";
 
 const translations = {
   "home-title": {

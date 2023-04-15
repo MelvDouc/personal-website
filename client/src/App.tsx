@@ -1,7 +1,7 @@
-import Header from "./components/Header/Header.jsx";
-import Router from "./routing/Router.jsx";
-import { languageObs, updateTranslations } from "./utils/translations/translations.service.js";
-import { Language } from "./types.js";
+import Header from "@components/Header/Header.jsx";
+import Router from "@routing/Router.jsx";
+import { languageObs, updateTranslations } from "@utils/translations/translations.service.js";
+import { Language } from "@types";
 
 export default function App() {
   window.addEventListener("popstate", () => Router.updateUrl(location.pathname));

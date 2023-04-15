@@ -2,7 +2,7 @@ import AlertBox from "@components/AlertBox/AlertBox.js";
 import FormGroup from "@components/FormGroup/FormGroup.jsx";
 import router from "@routing/Router.jsx";
 import { sendEmail } from "@utils/api.js";
-import { EmailData } from "../../types.js";
+import { EmailData } from "@types";
 import cssClasses from "./ContactForm.module.scss";
 
 export default function ContactForm() {
@@ -34,7 +34,7 @@ export default function ContactForm() {
 
         AlertBox.create({
           message: "Thanks for your message. I'll try and get back to you soon.",
-          handleClose: () => router.updateUrl(router.routes.HOME.url!)
+          handleClose: () => router.updateUrl(router.routes.HOME.url)
         });
       }}
     >

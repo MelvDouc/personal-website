@@ -1,5 +1,5 @@
 import globalRoutes from "./routes.js";
-import { Route, RouteInfo, RouteSubscription } from "../types.js";
+import { Route, RouteInfo, RouteSubscription } from "@types";
 
 export default getRouter(globalRoutes);
 

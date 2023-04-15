@@ -1,5 +1,5 @@
 import type SnakeCanvas from "./SnakeCanvas.jsx";
-import { Coords } from "../../types.js";
+import { Coords } from "@types";
 
 export default class Snake extends Array<Coords> {
   private readonly canvas: SnakeCanvas;

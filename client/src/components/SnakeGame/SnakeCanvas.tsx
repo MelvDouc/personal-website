@@ -1,5 +1,5 @@
-import { setIntervalOnAnimationFrame } from "@utils/animation.js";
 import AlertBox from "@components/AlertBox/AlertBox.jsx";
+import { setIntervalOnAnimationFrame } from "@utils/animation.js";
 import Food from "./Food.jsx";
 import Snake from "./Snake.js";
 

@@ -1,5 +1,5 @@
 import { randomInt } from "@utils/random.js";
-import type { SnakeCanvas } from "./SnakeCanvas.jsx";
+import type SnakeCanvas from "./SnakeCanvas.jsx";
 
 export default class Food {
   public readonly image: HTMLImageElement;
