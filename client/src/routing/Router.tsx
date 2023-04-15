@@ -1,5 +1,5 @@
 import globalRoutes from "./routes.js";
-import { Route, RouteInfo, RouteSubscription } from "@types";
+import { RouteInfo, RouteSubscription } from "@types";
 
 export default getRouter(globalRoutes);
 
@@ -62,16 +62,8 @@ function getRouteAndParams(routes: typeof globalRoutes, url: string): Omit<Route
     if (name === "404")
       continue;
 
-    const route: Route = routes[name];
-
-    if (route.url !== undefined && url === route.url)
-      return { route };
-
-    if (route.urlRegex) {
-      const matches = url.match(route.urlRegex);
-      if (matches)
-        return { route, params: matches.groups };
-    }
+    if (url === routes[name].url)
+      return { route: routes[name] };
   }
 
   return {

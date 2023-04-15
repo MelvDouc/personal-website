@@ -19,6 +19,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@components": resolve(srcFolder, "components"),
+      "@pages": resolve(srcFolder, "pages"),
       "@routing": resolve(srcFolder, "routing"),
       "@styles": resolve(srcFolder, "styles"),
       "@types": resolve(srcFolder, "types.ts"),

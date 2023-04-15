@@ -1,8 +1,7 @@
 export type OptionalPromise<T> = T | Promise<T>;
 
 export interface Route {
-  url?: string;
-  urlRegex?: RegExp;
+  url: string;
   getTitle: (params?: Record<string, string>) => string;
   component: (params?: Record<string, string>) => string | Node;
 }
