@@ -5,11 +5,11 @@ export default function PlayerDisplay({ player, playerChangeFn }: {
   playerChangeFn: (subscription: (player: Player) => void) => void;
 }) {
   return (
-    <div
-      $init={(element) => {
-        playerChangeFn((player) => element.innerText = getText(player));
-      }}
-    >{getText(player)}</div>
+    <div>
+      <span $init={(e) => playerChangeFn((player) => e.innerText = playerDiscs[player])}>{playerDiscs[player]}</span>
+      &nbsp;
+      <span>to move</span>
+    </div>
   );
 }
 
@@ -17,7 +17,3 @@ const playerDiscs = {
   [Player.RED]: "🔴",
   [Player.YELLOW]: "🟡"
 } as const;
-
-function getText(player: Player) {
-  return `${playerDiscs[player]} to move`;
-}
