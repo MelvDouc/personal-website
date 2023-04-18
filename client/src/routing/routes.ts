@@ -1,4 +1,5 @@
 import Calculator from "@components/Calculator/Calculator.jsx";
+import Connect4 from "@components/Connect4/Connect4.jsx";
 import Minesweeper from "@components/Minesweeper/Minesweeper.jsx";
 import PasswordGenerator from "@components/PasswordGenerator/PasswordGenerator.jsx";
 import SnakeGame from "@components/SnakeGame/SnakeGame.jsx";
@@ -39,6 +40,11 @@ const routes = {
     getTitle: () => "Calculator",
     component: Calculator
   },
+  CONNECT4: {
+    url: "/projects/connect4",
+    getTitle: () => "Connect 4",
+    component: Connect4
+  },
   MINESWEEPER: {
     url: "/projects/minesweeper",
     getTitle: () => "Minesweeper",
@@ -63,6 +69,7 @@ const routes = {
 
 export const projects = [
   routes.CALCULATOR,
+  routes.CONNECT4,
   routes.MINESWEEPER,
   routes.PASSWORD_GENERATOR,
   routes.SNAKE
