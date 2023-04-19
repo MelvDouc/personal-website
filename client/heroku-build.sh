@@ -3,6 +3,6 @@ cd client
 || echo "Installing client/node_modules..." && npm install
 npm run build
 echo "Removing dev folders and files..."
-rm -rf !(dist)
+find . -mindepth 1 -not -path 'dist' -prune -delete
 echo "Client was successfully installed."
 cd ..
