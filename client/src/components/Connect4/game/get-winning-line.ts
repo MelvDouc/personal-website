@@ -12,7 +12,7 @@ export default function getWinningLine(board: Checker[][], player: Player, coord
     const forwardCount = countConnectedCheckers(board, coords, player, xOffset, yOffset);
     const backwardCount = countConnectedCheckers(board, coords, player, -xOffset, -yOffset);
 
-    if (forwardCount + backwardCount + 1 !== 4)
+    if (forwardCount + backwardCount + 1 < 4)
       continue;
 
     const indices = new Set<number>();
@@ -32,7 +32,7 @@ export default function getWinningLine(board: Checker[][], player: Player, coord
 function countConnectedCheckers(board: Checker[][], coords: Coordinates, player: Player, xOffset: number, yOffset: number): number {
   let count = 0;
 
-  for (let i = 1; i < 4; i++) {
+  for (let i = 1; ; i++) {
     const x = coords.x + xOffset * i;
     const y = coords.y + yOffset * i;
 
