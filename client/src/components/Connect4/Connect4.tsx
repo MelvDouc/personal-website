@@ -16,8 +16,14 @@ export default function Connect4() {
         />
         <Board game={game} />
         <div className={cssClasses.connect4Buttons}>
-          <button classNames={["btn", "btn-primary"]} onclick={() => game.undoLastMove()}>&larr;</button>
-          <button classNames={["btn", "btn-primary"]} onclick={() => game.restart()}>New Game</button>
+          <button
+            classNames={["btn", "btn-primary"]}
+            onclick={() => game.undoLastMove()}
+          >Undo</button>
+          <button
+            classNames={["btn", "btn-primary"]}
+            onclick={() => game.restart()}
+          >New Game</button>
         </div>
       </div>
     </SmallComponentWrapper>

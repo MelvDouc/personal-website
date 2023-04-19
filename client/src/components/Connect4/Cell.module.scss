@@ -20,7 +20,7 @@
     width: var(--before-size);
     height: var(--before-size);
     background-color: white;
-    border-radius: 50%;
+    clip-path: circle(50%);
   }
 
   &.cellRed::before {
