@@ -11,8 +11,8 @@ export default function Connect4() {
     <SmallComponentWrapper>
       <div className={cssClasses.connect4}>
         <PlayerDisplay
-          player={game.activePlayer}
-          playerChangeFn={(subscription) => game.onPlayerChange(subscription)}
+          onPlayerChange={(subscription) => game.onPlayerChange(subscription)}
+          onResultChange={(subscription) => game.onResultChange((indices) => subscription(indices !== null))}
         />
         <Board game={game} />
         <div className={cssClasses.connect4Buttons}>

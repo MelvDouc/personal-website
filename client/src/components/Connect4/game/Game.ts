@@ -2,93 +2,80 @@ import { Observable } from "reactfree-jsx";
 import getWinningLine from "./get-winning-line.js";
 import BoardDimensions from "./BoardDimensions.js";
 import Player, { Checker } from "./Player.js";
-import { Coords as Coordinates } from "@types";
 
 export default class Game {
   private static readonly EMPTY_BOARD = Array.from({ length: BoardDimensions.HEIGHT }, () => {
     return Array(BoardDimensions.WIDTH).fill(0);
   }) as Checker[][];
 
-  private readonly playerObs: Obs<Player>;
-  private readonly boardObs: Obs<Checker[][]>;
-  private readonly winningIndicesObs: Obs<Set<number> | null>;
-  private readonly addedCoords: Coordinates[];
+  private static readonly DEFAULT_STATE = {
+    player: Player.RED,
+    board: Game.EMPTY_BOARD,
+    winningIndices: null
+  };
+
+  private stateObs: Obs<GameState>;
+  private readonly prevStates: GameState[] = [];
 
   constructor() {
-    this.playerObs = new Observable();
-    this.boardObs = new Observable();
-    this.winningIndicesObs = new Observable();
-    this.addedCoords = [];
-    this.restart();
+    this.stateObs = new Observable(Game.DEFAULT_STATE);
   }
 
   public get activePlayer(): Player {
-    return this.playerObs.value;
+    return this.stateObs.value.player;
   }
 
   public get board(): Checker[][] {
-    return this.boardObs.value;
-  }
-
-  /**
-   * @returns Whether the checker was added to the column.
-   */
-  private trySettingChecker(y: number): boolean {
-    for (let x = BoardDimensions.HEIGHT - 1; x >= 0; x--) {
-      if (this.boardObs.value[x][y] === 0) {
-        this.boardObs.value[x][y] = this.playerObs.value;
-        this.addedCoords.push({ x, y });
-        this.boardObs.notify();
-        return true;
-      }
-    }
-
-    return false;
+    return this.stateObs.value.board;
   }
 
   public setChecker(y: number): void {
-    if (this.winningIndicesObs.value || !this.trySettingChecker(y))
+    if (this.stateObs.value.winningIndices)
       return;
 
-    const winningLine = getWinningLine(this.board, this.activePlayer, this.addedCoords.at(-1)!);
+    for (let x = BoardDimensions.HEIGHT - 1; x >= 0; x--) {
+      if (this.board[x][y] !== 0)
+        continue;
 
-    if (winningLine) {
-      this.winningIndicesObs.value = winningLine;
+      const board = structuredClone(this.board);
+      board[x][y] = this.activePlayer;
+
+      this.prevStates.push(this.stateObs.value);
+      this.stateObs.value = {
+        board,
+        winningIndices: getWinningLine(board, this.activePlayer, { x, y }),
+        player: -this.activePlayer
+      };
       return;
     }
-
-    this.playerObs.value = -this.playerObs.value;
   }
 
   public onPlayerChange(subscription: (player: Player) => void): void {
-    this.playerObs.subscribe(subscription);
+    this.stateObs.subscribe(({ player }) => subscription(player));
   }
 
   public onBoardChange(subscription: (board: Checker[][]) => void): void {
-    this.boardObs.subscribe(subscription);
+    this.stateObs.subscribe(({ board }) => subscription(board));
   }
 
   public onResultChange(subscription: (winningIndices: Set<number> | null) => void): void {
-    this.winningIndicesObs.subscribe(subscription);
+    this.stateObs.subscribe(({ winningIndices }) => subscription(winningIndices));
   }
 
   public undoLastMove(): void {
-    const lastAddedCoords = this.addedCoords.pop();
-
-    if (lastAddedCoords) {
-      this.boardObs.value[lastAddedCoords.x][lastAddedCoords.y] = 0;
-      this.boardObs.notify();
-      if (this.winningIndicesObs.value)
-        this.winningIndicesObs.value = null;
-      else
-        this.playerObs.value = -this.playerObs.value;
-    }
+    const prevState = this.prevStates.pop();
+    if (prevState)
+      this.stateObs.value = prevState;
   }
 
   public restart(): void {
-    this.playerObs.value = Player.RED;
-    this.boardObs.value = structuredClone(Game.EMPTY_BOARD);
-    this.winningIndicesObs.value = null;
-    this.addedCoords.length = 0;
+    this.prevStates.length = 0;
+    this.stateObs.value = Game.DEFAULT_STATE;
   }
+}
+
+interface GameState {
+  player: Player;
+  board: Checker[][];
+  winningIndices: Set<number> | null;
 }
